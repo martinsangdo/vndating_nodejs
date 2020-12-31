@@ -16,9 +16,9 @@ var MongoStore = require('connect-mongo')(session);
 //Define routes
 var routes = require('./routes/index');
 var test = require('./routes/test');
+var user = require('./routes/user');
 var web_parser = require('./routes/web_parser');
 var payment = require('./routes/payment');
-var movie = require('./routes/movie');
 var admin_control = require('./routes/admin/login');
 var admin_movie = require('./routes/admin/movie');
 var admin_category = require('./routes/admin/category');
@@ -57,7 +57,7 @@ var connect = function () {
       keepAlive: true,
       useUnifiedTopology: true,	//able to retry connection
       useNewUrlParser: true,
-	  dbName: 'swipexdevdb'};
+	  dbName: 'vndating'};
   mongoose.connect(DB_URL, options);
 };
 connect();
@@ -85,6 +85,8 @@ app.use(restResponse(rest_resp_options));
 //========== Declare routes
 app.use('/', routes);
 app.use('/test', test);
+app.use('/user', user);
+
 app.use('/web_parser', web_parser);
 app.use('/payment', payment);
 app.use('/admin-movie', admin_movie);
