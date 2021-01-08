@@ -3,8 +3,16 @@
 <head>
 	<!-- Title -->
 	<title>Tìm bạn hẹn hò </title>
-
 	<%- include common_header.ejs %>
+	<script>
+        $(window).on('load', function () {
+            homeClass.get_homepage_list();
+            homeClass.random_user_by_gender(1);
+            homeClass.random_user_by_gender(2);
+            homeClass.random_user_by_gender(3);
+            homeClass.random_user_by_gender(0);
+        });
+	</script>
 </head>
 
 <body>
@@ -133,106 +141,78 @@
 			<div class="row g-mb-60">
 				<!-- Articles Content -->
 				<div class="col-lg-9 g-mb-50 g-mb-0--lg">
-					<!-- Breaking News -->
+					<!-- Home list -->
 					<div class="g-mb-60" id="home_list">
-						<!-- 1 person template -->
-						<div class="row g-mb-30 hidden" id="person_tmpl">
-							<div class="col-md-3">
-								<figure class="u-shadow-v25 g-pos-rel g-mb-20 g-mb-0--lg text-center">
-									<img class="img-fluid home_img_thumb"/>
-									<figcaption class="g-pos-abs g-top-20 g-left-20">
-										<a class="btn btn-xs text-uppercase rounded-0 data-gender" href="#!"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="col-md-9 align-self-center">
-								<h3 class="h4 g-mb-15">
-									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover data-name" href="#!"></a>
-								</h3>
-
-								<ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
-									<li class="list-inline-item"><i class="fa fa-calendar"></i></li>
-									<li class="list-inline-item data-date"></li>
-									<li class="list-inline-item">
-										<a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover data-married-status" href="#!"></a>
-									</li>
-									<li class="list-inline-item">/</li>
-									<li class="list-inline-item"><a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover data-objective" href="#!"></a></li>
-									<li class="list-inline-item">/</li>
-									<li class="list-inline-item"><a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover data-province" href="#!"></a></li>
-									<li class="list-inline-item">/</li>
-									<li class="list-inline-item data-age"></li>
-								</ul>
-
-								<p class="g-color-gray-dark-v2 cut_line_limit four_lines data-looking-for"></p>
-							</div>
-						</div>
-
+						<!-- data fetched here -->
 					</div>
-					<!-- End Breaking News -->
+					<!-- 1 person template -->
+					<div class="row g-mb-30 hidden" id="person_tmpl">
+						<div class="col-md-3">
+							<figure class="u-shadow-v25 g-pos-rel g-mb-20 g-mb-0--lg text-center">
+								<img class="img-fluid home_img_thumb"/>
+								<figcaption class="g-pos-abs g-top-20 g-left-20">
+									<a class="btn btn-xs text-uppercase rounded-0 data-gender" href="#!"></a>
+								</figcaption>
+							</figure>
+						</div>
+						<div class="col-md-9 align-self-center">
+							<h3 class="h4 g-mb-15">
+								<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover data-name" href="#!"></a>
+							</h3>
+
+							<ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
+								<li class="list-inline-item"><i class="fa fa-calendar"></i></li>
+								<li class="list-inline-item data-date"></li>
+								<li class="list-inline-item">
+									<a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover data-married-status" href="#!"></a>
+								</li>
+								<li class="list-inline-item">/</li>
+								<li class="list-inline-item"><a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover data-objective" href="#!"></a></li>
+								<li class="list-inline-item">/</li>
+								<li class="list-inline-item"><a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover data-province" href="#!"></a></li>
+								<li class="list-inline-item">/</li>
+								<li class="list-inline-item data-age"></li>
+							</ul>
+
+							<p class="g-color-gray-dark-v2 cut_line_limit four_lines data-looking-for"></p>
+						</div>
+					</div>
+					<!-- END 1 person template -->
+					<!-- End Home list -->
 
 					<div id="stickyblock-end"></div>
 				</div>
 				<!-- End Articles Content -->
 
 				<!-- Sidebar -->
-				<div class="col-lg-3">
-					<!-- Recent Posts -->
-					<div class="g-mb-30">
-						<div class="u-heading-v3-1 g-mb-30">
-							<h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Recent Posts</h2>
-						</div>
-
-						<!-- Article -->
-						<article class="media g-mb-30">
-							<a class="d-flex u-shadow-v25 mr-3" href="#!">
-								<img class="g-width-60 g-height-60" src="https://henho2.com/Content/UploadImages/Profile/ban_trai_tim_ban_gai_bon_phuong_99049.jpg"/>
-							</a>
-
-							<div class="media-body">
-								<h3 class="h6">
-									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover cut_line_limit three_lines" href="#!">Hoà đồng vui vẻ . Nhiệt tình. Có công việc ổn định. Là 1 người sống tự lập. <br/>Còn lại sẽ tìm hiểu thêm khi có bạn <br/></a>
-								</h3>
-
-								<ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-									<li class="list-inline-item">Hai Phong</li>
-									<li class="list-inline-item">/</li>
-									<li class="list-inline-item">18</li>
-								</ul>
-							</div>
-						</article>
-						<!-- End Article -->
-
-						<!-- Article -->
-						<article class="media g-mb-30">
-							<a class="d-flex u-shadow-v25 mr-3" href="#!">
-								<img class="g-width-60 g-height-60" src="https://henho2.com/content/UploadImages/Profile/ban_trai_tim_ban_gai_bon_phuong_651211.jpg" alt="Image Description">
-							</a>
-
-							<div class="media-body">
-								<h3 class="h6">
-									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hove cut_line_limit three_linesr" href="#!">Hoà đồng vui vẻ . Nhiệt tình. Có công việc ổn định. Là 1 người sống tự lập. <br/>Còn lại sẽ tìm hiểu thêm khi có bạn <br/></a>
-								</h3>
-
-								<ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-									<li class="list-inline-item">
-										July 16, 2017
-									</li>
-									<li class="list-inline-item">/</li>
-									<li class="list-inline-item">
-										<a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-											<i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 31
-										</a>
-									</li>
-								</ul>
-							</div>
-						</article>
-						<!-- End Article -->
-
-					</div>
-					<!-- End Recent Posts -->
-
+				<div class="col-lg-3" id="sidebar_container">
+					<!-- data fetched here -->
 				</div>
+				<!-- Recent Posts -->
+				<div class="g-mb-30 hidden" id="sitebar_items_tmpl">
+					<div class="u-heading-v3-1 g-mb-30">
+						<h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Bạn <span class="gender"></span> nổi bật</h2>
+					</div>
+					<!-- Article -->
+					<article class="media g-mb-30 hidden" id="item_user_tmpl">
+						<a class="d-flex u-shadow-v25 mr-3" href="#!">
+							<img class="g-width-60 g-height-60 avatar"/>
+						</a>
+						<div class="media-body">
+							<h3 class="h6">
+								<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover cut_line_limit two_lines description" href="#!"></a>
+							</h3>
+
+							<ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+								<li class="list-inline-item"><a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover status" href="#!"></a></li>
+								<li class="list-inline-item">/</li>
+								<li class="list-inline-item"><a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover objective" href="#!"></a></li>
+							</ul>
+						</div>
+					</article>
+					<!-- End Article -->
+				</div>
+				<!-- End Recent Posts -->
 				<!-- End Sidebar -->
 			</div>
 			<!-- News Section 1 -->

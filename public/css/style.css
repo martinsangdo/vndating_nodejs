@@ -16,8 +16,8 @@ a {
     display: -webkit-box;
     -webkit-box-orient: vertical;
   }
-.three_lines {
-  -webkit-line-clamp: 3;
+.two_lines {
+  -webkit-line-clamp: 2;
 }
 .four_lines {
     -webkit-line-clamp: 4;

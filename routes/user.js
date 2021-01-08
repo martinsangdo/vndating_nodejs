@@ -21,7 +21,19 @@ router.get('/get_homepage_list', function(req, res, next) {
                 res.rest.success(resp);   //success
             });
     });
-
 });
-
+//get latest users
+router.get('/random_user_by_gender', function(req, res, next) {
+    //todo check auth
+    var gender_code = parseInt(req.query['code']);
+    if (isNaN(gender_code) || gender_code < 0 || gender_code > 3){
+        gender_code = 1;    //default
+    }
+    var user = new User();
+    user.search_by_condition({is_active:{$ne:0}, Sex: gender_code}, {limit:20, skip: Math.round(Math.random()*500)},
+        'Picture LookingFor Name MariedStatus Objective', {'updated_time':-1}, function(resp){
+            res.rest.success(resp);   //success
+        });
+});
+//======
 module.exports = router;

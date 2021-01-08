@@ -11,13 +11,21 @@ HomeClass.prototype.get_homepage_list = function() {
     common.ajaxRawGet(API_URI.HOME_LIST+'?page='+page_index, function(resp){
         if (resp.message == CONST.OK_CODE && resp.data != null){
             render_home_list(resp.data);
-            //todo right side
         } else {
 
         }
     });
 };
-
+//get random users
+HomeClass.prototype.random_user_by_gender = function(gender_code) {
+    common.ajaxRawGet(API_URI.RANDOM_USER+'?code='+gender_code, function(resp){
+        if (resp.message == CONST.OK_CODE && resp.data != null){
+            render_random_user(gender_code, resp.data);
+        } else {
+            //nothing shown
+        }
+    });
+};
 //private
 function render_home_list(list){
     if (list.length == 0){
@@ -41,6 +49,25 @@ function render_home_list(list){
 
         $container.append($tmpl.removeAttr('id').removeClass('hidden'));
     }
+}
+//
+function render_random_user(gender_code, list){
+    if (list.length == 0){
+        return;
+    }
+    var $sitebar_items_tmpl = $('#sitebar_items_tmpl').clone(false);
+    $('.gender', $sitebar_items_tmpl).text(common.convert_gender(gender_code));
+    var len = list.length;
+    var $tmpl
+    for (var i=0; i<len; i++){
+        $tmpl = $('#item_user_tmpl', $sitebar_items_tmpl).clone(false);
+        $('.avatar', $tmpl).attr('src', API_URI.HENHO_DOMAIN + list[i]['Picture']);
+        $('.description', $tmpl).text(list[i]['LookingFor']);
+        $('.status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));
+        $('.objective', $tmpl).text(common.convert_objective(list[i]['Objective']));
+        $sitebar_items_tmpl.append($tmpl.removeAttr('id').removeClass('hidden'));
+    }
+    $('#sidebar_container').append($sitebar_items_tmpl.removeAttr('id').removeClass('hidden'));
 }
 //==========
 var homeClass = new HomeClass();		//global object
