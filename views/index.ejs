@@ -7,10 +7,10 @@
 	<script>
         $(window).on('load', function () {
             homeClass.get_homepage_list();
-            homeClass.random_user_by_gender(1);
-            homeClass.random_user_by_gender(2);
-            homeClass.random_user_by_gender(3);
-            homeClass.random_user_by_gender(0);
+            // homeClass.random_user_by_gender(1);
+            // homeClass.random_user_by_gender(2);
+            // homeClass.random_user_by_gender(3);
+            // homeClass.random_user_by_gender(0);
         });
 	</script>
 </head>
@@ -218,35 +218,20 @@
 			<!-- News Section 1 -->
 
 			<!-- News Section 3 -->
-			<div class="row">
+			<div class="row" id="dynamic_pagination">
 				<!-- Articles Content -->
 				<div class="col-lg-9 g-mb-50 g-mb-0--lg">
 					<!-- Pagination -->
 					<nav id="stickyblock-end-1" aria-label="Page Navigation">
-						<ul class="list-inline text-center mb-0">
-							<li class="list-inline-item">
-								<a class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-secondary-light-v2 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">1</a>
+						<ul class="list-inline text-center mb-0 hidden" id="paging_list">
+							<!-- data fetched here -->
+						</ul>
+						<ul class="hidden" id="paging_tmpl">
+							<li class="list-inline-item li_active">
+								<a class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-secondary-light-v2 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!"></a>
 							</li>
-							<li class="list-inline-item">
-								<a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">2</a>
-							</li>
-							<li class="list-inline-item g-hidden-xs-down">
-								<a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">3</a>
-							</li>
-							<li class="list-inline-item">
-								<span class="g-width-30 g-height-30 g-color-gray-dark-v5 g-font-size-12 rounded g-pa-5">...</span>
-							</li>
-							<li class="list-inline-item g-hidden-xs-down">
-								<a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">15</a>
-							</li>
-							<li class="list-inline-item">
-								<a class="u-pagination-v1__item g-brd-secondary-light-v2 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded g-px-15 g-py-5 g-ml-15" href="#!" aria-label="Next">
-                      <span aria-hidden="true">
-                        Next
-                        <i class="ml-2 fa fa-angle-right"></i>
-                      </span>
-									<span class="sr-only">Next</span>
-								</a>
+							<li class="list-inline-item li_normal">
+								<a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!"></a>
 							</li>
 						</ul>
 					</nav>

@@ -30,7 +30,7 @@ router.get('/random_user_by_gender', function(req, res, next) {
         gender_code = 1;    //default
     }
     var user = new User();
-    user.search_by_condition({is_active:{$ne:0}, Sex: gender_code}, {limit:20, skip: Math.round(Math.random()*500)},
+    user.search_by_condition({is_active:{$ne:0}, Sex: gender_code}, {limit:20, skip: Math.round(Math.random()*800)},
         'Picture LookingFor Name MariedStatus Objective', {'updated_time':-1}, function(resp){
             res.rest.success(resp);   //success
         });

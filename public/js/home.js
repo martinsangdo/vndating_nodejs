@@ -10,7 +10,8 @@ HomeClass.prototype.get_homepage_list = function() {
     var page_index = common.get_url_param('page');      //start from 1
     common.ajaxRawGet(API_URI.HOME_LIST+'?page='+page_index, function(resp){
         if (resp.message == CONST.OK_CODE && resp.data != null){
-            render_home_list(resp.data);
+            // render_home_list(resp.data);
+            render_paging(page_index, resp.total);
         } else {
 
         }
@@ -49,6 +50,66 @@ function render_home_list(list){
 
         $container.append($tmpl.removeAttr('id').removeClass('hidden'));
     }
+}
+//show max 5 pages on left & right
+function render_paging(page_index, total){
+    if (total == 0 || total == null || total == ''){
+        return;
+    }
+    page_index = parseInt(page_index);
+    if (isNaN(page_index) || page_index < 0){
+        page_index = 1; //for showing in UI
+    }
+    //get total of page
+    var total_page = Math.max(Math.floor(total / CONST.DEFAULT_PAGE_LEN), Math.ceil(total / CONST.DEFAULT_PAGE_LEN));
+    if (page_index > total_page){
+        page_index = total_page;
+    }
+    var $paging_tmpl = ('#paging_tmpl');
+    var $paging_list = $('#paging_list');
+    var min, max, $item_tmpl;   //page index
+    //show left side
+    max = page_index - 1;
+    min = max - CONST.PAGE_OFFSET_DISPLAY;
+    if (min > 1){
+        append_paging_index(1, 1, total_page, $paging_tmpl, $paging_list, '.li_normal');    //show page 1
+    }
+    if (min > 2){
+        append_paging_dot($paging_tmpl, $paging_list, '.li_normal');
+    }
+    append_paging_index(min, max, total_page, $paging_tmpl, $paging_list, '.li_normal');
+    //show active item
+    append_paging_index(page_index, page_index, total_page, $paging_tmpl, $paging_list, '.li_active');
+    //show right side
+    min = page_index + 1;
+    max = min + CONST.PAGE_OFFSET_DISPLAY;
+    append_paging_index(min, max, total_page, $paging_tmpl, $paging_list, '.li_normal');
+    if (max + 1 < total_page){
+        append_paging_dot($paging_tmpl, $paging_list, '.li_normal');
+    }
+    if (max < total_page){
+        append_paging_index(total_page, total_page, total_page, $paging_tmpl, $paging_list, '.li_normal');
+    }
+    // append_paging_index(page_index+1, page_index+1+CONST.PAGE_OFFSET_DISPLAY, total_page, $paging_tmpl, $paging_list, '.li_normal');
+    $('#paging_list').removeClass('hidden');
+}
+//
+function append_paging_index(min, max, total_page, $paging_tmpl, $paging_list, item_class){
+    var $item_tmpl;
+    for (var i=min; i<=max; i++){
+        if (i<1 || i>total_page){
+            continue;
+        }
+        $item_tmpl = $(item_class, $paging_tmpl).clone(false);
+        $('a', $item_tmpl).text(i);
+        $paging_list.append($item_tmpl);
+    }
+}
+//
+function append_paging_dot($paging_tmpl, $paging_list, item_class){
+    var $item_tmpl = $(item_class, $paging_tmpl).clone(false);
+    $('a', $item_tmpl).text('...');
+    $paging_list.append($item_tmpl);
 }
 //
 function render_random_user(gender_code, list){
