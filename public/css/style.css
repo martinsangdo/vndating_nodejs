@@ -9,3 +9,16 @@ a {
 
 .hide {display:none;}
 .align_right {text-align: right;width:50%;}
+.home_img_thumb {max-height:270px;}
+.cut_line_limit {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+.three_lines {
+  -webkit-line-clamp: 3;
+}
+.six_lines {
+  -webkit-line-clamp: 6;
+}
