@@ -2,185 +2,401 @@
 <html lang="en">
 <head>
 	<!-- Title -->
-	<title>Swipe X</title>
+	<title>Tìm bạn hẹn hò </title>
 
 	<!-- Required Meta Tags Always Come First -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-	<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../../../favicon.ico">
 
 	<!-- Google Fonts -->
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"/>
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab:300,400,700%7COpen+Sans:400,600,700">
 
 	<!-- CSS Global Compulsory -->
-	<link rel="stylesheet" href="/unify_assets/vendor/bootstrap/bootstrap.min.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/hs-admin-icons/hs-admin-icons.css"/>
-	<!-- CSS Implementing Plugins -->
-	<link rel="stylesheet" href="/unify_assets/vendor/icon-awesome/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/icon-line/css/simple-line-icons.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/icon-hs/style.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/hamburgers/hamburgers.min.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/animate.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/dzsparallaxer.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/dzsscroller/scroller.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/advancedscroller/plugin.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/fancybox/jquery.fancybox.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css"/>
-	<link rel="stylesheet" href="/unify_assets/vendor/slick-carousel/slick/slick.css"/>
+	<link rel="stylesheet" href="/unify_assets/vendor/bootstrap/bootstrap.min.css">
 
-	<!-- CSS Template -->
-	<link rel="stylesheet" href="/unify_assets/css/styles.op-app.css"/>
+	<!-- CSS Implementing Plugins -->
+	<link rel="stylesheet" href="/unify_assets/vendor/icon-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/icon-line/css/simple-line-icons.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/icon-line-pro/style.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/icon-hs/style.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/dzsparallaxer.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/animate.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/hs-megamenu/src/hs.megamenu.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/slick-carousel/slick/slick.css">
+	<link rel="stylesheet" href="/unify_assets/vendor/fancybox/jquery.fancybox.css">
+
+	<!-- CSS Unify Theme -->
+	<link rel="stylesheet" href="/unify_assets/css/styles.bm-classic.css">
 
 	<!-- CSS Customization -->
-	<link rel="stylesheet" href="/unify_assets/css/custom.css"/>
+	<link rel="stylesheet" href="/unify_assets/css/custom.css">
 </head>
 
 <body>
 <main>
-	<!-- Header v1 -->
-	<header id="js-header" class="u-header u-header--sticky-top u-header--show-hide u-header--toggle-section"
-			data-header-fix-moment="100"
-			data-header-fix-effect="slide">
-		<div class="u-header__section u-shadow-v27 g-bg-white g-transition-0_3 g-py-12 g-py-20--md">
-			<nav class="navbar navbar-expand-lg py-0 g-px-15">
-				<div class="container g-pos-rel">
-
-					<div id="navBar" class="collapse navbar-collapse" data-mobile-scroll-hide="true">
-						<!-- Navigation -->
-						<div class="navbar-collapse align-items-center flex-sm-row">
-							<ul id="js-scroll-nav" class="navbar-nav g-flex-right--xs text-uppercase w-100 g-font-weight-700 g-font-size-11 g-pt-20 g-pt-0--lg">
-								<li class="nav-item g-mx-15--lg g-mb-12 g-mb-0--lg">
-									<a><img src="/unify_assets/img/flag_kr.png"/></a>
-								</li>
-								<li class="nav-item g-mx-15--lg g-mb-12 g-mb-0--lg">
-									<a><img src="/unify_assets/img/flag_us.png"/></a>
-								</li>
-							</ul>
-						</div>
-						<!-- End Navigation -->
+	<!-- Header -->
+	<header id="js-header" class="u-header u-header--static u-shadow-v19">
+		<!-- Top Bar -->
+		<div class="u-header__section g-brd-bottom g-brd-gray-light-v4 g-py-18">
+			<div class="container">
+				<div class="row align-items-center">
+					<!-- Logo -->
+					<div class="col-md-3 g-hidden-md-down">
+						<a href="bm-classic-home-page-1.html" class="navbar-brand">
+							<img src="assets/img/logo.png" alt="Logo">
+						</a>
 					</div>
+					<!-- End Logo -->
 
+					<!-- Subscribe Form -->
+					<div class="col-6 col-md-5">
+					</div>
+					<!-- End Subscribe Form -->
+
+					<!-- Account -->
+					<div class="col-1">
+						<a id="account-dropdown-invoker" class="media align-items-center float-right g-text-underline--none--hover" href="#!"
+						   aria-controls="account-dropdown"
+						   aria-haspopup="true"
+						   aria-expanded="false"
+						   data-dropdown-event="hover"
+						   data-dropdown-target="#account-dropdown"
+						   data-dropdown-type="css-animation"
+						   data-dropdown-duration="300"
+						   data-dropdown-hide-on-scroll="false"
+						   data-dropdown-animation-in="fadeIn"
+						   data-dropdown-animation-out="fadeOut">
+							<div class="d-flex g-width-30 g-height-30 mr-2">
+								<img class="img-fluid rounded-circle" src="assets/img-temp/100x100/img11.jpg" alt="Image Description">
+							</div>
+							<div class="media-body">
+								<span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">Martin</span>
+							</div>
+						</a>
+
+						<ul id="account-dropdown" class="list-unstyled text-right g-width-160 g-brd-around g-brd-secondary-light-v2 g-bg-white rounded g-pos-abs g-right-0 g-py-5 g-mt-57"
+							aria-labelledby="account-dropdown-invoker">
+							<li>
+								<a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">My Account</a>
+							</li>
+							<li>
+								<a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">Signout</a>
+							</li>
+						</ul>
+					</div>
+					<!-- End Account -->
+				</div>
+			</div>
+		</div>
+		<!-- End Top Bar -->
+
+		<div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
+			<nav class="js-mega-menu navbar navbar-expand-lg g-px-0">
+				<div class="container g-px-15">
+					<!-- Logo -->
+					<a class="navbar-brand g-hidden-lg-up" href="bm-classic-home-page-1.html">
+						<img src="assets/img/logo.png" alt="Logo">
+					</a>
+					<!-- End Logo -->
+
+					<!-- Responsive Toggle Button -->
+					<button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 ml-auto" type="button"
+							aria-label="Toggle navigation"
+							aria-expanded="false"
+							aria-controls="navBar"
+							data-toggle="collapse"
+							data-target="#navBar">
+                <span class="hamburger hamburger--slider g-pa-0">
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </span>
+					</button>
+					<!-- End Responsive Toggle Button -->
+
+					<!-- Navigation -->
+					<div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar">
+						<ul class="navbar-nav g-font-weight-600">
+							<!-- Home - Submenu -->
+							<li class="nav-item g-mr-10--lg g-mr-20--xl">
+								<a id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!">
+									Home
+								</a>
+							</li>
+							<!-- End Home - Submenu -->
+
+							<!-- Pages - Submenu -->
+							<li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
+								<a id="nav-link--pages" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!"
+								   aria-haspopup="true"
+								   aria-expanded="false"
+								   aria-controls="nav-submenu--pages">
+									Pages
+								</a>
+
+								<!-- Submenu -->
+								<ul id="nav-submenu--pages" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-brd-top g-brd-primary g-brd-top-2 g-mt-17"
+									aria-labelledby="nav-link--pages">
+									<li class="dropdown-item g-bg-secondary--hover">
+										<a class="nav-link g-color-secondary-dark-v1" href="bm-classic-single-1.html">Single Page</a>
+									</li>
+								</ul>
+								<!-- End Submenu -->
+							</li>
+							<!-- End Pages - Submenu -->
+
+						</ul>
+					</div>
+					<!-- End Navigation -->
 				</div>
 			</nav>
 		</div>
 	</header>
-	<!-- End Header v1 -->
+	<!-- End Header -->
 
-	<!-- Promo Block -->
-	<section class="g-flex-centered g-bg-pos-center g-bg-img-hero g-py-150" style="background-image: url(/unify_assets/img/homepage_bg_1.jpg);" data-calc-target="#js-header">
-		<div class="container text-center g-z-index-1">
-			<div class="g-mb-25" data-animation="fadeInUp" data-animation-delay="500" data-animation-duration="1500">
-				<h2 class="g-font-weight-700 g-font-size-40 g-font-size-55--md d-inline-block g-brd-2 g-brd-black g-color-white g-font-weight-600 text-uppercase g-pb-5">Swipe-X</h2>
-			</div>
-			<h3 class="g-color-black text-uppercase g-mb-40 g-color-white" data-animation="fadeInUp" data-animation-delay="800" data-animation-duration="1500">
-				Watch & download 3,500 Blu-ray grade full length movies with subtitles only at $12 for 1 year
-			</h3>
-			<div data-animation="fadeInUp" data-animation-delay="1100" data-animation-duration="1500">
-				<a class="btn btn-secondary g-font-weight-600 g-font-size-13 text-uppercase g-rounded-10 mx-2 g-px-25 g-py-15 g-mb-20" href="javascript:void(0);"><i class="hs-admin-download"></i> Download<br/>Windows & Mac app</a>
-				<a class="btn btn-dark g-font-weight-600 g-font-size-13 text-uppercase g-rounded-10 mx-2 g-px-25 g-py-15 g-mb-20" href="javascript:void(0);"><i class="hs-admin-control-play"></i> Watch tutorial</a>
-			</div>
-		</div>
-	</section>
-	<!-- End Promo Block -->
-
-	<!-- Section Content -->
-	<section id="appScreens" class="g-py-90">
-		<div class="container text-center g-max-width-750 g-mb-65">
-			<div class="text-uppercase g-line-height-1_3 g-mb-20">
-				<h2 class="g-font-size-36 mb-0">Look <strong>how it works</strong></h2>
-			</div>
-		</div>
-
+	<!-- News Content -->
+	<section class="g-pb-100">
 		<div class="container">
-			<!-- Filter -->
-			<div id="appScreensCubePortfolio" class="cbp"
-				 data-controls="#appScreensCubePortfolioFilter"
-				 data-layout="grid"
-				 data-animation="slideLeft"
-				 data-caption-animation="fadeIn"
-				 data-x-gap="30"
-				 data-y-gap="30"
-				 data-media-queries='[
-                 {"width": 800, "cols": 2},
-                 {"width": 500, "cols": 2},
-                 {"width": 320, "cols": 1}
-               ]'>
-				<div class="cbp-item home">
-					<a class="cbp-caption cbp-lightbox d-block" href="/unify_assets/img-temp/270x481/img1.jpg"
-					   data-title="Custom Title 1">
-						<div class="cbp-caption-defaultWrap">
-							<img src="/unify_assets/img-temp/270x481/img1.jpg" alt="Image description">
-						</div>
+			<!-- News Section 1 -->
+			<div class="row g-mb-60">
+				<!-- Articles Content -->
+				<div class="col-lg-9 g-mb-50 g-mb-0--lg">
+					<!-- Breaking News -->
+					<div class="g-mb-60">
+						<div class="row g-mb-30">
+							<!-- Article Image -->
+							<div class="col-md-5">
+								<figure class="u-shadow-v25 g-pos-rel g-mb-20 g-mb-0--lg">
+									<img class="img-fluid w-100" src="assets/img-temp/400x270/img3.jpg" alt="Image Description">
 
-						<div class="cbp-caption-activeWrap g-bg-primary-opacity-0_6">
-							<div class="cbp-l-caption-alignCenter">
-								<div class="cbp-l-caption-body">
-									<div class="cbp-l-caption-title g-font-size-50">+</div>
-								</div>
+									<figcaption class="g-pos-abs g-top-20 g-left-20">
+										<a class="btn btn-xs u-btn-pink text-uppercase rounded-0" href="#!">Internet</a>
+									</figcaption>
+								</figure>
 							</div>
-						</div>
-					</a>
-				</div>
+							<!-- End Article Image -->
 
-				<div class="cbp-item home">
-					<a class="cbp-caption cbp-lightbox d-block" href="/unify_assets/img-temp/270x481/img2.jpg"
-					   data-title="Custom Title 2">
-						<div class="cbp-caption-defaultWrap">
-							<img src="/unify_assets/img-temp/270x481/img2.jpg" alt="Image description">
-						</div>
+							<!-- Article Content -->
+							<div class="col-md-7 align-self-center">
+								<h3 class="h4 g-mb-15">
+									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">10 Best Tips for UX/UI Designers in 2017</a>
+								</h3>
 
-						<div class="cbp-caption-activeWrap g-bg-primary-opacity-0_6">
-							<div class="cbp-l-caption-alignCenter">
-								<div class="cbp-l-caption-body">
-									<div class="cbp-l-caption-title g-font-size-50">+</div>
-								</div>
+								<ul class="list-inline g-color-gray-dark-v4 g-font-size-12">
+									<li class="list-inline-item">
+										<a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Mike Coolman</a>
+									</li>
+									<li class="list-inline-item">/</li>
+									<li class="list-inline-item">
+										July 19, 2017
+									</li>
+									<li class="list-inline-item">/</li>
+									<li class="list-inline-item">
+										<a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+											<i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 38
+										</a>
+									</li>
+								</ul>
+
+								<p class="g-color-gray-dark-v2">Pellentesque turpis lacus, a pulvinar leo ultricies ut. Ut fringilla lectus tellusimp imperdiet molestie est volutpat at. Sed viverra cursus nibh. Sed ultrices velit vitae tortor posuere ultrices.</p>
+								<a class="g-font-size-12" href="#!">Read More..</a>
 							</div>
+							<!-- End Article Content -->
 						</div>
-					</a>
+					</div>
+					<!-- End Breaking News -->
+
+					<div id="stickyblock-end"></div>
 				</div>
+				<!-- End Articles Content -->
 
-				<div class="cbp-item login">
-					<a class="cbp-caption cbp-lightbox d-block" href="/unify_assets/img-temp/270x481/img3.jpg"
-					   data-title="Custom Title 3">
-						<div class="cbp-caption-defaultWrap">
-							<img src="/unify_assets/img-temp/270x481/img3.jpg" alt="Image description">
+				<!-- Sidebar -->
+				<div class="col-lg-3">
+					<!-- Recent Posts -->
+					<div class="g-mb-30">
+						<div class="u-heading-v3-1 g-mb-30">
+							<h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Recent Posts</h2>
 						</div>
 
-						<div class="cbp-caption-activeWrap g-bg-primary-opacity-0_6">
-							<div class="cbp-l-caption-alignCenter">
-								<div class="cbp-l-caption-body">
-									<div class="cbp-l-caption-title g-font-size-50">+</div>
-								</div>
+						<!-- Article -->
+						<article class="media g-mb-30">
+							<a class="d-flex u-shadow-v25 mr-3" href="#!">
+								<img class="g-width-60 g-height-60" src="assets/img-temp/100x100/img4.jpg" alt="Image Description">
+							</a>
+
+							<div class="media-body">
+								<h3 class="h6">
+									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Best dessert recipes for breakfast which will..</a>
+								</h3>
+
+								<ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+									<li class="list-inline-item">
+										July 20, 2017
+									</li>
+									<li class="list-inline-item">/</li>
+									<li class="list-inline-item">
+										<a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
+											<i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 18
+										</a>
+									</li>
+								</ul>
 							</div>
-						</div>
-					</a>
-				</div>
+						</article>
+						<!-- End Article -->
 
-				<div class="cbp-item login">
-					<a class="cbp-caption cbp-lightbox d-block" href="/unify_assets/img-temp/270x481/img4.jpg"
-					   data-title="Custom Title 4">
-						<div class="cbp-caption-defaultWrap">
-							<img src="/unify_assets/img-temp/270x481/img4.jpg" alt="Image description">
-						</div>
+						<!-- Article -->
+						<article class="media g-mb-30">
+							<a class="d-flex u-shadow-v25 mr-3" href="#!">
+								<img class="g-width-60 g-height-60" src="assets/img-temp/100x100/img5.jpg" alt="Image Description">
+							</a>
 
-						<div class="cbp-caption-activeWrap g-bg-primary-opacity-0_6">
-							<div class="cbp-l-caption-alignCenter">
-								<div class="cbp-l-caption-body">
-									<div class="cbp-l-caption-title g-font-size-50">+</div>
-								</div>
+							<div class="media-body">
+								<h3 class="h6">
+									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Stylish things to do, see and purchase..</a>
+								</h3>
+
+								<ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+									<li class="list-inline-item">
+										July 16, 2017
+									</li>
+									<li class="list-inline-item">/</li>
+									<li class="list-inline-item">
+										<a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
+											<i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 31
+										</a>
+									</li>
+								</ul>
 							</div>
-						</div>
-					</a>
+						</article>
+						<!-- End Article -->
+
+						<!-- Article -->
+						<article class="media g-mb-30">
+							<a class="d-flex u-shadow-v25 mr-3" href="#!">
+								<img class="g-width-60 g-height-60" src="assets/img-temp/100x100/img6.jpg" alt="Image Description">
+							</a>
+
+							<div class="media-body">
+								<h3 class="h6">
+									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Government plans to test new primary school..</a>
+								</h3>
+
+								<ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+									<li class="list-inline-item">
+										July 07, 2017
+									</li>
+									<li class="list-inline-item">/</li>
+									<li class="list-inline-item">
+										<a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
+											<i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 24
+										</a>
+									</li>
+								</ul>
+							</div>
+						</article>
+						<!-- End Article -->
+
+						<!-- Article -->
+						<article class="media">
+							<a class="d-flex u-shadow-v25 mr-3" href="#!">
+								<img class="g-width-60 g-height-60" src="assets/img-temp/100x100/img7.jpg" alt="Image Description">
+							</a>
+
+							<div class="media-body">
+								<h3 class="h6">
+									<a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#!">Top 10 Luxury Hotels - 5 Star Best Luxury Hotels</a>
+								</h3>
+
+								<ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+									<li class="list-inline-item">
+										July 11, 2017
+									</li>
+									<li class="list-inline-item">/</li>
+									<li class="list-inline-item">
+										<a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
+											<i class="icon-finance-206 u-line-icon-pro align-middle g-pos-rel g-top-1 mr-1"></i> 46
+										</a>
+									</li>
+								</ul>
+							</div>
+						</article>
+						<!-- End Article -->
+					</div>
+					<!-- End Recent Posts -->
+
 				</div>
+				<!-- End Sidebar -->
+			</div>
+			<!-- News Section 1 -->
+
+			<!-- News Section 3 -->
+			<div class="row">
+				<!-- Articles Content -->
+				<div class="col-lg-9 g-mb-50 g-mb-0--lg">
+					<!-- Pagination -->
+					<nav id="stickyblock-end-1" aria-label="Page Navigation">
+						<ul class="list-inline text-center mb-0">
+							<li class="list-inline-item">
+								<a class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-secondary-light-v2 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">1</a>
+							</li>
+							<li class="list-inline-item">
+								<a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">2</a>
+							</li>
+							<li class="list-inline-item g-hidden-xs-down">
+								<a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">3</a>
+							</li>
+							<li class="list-inline-item">
+								<span class="g-width-30 g-height-30 g-color-gray-dark-v5 g-font-size-12 rounded g-pa-5">...</span>
+							</li>
+							<li class="list-inline-item g-hidden-xs-down">
+								<a class="u-pagination-v1__item g-width-30 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5" href="#!">15</a>
+							</li>
+							<li class="list-inline-item">
+								<a class="u-pagination-v1__item g-brd-secondary-light-v2 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded g-px-15 g-py-5 g-ml-15" href="#!" aria-label="Next">
+                      <span aria-hidden="true">
+                        Next
+                        <i class="ml-2 fa fa-angle-right"></i>
+                      </span>
+									<span class="sr-only">Next</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<!-- End Pagination -->
+				</div>
+				<!-- End Articles -->
 
 			</div>
+			<!-- News Section 3 -->
 		</div>
 	</section>
-	<!-- End Section Content -->
+	<!-- End News Content -->
 
+	<!-- Footer -->
+	<footer class="g-bg-secondary">
+		<div class="container">
+			<!-- Footer - Bottom Section -->
+			<div class="row align-items-center">
+				<div class="col-md-2 g-brd-right--md g-brd-secondary-light-v2 g-mb-30">
+					<!-- Copyright -->
+					<p class="g-color-secondary-light-v1 g-font-size-12 mb-0">&copy; 2021 Tim ban hen ho</p>
+					<!-- End Copyright -->
+				</div>
+			</div>
+			<!-- End Footer - Bottom Section -->
+		</div>
+	</footer>
+	<!-- End Footer -->
 
-
-	<a class="js-go-to u-go-to-v1" href="#!"
+	<!-- Go To -->
+	<a class="js-go-to u-go-to-v2" href="#!"
 	   data-type="fixed"
 	   data-position='{
            "bottom": 15,
@@ -191,12 +407,10 @@
 	   data-show-effect="zoomIn">
 		<i class="hs-icon hs-icon-arrow-top"></i>
 	</a>
-
-	<div class="text-center g-ma-20">
-		<a href="#">Terms of use</a>&nbsp;&nbsp;&nbsp;
-		<a href="#">Privacy policy</a>
-	</div>
+	<!-- End Go To -->
 </main>
+
+<div class="u-outer-spaces-helper"></div>
 
 <!-- JS Global Compulsory -->
 <script src="/unify_assets/vendor/jquery/jquery.min.js"></script>
@@ -209,16 +423,21 @@
 <script src="/unify_assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
 <script src="/unify_assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
 <script src="/unify_assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
-<script src="/unify_assets/vendor/fancybox/jquery.fancybox.js"></script>
-<script src="/unify_assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+<script src="/unify_assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+<script src="/unify_assets/vendor/slick-carousel/slick/slick.js"></script>
+<script src="/unify_assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+
 <!-- JS Unify -->
 <script src="/unify_assets/js/hs.core.js"></script>
 <script src="/unify_assets/js/components/hs.header.js"></script>
 <script src="/unify_assets/js/helpers/hs.hamburgers.js"></script>
-<script src="/unify_assets/js/components/hs.scroll-nav.js"></script>
+<script src="/unify_assets/js/components/hs.dropdown.js"></script>
+<script src="/unify_assets/js/components/hs.counter.js"></script>
 <script src="/unify_assets/js/components/hs.onscroll-animation.js"></script>
-<script src="/unify_assets/js/components/hs.tabs.js"></script>
-<script src="/unify_assets/js/components/hs.cubeportfolio.js"></script>
+<script src="/unify_assets/js/components/hs.sticky-block.js"></script>
+<script src="/unify_assets/js/components/hs.carousel.js"></script>
+<script src="/unify_assets/js/components/hs.popup.js"></script>
+<script src="/unify_assets/js/components/hs.go-to.js"></script>
 
 <!-- JS Customization -->
 <script src="/unify_assets/js/custom.js"></script>
@@ -230,36 +449,36 @@
         $.HSCore.components.HSHeader.init($('#js-header'));
         $.HSCore.helpers.HSHamburgers.init('.hamburger');
 
+        // initialization of HSDropdown component
+        $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
+            afterOpen: function () {
+                $(this).find('input[type="search"]').focus();
+            }
+        });
+
+        $('.js-mega-menu').HSMegaMenu();
+
         // initialization of scroll animation
         $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
 
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+
+        // initialization of counters
+        var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
+
+        // initialization of carousel
+        $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+
         // initialization of popups
-        $.HSCore.components.HSPopup.init('.js-fancybox-media', {
-            helpers: {
-                media: {},
-                overlay: {
-                    css: {
-                        'background': 'rgba(255, 255, 255, .8)'
-                    }
-                }
-            }
-        });
+        $.HSCore.components.HSPopup.init('.js-fancybox');
     });
 
-    $(window).on('load', function() {
-        // initialization of HSScrollNav
-        $.HSCore.components.HSScrollNav.init($('#js-scroll-nav'), {
-            duration: 700
-        });
-
-        // initialization of cubeportfolio
-        $.HSCore.components.HSCubeportfolio.init('.cbp');
-    });
-
-    $(window).on('resize', function () {
-        setTimeout(function () {
-            $.HSCore.components.HSTabs.init('[role="tablist"]');
-        }, 200);
+    $(window).on('load', function () {
+        // initialization of sticky blocks
+        setTimeout(function() { // important in this case
+            $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
+        }, 1);
     });
 </script>
 </body>
