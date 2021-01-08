@@ -14,10 +14,14 @@ router.get('/get_homepage_list', function(req, res, next) {
     page_index = page_index - 1;     //query from 0
 
     var user = new User();
-    user.search_by_condition({is_active:{$ne:0}}, {limit:Constant.DEFAULT_PAGE_LENGTH, skip: page_index * Constant.DEFAULT_PAGE_LENGTH},
-        'Picture LookingFor Name Province Age Sex MariedStatus Objective updated_time', {'updated_time':-1}, function(resp){
-        res.rest.success(resp);   //success
+    user.countDocuments({is_active:{$ne:0}}, function(resp_total){
+        user.search_by_condition({is_active:{$ne:0}}, {limit:Constant.DEFAULT_PAGE_LENGTH, skip: page_index * Constant.DEFAULT_PAGE_LENGTH},
+            'Picture LookingFor Name Province Age Sex MariedStatus Objective updated_time', {'updated_time':-1}, function(resp){
+                resp['total'] = resp_total.data;
+                res.rest.success(resp);   //success
+            });
     });
+
 });
 
 module.exports = router;

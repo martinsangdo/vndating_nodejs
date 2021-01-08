@@ -71,6 +71,26 @@ User.prototype.findOne = function(condition, resp_func){
     });
 };
 //
+User.prototype.countDocuments = function(condition, resp_func){
+    User.countDocuments(condition, function(err, res) {
+        if (err) {
+            var resp = {
+                result : Constant.FAILED_CODE,
+                message : Constant.SERVER_ERR,
+                name: err.name,
+                kind: err.kind
+            };
+            resp_func(resp);
+        } else {
+            var resp = {
+                result : Constant.OK_CODE,
+                data : res
+            };
+            resp_func(resp);
+        }
+    });
+};
+//
 User.prototype.search_by_condition = function(condition, paging, fields, sort, resp_func){
     User.find(condition).limit(paging.limit).skip(paging.skip).select(fields).sort(sort).exec(function(err, res) {
         if (err) {

@@ -9,7 +9,7 @@ a {
 
 .hide {display:none;}
 .align_right {text-align: right;width:50%;}
-.home_img_thumb {max-height:270px;}
+.home_img_thumb {max-height:200px;}
 .cut_line_limit {
     text-overflow: ellipsis;
     overflow: hidden;

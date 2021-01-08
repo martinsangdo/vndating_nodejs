@@ -29,13 +29,15 @@ function render_home_list(list){
     for (var i=0; i<len; i++){
         $tmpl = $('#person_tmpl').clone(false);
         $('.home_img_thumb', $tmpl).attr('src', API_URI.HENHO_DOMAIN + list[i]['Picture']);
-        $('.data-gender', $tmpl).text(list[i]['Sex']);
+        $('.data-gender', $tmpl).text(common.convert_gender(list[i]['Sex']));
+        $('.data-gender', $tmpl).addClass(common.convert_gender_color(list[i]['Sex']));
         $('.data-looking-for', $tmpl).text(list[i]['LookingFor']);
         $('.data-name', $tmpl).text(list[i]['Name']);
-        $('.data-province', $tmpl).text(list[i]['Province']);
-        $('.data-age', $tmpl).text(list[i]['Age']);
-        $('.data-married-status', $tmpl).text(list[i]['MariedStatus']);
-        $('.data-objective', $tmpl).text(list[i]['Objective']);
+        $('.data-province', $tmpl).text(common.convert_province(list[i]['Province']));
+        $('.data-age', $tmpl).text(list[i][' Age']);
+        $('.data-married-status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));
+        $('.data-objective', $tmpl).text(common.convert_objective(list[i]['Objective']));
+        $('.data-date', $tmpl).text(common.convert_unix_to_date(list[i]['updated_time']));
 
         $container.append($tmpl.removeAttr('id').removeClass('hidden'));
     }

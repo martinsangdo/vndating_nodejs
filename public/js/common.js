@@ -140,3 +140,105 @@ Common.prototype.format_speed_2_string = function(byte_value){
         return kb_result.toFixed(1) + ' Mb/s';
     }
 };
+//convert unix timestamp to date string
+Common.prototype.convert_unix_to_date = function(unixTimestamp){
+    var d = new Date(unixTimestamp*1000);
+    return d.getDate()+ '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+};
+//
+Common.prototype.convert_province = function(code){
+    var data = {
+        58:'TP Hồ Chí Minh',
+        24:'Hà Nội',
+        15:'Đà Nẵng',
+        1:'An Giang',
+        2:'Bà Rịa - Vũng Tàu',
+        3:'Bắc Giang',
+        4:'Bắc Kạn',
+        5:'Bạc Liêu',
+        6:'Bắc Ninh',
+        7:'Bến Tre',
+        8:'Bình Định',
+        9:'Bình Dương',
+        10:'Bình Phước',
+        11:'Bình Thuận',
+        12:'Cà Mau',
+        13:'Cần Thơ',
+        14:'Cao Bằng',
+        16:'Đăk Lăk',
+        17:'Đăk Nông',
+        18:'Điện Biên',
+        19:'Đồng Nai',
+        20:'Đồng Tháp',
+        21:'Gia Lai',
+        22:'Hà Giang',
+        23:'Hà Nam',
+        25:'Hà Tĩnh',
+        26:'Hải Dương',
+        27:'Hải Phòng',
+        28:'Hậu Giang',
+        29:'Hoà Bình',
+        30:'Hưng Yên',
+        31:'Khánh Hòa',
+        32:'Kiên Giang',
+        33:'Kon Tum',
+        34:'Lai Châu',
+        35:'Lâm Đồng',
+        36:'Lạng Sơn',
+        37:'Lào Cai',
+        38:'Long An',
+        39:'Nam Định',
+        40:'Nghệ An',
+        41:'Ninh Bình',
+        42:'Ninh Thuận',
+        43:'Phú Thọ',
+        44:'Phú Yên',
+        45:'Quảng Bình',
+        46:'Quảng Nam',
+        47:'Quảng Ngãi',
+        48:'Quảng Ninh',
+        49:'Quảng Trị',
+        50:'Sóc Trăng',
+        51:'Sơn La',
+        52:'Tây Ninh',
+        53:'Thái Bình',
+        54:'Thái Nguyên',
+        55:'Thanh Hóa',
+        56:'Thừa Thiên-Huế',
+        57:'Tiền Giang',
+        59:'Trà Vinh',
+        60:'Tuyên Quang',
+        61:'Vĩnh Long',
+        62:'Vĩnh Phúc',
+        63:'Yên Bái'
+    };
+    return data[code];
+};
+//
+Common.prototype.convert_gender = function(code){
+    var data = {
+        0: 'Nam', 1: 'Nữ', 2: 'Gay', 3: 'Les'
+    };
+    return data[code];
+};
+//
+Common.prototype.convert_gender_color = function(code){
+    var data = {
+        0: 'u-btn-aqua', 1: 'u-btn-pink', 2: 'u-btn-orange', 3: 'u-btn-purple'
+    };
+    return data[code];
+};
+//
+Common.prototype.convert_objective = function(code){
+    var data = {
+        0: 'Người yêu lâu dài', 1: 'Người yêu ngắn hạn', 2: 'Tìm bạn bè mới', 3: 'Tìm bạn tâm sự'
+    };
+    return data[code];
+};
+//
+Common.prototype.convert_married_status = function(code){
+    var data = {
+        0: 'Độc thân', 1: 'Đang có người yêu', 2: 'Đã có gia đình', 3: 'Ly dị', 4: 'Ở góa'
+    };
+    return data[code];
+};
