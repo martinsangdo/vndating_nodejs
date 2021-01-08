@@ -14,6 +14,8 @@ var STR_MESS_FRONT = {
 };
 //link of APIs
 var API_URI = {
+    HENHO_DOMAIN: 'https://henho2.com/',
+    HOME_LIST: '/user/get_homepage_list',
     FRONT_LOGIN: '/publicapi/front_login',        //prevent access before publishing
 };
 

@@ -19,6 +19,10 @@ a {
 .three_lines {
   -webkit-line-clamp: 3;
 }
+.four_lines {
+    -webkit-line-clamp: 4;
+}
 .six_lines {
   -webkit-line-clamp: 6;
 }
+.hidden {display:none !important;}

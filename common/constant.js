@@ -51,7 +51,7 @@ var Constant	= {
 		STR_YES: 'yes',
 		STR_NO: 'no',
 		LINE_FEED_CHAR: '\r\n',
-		DEFAULT_PAGE_LENGTH: 20,        //number of items in 1 paging
+		DEFAULT_PAGE_LENGTH: 50,        //number of items in 1 paging
         SEARCH_TYPE_AND:    'AND',
         SEARCH_TYPE_OR:     'OR',
         CAST_ERROR: 'CastError',        //message from query mongodb
