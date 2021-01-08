@@ -4,39 +4,7 @@
 	<!-- Title -->
 	<title>Tìm bạn hẹn hò </title>
 
-	<!-- Required Meta Tags Always Come First -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="../../../favicon.ico">
-
-	<!-- Google Fonts -->
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab:300,400,700%7COpen+Sans:400,600,700">
-
-	<!-- CSS Global Compulsory -->
-	<link rel="stylesheet" href="/unify_assets/vendor/bootstrap/bootstrap.min.css">
-
-	<!-- CSS Implementing Plugins -->
-	<link rel="stylesheet" href="/unify_assets/vendor/icon-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/icon-line/css/simple-line-icons.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/icon-line-pro/style.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/icon-hs/style.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/dzsparallaxer.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/animate.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/hs-megamenu/src/hs.megamenu.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/slick-carousel/slick/slick.css">
-	<link rel="stylesheet" href="/unify_assets/vendor/fancybox/jquery.fancybox.css">
-
-	<!-- CSS Unify Theme -->
-	<link rel="stylesheet" href="/unify_assets/css/styles.bm-classic.css">
-
-	<!-- CSS Customization -->
-	<link rel="stylesheet" href="/css/style.css">
+	<%- include common_header.ejs %>
 </head>
 
 <body>
@@ -44,13 +12,13 @@
 	<!-- Header -->
 	<header id="js-header" class="u-header u-header--static u-shadow-v19">
 		<!-- Top Bar -->
-		<div class="u-header__section g-brd-bottom g-brd-gray-light-v4 g-py-18">
+		<div class="u-header__section g-brd-bottom g-brd-gray-light-v4">
 			<div class="container">
 				<div class="row align-items-center">
 					<!-- Logo -->
 					<div class="col-md-3 g-hidden-md-down">
-						<a href="bm-classic-home-page-1.html" class="navbar-brand">
-							<img src="assets/img/logo.png" alt="Logo">
+						<a href="/" class="navbar-brand">
+							<img src="/img/logo.png" alt="Logo" class="g-width-100"/>
 						</a>
 					</div>
 					<!-- End Logo -->
@@ -73,11 +41,8 @@
 						   data-dropdown-hide-on-scroll="false"
 						   data-dropdown-animation-in="fadeIn"
 						   data-dropdown-animation-out="fadeOut">
-							<div class="d-flex g-width-30 g-height-30 mr-2">
-								<img class="img-fluid rounded-circle" src="assets/img-temp/100x100/img11.jpg" alt="Image Description">
-							</div>
 							<div class="media-body">
-								<span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">Martin</span>
+								<span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">Đăng ký / Đăng nhập</span>
 							</div>
 						</a>
 
@@ -102,7 +67,7 @@
 				<div class="container g-px-15">
 					<!-- Logo -->
 					<a class="navbar-brand g-hidden-lg-up" href="bm-classic-home-page-1.html">
-						<img src="assets/img/logo.png" alt="Logo">
+						<img src="/img/logo.png" alt="Logo">
 					</a>
 					<!-- End Logo -->
 
@@ -378,74 +343,5 @@
 
 <div class="u-outer-spaces-helper"></div>
 
-<!-- JS Global Compulsory -->
-<script src="/unify_assets/vendor/jquery/jquery.min.js"></script>
-<script src="/unify_assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-<script src="/unify_assets/vendor/popper.min.js"></script>
-<script src="/unify_assets/vendor/bootstrap/bootstrap.min.js"></script>
-
-<!-- JS Implementing Plugins -->
-<script src="/unify_assets/vendor/appear.js"></script>
-<script src="/unify_assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
-<script src="/unify_assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
-<script src="/unify_assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
-<script src="/unify_assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
-<script src="/unify_assets/vendor/slick-carousel/slick/slick.js"></script>
-<script src="/unify_assets/vendor/fancybox/jquery.fancybox.min.js"></script>
-
-<!-- JS Unify -->
-<script src="/unify_assets/js/hs.core.js"></script>
-<script src="/unify_assets/js/components/hs.header.js"></script>
-<script src="/unify_assets/js/helpers/hs.hamburgers.js"></script>
-<script src="/unify_assets/js/components/hs.dropdown.js"></script>
-<script src="/unify_assets/js/components/hs.counter.js"></script>
-<script src="/unify_assets/js/components/hs.onscroll-animation.js"></script>
-<script src="/unify_assets/js/components/hs.sticky-block.js"></script>
-<script src="/unify_assets/js/components/hs.carousel.js"></script>
-<script src="/unify_assets/js/components/hs.popup.js"></script>
-<script src="/unify_assets/js/components/hs.go-to.js"></script>
-
-<!-- JS Customization -->
-<script src="/unify_assets/js/custom.js"></script>
-
-<!-- JS Plugins Init. -->
-<script>
-    $(document).on('ready', function () {
-        // initialization of header
-        $.HSCore.components.HSHeader.init($('#js-header'));
-        $.HSCore.helpers.HSHamburgers.init('.hamburger');
-
-        // initialization of HSDropdown component
-        $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
-            afterOpen: function () {
-                $(this).find('input[type="search"]').focus();
-            }
-        });
-
-        $('.js-mega-menu').HSMegaMenu();
-
-        // initialization of scroll animation
-        $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
-
-        // initialization of go to
-        $.HSCore.components.HSGoTo.init('.js-go-to');
-
-        // initialization of counters
-        var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
-
-        // initialization of carousel
-        $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
-
-        // initialization of popups
-        $.HSCore.components.HSPopup.init('.js-fancybox');
-    });
-
-    $(window).on('load', function () {
-        // initialization of sticky blocks
-        setTimeout(function() { // important in this case
-            $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
-        }, 1);
-    });
-</script>
 </body>
 </html>
