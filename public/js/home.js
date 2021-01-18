@@ -43,7 +43,7 @@ function render_home_list(list){
         $('.data-looking-for', $tmpl).text(list[i]['LookingFor']);
         $('.data-name', $tmpl).text(list[i]['Name']);
         $('.data-province', $tmpl).text(common.convert_province(list[i]['Province']));
-        $('.data-age', $tmpl).text(list[i][' Age']);
+        $('.data-age', $tmpl).text(list[i]['Age']);
         $('.data-married-status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));
         $('.data-objective', $tmpl).text(common.convert_objective(list[i]['Objective']));
         $('.data-date', $tmpl).text(common.convert_unix_to_date(list[i]['updated_time']));
