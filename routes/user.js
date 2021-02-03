@@ -4,6 +4,10 @@ var common = require('../common/common.js');
 var Constant = require('../common/constant.js');
 var User = require('../models/User.js');
 
+router.get('/profile/:user_id', function(req, res, next) {
+    console.log(req.user_id);
+    res.render('profile', {title: 'abc'});
+});
 //get latest users
 router.get('/get_homepage_list', function(req, res, next) {
     //todo check auth
