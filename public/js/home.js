@@ -43,7 +43,7 @@ function render_home_list(list){
         $('.data-gender', $tmpl).addClass(common.convert_gender_color(list[i]['Sex']));
         $('.data-looking-for', $tmpl).text(list[i]['LookingFor']);
         $('.data-name', $tmpl).text(list[i]['Name']);
-        $('.data-name', $tmpl).attr('href', '/user/' + list[i]['_id']);
+        $('.data-name', $tmpl).attr('href', '/user/profile/' + list[i]['_id']);
         $('.data-province', $tmpl).text(common.convert_province(list[i]['Province']));
         $('.data-age', $tmpl).text(list[i]['Age']);
         $('.data-married-status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));

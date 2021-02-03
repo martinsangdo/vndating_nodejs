@@ -5,8 +5,18 @@ var Constant = require('../common/constant.js');
 var User = require('../models/User.js');
 
 router.get('/profile/:user_id', function(req, res, next) {
-    console.log(req.user_id);
-    res.render('profile', {title: 'abc'});
+    var user_id = req.params.user_id;
+    var user = new User();
+    user.findOne({_id: user_id, is_active: {$ne: 0}},
+        'MariedStatus Objective Height Email Province Picture Degree LookingFor Profile Name Age Weight Sex',
+        function(resp_detail){
+        //todo: hide email if not paid
+            if (resp_detail.data != null && resp_detail.data['Email'] != null){
+
+            }
+            //replace special char http://localhost:3001/user/profile/5f65a34deb5bea0a257004c5
+        res.render('profile', {data: resp_detail.data});
+    });
 });
 //get latest users
 router.get('/get_homepage_list', function(req, res, next) {

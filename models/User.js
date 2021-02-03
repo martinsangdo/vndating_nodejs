@@ -51,8 +51,8 @@ var UserSchema = new Schema({
 //we need to create a model using it
 var User = mongoose.model('User', UserSchema);
 //
-User.prototype.findOne = function(condition, resp_func){
-    User.findOne(condition).exec(function(err, res) {
+User.prototype.findOne = function(condition, fields, resp_func){
+    User.findOne(condition).select(fields).exec(function(err, res) {
         if (err) {
             var resp = {
                 result : Constant.FAILED_CODE,

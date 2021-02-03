@@ -4,8 +4,14 @@
 
 <head>
     <!-- Title -->
-    <title><%= title%></title>
+    <title><%= data==null?'':data['Name']%></title>
     <%- include common_header.ejs %>
+    <script src="/js/profile.js"></script>
+    <script>
+        $(window).on('load', function () {
+            profileClass.show_info();
+        });
+    </script>
 </head>
 
 <body>
@@ -22,7 +28,7 @@
                     <!-- User Image -->
                     <div class="u-block-hover g-pos-rel">
                         <figure>
-                            <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../assets/img-temp/400x450/img5.jpg" alt="Image Description">
+                            <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src=<%=data==null?'':'https://henho2.com'+data['Picture']%> />
                         </figure>
                     </div>
                     <!-- User Image -->
@@ -39,8 +45,8 @@
                                 <!-- Name -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Name</strong>
-                                        <span class="align-top">John Doe</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tên</strong>
+                                        <span class="align-top"><%= data==null?'':data['Name']%></span>
                                     </div>
                                 </li>
                                 <!-- End Name -->
@@ -48,8 +54,8 @@
                                 <!-- Your ID -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Your ID</strong>
-                                        <span class="align-top">FKJ-032440</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tình trạng hôn nhân</strong>
+                                        <span class="align-top" id="MariedStatus" data-value="<%=data['MariedStatus']%>"></span>
                                     </div>
                                 </li>
                                 <!-- End Your ID -->
@@ -57,8 +63,8 @@
                                 <!-- Company Name -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Company name</strong>
-                                        <span class="align-top">Htmlstream</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Mục tiêu</strong>
+                                        <span class="align-top" id="Objective" data-value="<%=data['Objective']%>"></span>
                                     </div>
                                 </li>
                                 <!-- End Company Name -->
@@ -66,8 +72,8 @@
                                 <!-- Position -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Position</strong>
-                                        <span class="align-top">Project Manager</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Chiều Cao</strong>
+                                        <span class="align-top"><%= data==null?'':data['Height']%> cm</span>
                                     </div>
                                 </li>
                                 <!-- End Position -->
@@ -75,8 +81,8 @@
                                 <!-- Primary Email Address -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Primary email address</strong>
-                                        <span class="align-top">john.doe@htmlstream.com</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Email</strong>
+                                        <span class="align-top"><%= data==null?'':data['Email']%></span>
                                     </div>
                                 </li>
                                 <!-- End Primary Email Address -->
@@ -84,8 +90,8 @@
                                 <!-- Linked Account -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Linked account</strong>
-                                        <span class="align-top">Facebook</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Nơi ở</strong>
+                                        <span class="align-top" id="Province" data-value="<%=data['Province']%>"></span>
                                     </div>
                                 </li>
                                 <!-- End Linked Account -->
@@ -93,8 +99,8 @@
                                 <!-- Website -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Website</strong>
-                                        <span class="align-top">https://htmlstream.com</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Bằng cấp</strong>
+                                        <span class="align-top" id="Degree" data-value="<%=data['Degree']%>"></span>
                                     </div>
                                 </li>
                                 <!-- End Website -->
@@ -102,8 +108,8 @@
                                 <!-- Phone Number -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Phone number</strong>
-                                        <span class="align-top">(+123) 456 7890</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Bản thân</strong>
+                                        <span class="align-top"><%= data==null?'':data['Profile']%></span>
                                     </div>
                                 </li>
                                 <!-- End Phone Number -->
@@ -111,8 +117,8 @@
                                 <!-- Office Number -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Office number</strong>
-                                        <span class="align-top">(+123) 456 7891</span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tiêu chí</strong>
+                                        <span class="align-top"><%= data==null?'':data['LookingFor']%></span>
                                     </div>
                                 </li>
                                 <!-- End Office Number -->
@@ -120,8 +126,20 @@
                                 <!-- Address -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Address</strong>
-                                        <span class="align-top">795 Folsom Ave, Suite 600, San Francisco CA, US </span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tuổi</strong>
+                                        <span class="align-top"><%= data==null?'':data['Age']%></span>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Cân nặng</strong>
+                                        <span class="align-top"><%= data==null?'':data['Weight']%> kg</span>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Giới tính</strong>
+                                        <span class="align-top" id="Sex" data-value="<%=data['Sex']%>"></span>
                                     </div>
                                 </li>
                                 <!-- End Address -->
@@ -144,13 +162,6 @@
     <!-- Footer -->
     <%- include common_footer.ejs %>
     <!-- End Footer -->
-
-    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
-     "bottom": 15,
-     "right": 15
-   }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
-        <i class="hs-icon hs-icon-arrow-top"></i>
-    </a>
 </main>
 
 </body>
