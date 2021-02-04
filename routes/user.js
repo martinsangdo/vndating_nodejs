@@ -3,7 +3,7 @@ var router = express.Router();
 var common = require('../common/common.js');
 var Constant = require('../common/constant.js');
 var User = require('../models/User.js');
-
+//profile of 1 public user
 router.get('/profile/:user_id/:name', function(req, res, next) {
     var user_id = req.params.user_id;
     var user = new User();
@@ -26,6 +26,41 @@ router.get('/profile/:user_id/:name', function(req, res, next) {
             //replace special char http://localhost:3001/user/profile/5f65a34deb5bea0a257004c5
         res.render('profile', {data: resp_detail.data});
     });
+});
+//get latest users
+router.get('/same_related_profile', function(req, res, next) {
+    //todo check auth
+    var marital_code = parseInt(req.query['marital']);
+    if (marital_code == NaN){
+        marital_code = 0;
+    }
+    var objective_code = parseInt(req.query['objective']);
+    if (objective_code == NaN){
+        objective_code = 0;
+    }
+    var province_code = parseInt(req.query['province']);
+    if (province_code == NaN){
+        province_code = 0;
+    }
+    var sex_code = parseInt(req.query['sex']);
+    if (sex_code == NaN){
+        sex_code = 0;
+    }
+    var final_response = {};
+    get_related_users({is_active:{$ne:0}, MariedStatus: marital_code}, function(resp_marital){
+        final_response['marital'] = resp_marital;
+        get_related_users({is_active:{$ne:0}, Objective: objective_code}, function(resp_objective){
+            final_response['objective'] = resp_objective;
+            get_related_users({is_active:{$ne:0}, Province: province_code}, function(resp_province){
+                final_response['province'] = resp_province;
+                get_related_users({is_active:{$ne:0}, Sex: sex_code}, function(resp_sex){
+                    final_response['sex'] = resp_sex;
+                    res.rest.success(final_response);
+                });
+            });
+        });
+    });
+
 });
 //get latest users
 router.get('/get_homepage_list', function(req, res, next) {
@@ -58,5 +93,13 @@ router.get('/random_user_by_gender', function(req, res, next) {
             res.rest.success(resp);   //success
         });
 });
+
+function get_related_users(params, callback){
+    var user = new User();
+    user.search_by_condition(params, {limit:8, skip: Math.round(Math.random()*800)},
+        'Picture LookingFor Name', {'updated_time':-1}, function(resp){
+            callback(resp);
+        });
+}
 //======
 module.exports = router;

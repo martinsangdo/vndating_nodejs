@@ -10,6 +10,7 @@
     <script>
         $(window).on('load', function () {
             profileClass.show_info();
+            profileClass.search_related_users();
         });
     </script>
 </head>
@@ -20,7 +21,7 @@
     <%- include common_menu.ejs %>
     <!-- End Header -->
 
-    <section class="g-mb-100 g-mt-50">
+    <section class="g-mb-20 g-mt-50">
         <div class="container">
             <div class="row">
                 <!-- Profile Sidebar -->
@@ -145,6 +146,68 @@
             </div>
         </div>
     </section>
+
+    <!-- Template of user -->
+    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg hidden" id="user_item_tmpl">
+        <article class="media g-mb-10">
+            <a class="d-flex u-shadow-v25 mr-3 avatar_link" href="#!">
+                <img class="g-width-60 g-height-60 avatar"/>
+            </a>
+            <div class="media-body">
+                <h3 class="h6">
+                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover cut_line_limit two_lines description" href="#!"></a>
+                </h3>
+            </div>
+        </article>
+    </div>
+    <!-- End Template of user -->
+
+    <section class="g-mb-30">
+        <div class="container">
+            <div class="u-heading-v3-1 g-mb-30">
+                <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Bạn cùng giới tính</h2>
+            </div>
+            <div class="row" id="same_gender_container">
+                <!-- data fetch here -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="g-mb-30">
+        <div class="container">
+            <div class="u-heading-v3-1 g-mb-30">
+                <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Bạn cùng tình trạng hôn nhân</h2>
+            </div>
+            <div class="row" id="same_marital_status_container">
+                <!-- data fetch here -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="g-mb-30">
+        <div class="container">
+            <div class="u-heading-v3-1 g-mb-30">
+                <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Bạn cùng mục tiêu</h2>
+            </div>
+            <div class="row" id="same_objective_container">
+                <!-- data fetch here -->
+            </div>
+        </div>
+    </section>
+
+    <section class="g-mb-30">
+        <div class="container">
+            <div class="u-heading-v3-1 g-mb-30">
+                <h2 class="h5 u-heading-v3__title g-font-primary g-font-weight-700 g-color-gray-dark-v1 text-uppercase g-brd-primary">Bạn cùng thành phố</h2>
+            </div>
+            <div class="row" id="same_province_container">
+                <!-- data fetch here -->
+            </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <%- include common_footer.ejs %>
