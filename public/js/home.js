@@ -39,11 +39,12 @@ function render_home_list(list){
     for (var i=0; i<len; i++){
         $tmpl = $('#person_tmpl').clone(false);
         $('.home_img_thumb', $tmpl).attr('src', API_URI.HENHO_DOMAIN + list[i]['Picture']);
+        $('.home_img_thumb', $tmpl).attr('onclick', 'window.location.href="'+common.compose_profile_link(list[i]['_id'], list[i]['Name'])+'"');
         $('.data-gender', $tmpl).text(common.convert_gender(list[i]['Sex']));
         $('.data-gender', $tmpl).addClass(common.convert_gender_color(list[i]['Sex']));
         $('.data-looking-for', $tmpl).text(list[i]['LookingFor']);
         $('.data-name', $tmpl).text(list[i]['Name']);
-        $('.data-name', $tmpl).attr('href', '/user/profile/' + list[i]['_id']);
+        $('.data-name', $tmpl).attr('href', common.compose_profile_link(list[i]['_id'], list[i]['Name']));
         $('.data-province', $tmpl).text(common.convert_province(list[i]['Province']));
         $('.data-age', $tmpl).text(list[i]['Age']);
         $('.data-married-status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));
@@ -125,7 +126,9 @@ function render_random_user(gender_code, list){
     for (var i=0; i<len; i++){
         $tmpl = $('#item_user_tmpl', $sitebar_items_tmpl).clone(false);
         $('.avatar', $tmpl).attr('src', API_URI.HENHO_DOMAIN + list[i]['Picture']);
+        $('.avatar_link', $tmpl).attr('href', common.compose_profile_link(list[i]['_id'], list[i]['Name']));
         $('.description', $tmpl).text(list[i]['LookingFor']);
+        $('.description', $tmpl).attr('href', common.compose_profile_link(list[i]['_id'], list[i]['Name']));
         $('.status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));
         $('.objective', $tmpl).text(common.convert_objective(list[i]['Objective']));
         $sitebar_items_tmpl.append($tmpl.removeAttr('id').removeClass('hidden'));

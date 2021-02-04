@@ -4,7 +4,7 @@ var common = require('../common/common.js');
 var Constant = require('../common/constant.js');
 var User = require('../models/User.js');
 
-router.get('/profile/:user_id', function(req, res, next) {
+router.get('/profile/:user_id/:name', function(req, res, next) {
     var user_id = req.params.user_id;
     var user = new User();
     user.findOne({_id: user_id, is_active: {$ne: 0}},
@@ -12,7 +12,16 @@ router.get('/profile/:user_id', function(req, res, next) {
         function(resp_detail){
         //todo: hide email if not paid
             if (resp_detail.data != null && resp_detail.data['Email'] != null){
-
+                var fullmail = resp_detail.data['Email'];
+                var newmail = '';
+                for (var i=0; i<fullmail.length-6; i++){
+                    if (i%2 == 0){
+                        newmail += '*';
+                    } else {
+                        newmail += fullmail.substr(i, 1);
+                    }
+                }
+                resp_detail.data['Email'] = newmail + fullmail.substr(fullmail.length-6);
             }
             //replace special char http://localhost:3001/user/profile/5f65a34deb5bea0a257004c5
         res.render('profile', {data: resp_detail.data});

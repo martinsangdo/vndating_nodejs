@@ -242,3 +242,14 @@ Common.prototype.convert_married_status = function(code){
     };
     return data[code];
 };
+//
+Common.prototype.convert_degree = function(code){
+    var data = {
+        0: 'Phổ thông', 1: 'Trung Cấp', 2: 'Cao đẳng', 3: 'Đại học', 4: 'Thạc sĩ', 5: 'Tiến sĩ', 6: 'Giáo sư'
+    };
+    return data[code];
+};
+//
+Common.prototype.compose_profile_link = function(id,name) {
+    return '/user/profile/' + id+'/'+name;
+};

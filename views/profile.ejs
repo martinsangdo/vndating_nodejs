@@ -50,7 +50,12 @@
                                     </div>
                                 </li>
                                 <!-- End Name -->
-
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Giới tính</strong>
+                                        <span class="align-top" id="Sex" data-value="<%=data['Sex']%>"></span>
+                                    </div>
+                                </li>
                                 <!-- Your ID -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
@@ -60,74 +65,43 @@
                                 </li>
                                 <!-- End Your ID -->
 
-                                <!-- Company Name -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
                                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Mục tiêu</strong>
                                         <span class="align-top" id="Objective" data-value="<%=data['Objective']%>"></span>
                                     </div>
                                 </li>
-                                <!-- End Company Name -->
-
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <table width="100%" border="0">
+                                            <tr>
+                                                <td><strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Bản thân</strong></td>
+                                                <td><span class="align-top"><%= data==null?'':data['Profile']%></span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <table width="100%" border="0">
+                                            <tr>
+                                                <td><strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tìm người</strong></td>
+                                                <td><span class="align-top"><%= data==null?'':data['LookingFor']%></span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tuổi</strong>
+                                        <span class="align-top"><%= data==null?'':data['Age']%></span>
+                                    </div>
+                                </li>
                                 <!-- Position -->
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
                                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Chiều Cao</strong>
                                         <span class="align-top"><%= data==null?'':data['Height']%> cm</span>
-                                    </div>
-                                </li>
-                                <!-- End Position -->
-
-                                <!-- Primary Email Address -->
-                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                                    <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Email</strong>
-                                        <span class="align-top"><%= data==null?'':data['Email']%></span>
-                                    </div>
-                                </li>
-                                <!-- End Primary Email Address -->
-
-                                <!-- Linked Account -->
-                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                                    <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Nơi ở</strong>
-                                        <span class="align-top" id="Province" data-value="<%=data['Province']%>"></span>
-                                    </div>
-                                </li>
-                                <!-- End Linked Account -->
-
-                                <!-- Website -->
-                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                                    <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Bằng cấp</strong>
-                                        <span class="align-top" id="Degree" data-value="<%=data['Degree']%>"></span>
-                                    </div>
-                                </li>
-                                <!-- End Website -->
-
-                                <!-- Phone Number -->
-                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                                    <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Bản thân</strong>
-                                        <span class="align-top"><%= data==null?'':data['Profile']%></span>
-                                    </div>
-                                </li>
-                                <!-- End Phone Number -->
-
-                                <!-- Office Number -->
-                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                                    <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tiêu chí</strong>
-                                        <span class="align-top"><%= data==null?'':data['LookingFor']%></span>
-                                    </div>
-                                </li>
-                                <!-- End Office Number -->
-
-                                <!-- Address -->
-                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                                    <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Tuổi</strong>
-                                        <span class="align-top"><%= data==null?'':data['Age']%></span>
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
@@ -136,13 +110,26 @@
                                         <span class="align-top"><%= data==null?'':data['Weight']%> kg</span>
                                     </div>
                                 </li>
+                                <!-- End Position -->
+
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
-                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Giới tính</strong>
-                                        <span class="align-top" id="Sex" data-value="<%=data['Sex']%>"></span>
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Nơi ở</strong>
+                                        <span class="align-top" id="Province" data-value="<%=data['Province']%>"></span>
                                     </div>
                                 </li>
-                                <!-- End Address -->
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Bằng cấp</strong>
+                                        <span class="align-top" id="Degree" data-value="<%=data['Degree']%>"></span>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                                    <div class="g-pr-10">
+                                        <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Email</strong>
+                                        <span class="align-top"><%= data==null?'':data['Email']%></span>
+                                    </div>
+                                </li>
                             </ul>
 
                             <div class="text-sm-right">
