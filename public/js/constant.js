@@ -23,7 +23,7 @@ var API_URI = {
 
 var CONST = {
     OK_CODE: 'OK',
-    DEFAULT_PAGE_LEN: 50,       //no. of items in pagination
+    DEFAULT_PAGE_LEN: 3,       //no. of items in pagination
     PAGE_OFFSET_DISPLAY: 4,     //show items in left/right of active index
     HIDDEN_CLASSNAME: 'hidden',
     //input form

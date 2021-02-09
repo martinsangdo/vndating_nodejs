@@ -3,6 +3,16 @@ var router = express.Router();
 var common = require('../common/common.js');
 var Constant = require('../common/constant.js');
 var User = require('../models/User.js');
+
+router.get('/login', function(req, res, next) {
+    res.render('login');
+});
+router.get('/signup', function(req, res, next) {
+    res.render('signup');
+});
+router.get('/forgot_password', function(req, res, next) {
+    res.render('forgot_password');
+});
 //profile of 1 public user
 router.get('/profile/:user_id/:name', function(req, res, next) {
     var user_id = req.params.user_id;

@@ -16,5 +16,13 @@ var User = require('../models/User.js');
 router.get('/', function(req, res) {
   res.render('index');
 });
-//
+//group by gender & objective
+
+//group by gender & province
+
+//group by gender & Looking for
+
+//group by gender & marital status
+
+
 module.exports = router;

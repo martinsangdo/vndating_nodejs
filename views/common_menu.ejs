@@ -4,20 +4,20 @@
         <div class="container">
             <div class="row align-items-center">
                 <!-- Logo -->
-                <div class="col-md-3 g-hidden-md-down">
-                    <a href="/" class="navbar-brand">
+                <div class="col-md-9 g-hidden-md-down">
+                    <a href="/" class="navbar-brand hidden">
                         <img src="/img/logo.png" alt="Logo" class="g-width-100"/>
                     </a>
                 </div>
                 <!-- End Logo -->
 
-                <!-- Subscribe Form -->
-                <div class="col-6 col-md-5">
-                </div>
                 <!-- End Subscribe Form -->
-
+                <div class="float-right">
+                    <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/login">Đăng nhập</a> /
+                    <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/signup">Đăng ký</a>
+                </div>
                 <!-- Account -->
-                <div class="col-md-3">
+                <div class="col-md-3 hidden">
                     <a id="account-dropdown-invoker" class="media align-items-center float-right g-text-underline--none--hover" href="#!"
                        aria-controls="account-dropdown"
                        aria-haspopup="true"
@@ -30,7 +30,7 @@
                        data-dropdown-animation-in="fadeIn"
                        data-dropdown-animation-out="fadeOut">
                         <div class="media-body">
-                            <span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">Đăng ký / Đăng nhập</span>
+                            <span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">Tài khoản</span>
                         </div>
                     </a>
 
@@ -90,7 +90,7 @@
                             </a>
                         </li>
                         <!-- Pages - Submenu -->
-                        <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
+                        <li class="hidden nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
                             <a id="nav-link--pages" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!"
                                aria-haspopup="true"
                                aria-expanded="false"
