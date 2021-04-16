@@ -19,12 +19,6 @@ var test = require('./routes/test');
 var user = require('./routes/user');
 var web_parser = require('./routes/web_parser');
 var payment = require('./routes/payment');
-var admin_control = require('./routes/admin/login');
-var admin_movie = require('./routes/admin/movie');
-var admin_category = require('./routes/admin/category');
-var admin_dashboard = require('./routes/admin/dashboard');
-var admin_language = require('./routes/admin/language');
-var admin_app = require('./routes/admin/app_setting');
 
 var app = express();
 var server = require('http').Server(app);
@@ -89,12 +83,6 @@ app.use('/user', user);
 
 app.use('/web_parser', web_parser);
 app.use('/payment', payment);
-app.use('/admin-movie', admin_movie);
-app.use('/admin-control', admin_control);
-app.use('/admin-dashboard', admin_dashboard);
-app.use('/admin-category', admin_category);
-app.use('/admin-language', admin_language);
-app.use('/admin-app', admin_app);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

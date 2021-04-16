@@ -14,7 +14,7 @@ var STR_MESS_FRONT = {
 };
 //link of APIs
 var API_URI = {
-    HENHO_DOMAIN: 'https://henho2.com/',
+    HENHO_DOMAIN: '',
     HOME_LIST: '/user/get_homepage_list',
     RANDOM_USER: '/user/random_user_by_gender',
     FRONT_LOGIN: '/publicapi/front_login',        //prevent access before publishing
@@ -23,7 +23,7 @@ var API_URI = {
 
 var CONST = {
     OK_CODE: 'OK',
-    DEFAULT_PAGE_LEN: 3,       //no. of items in pagination
+    DEFAULT_PAGE_LEN: 10,       //no. of items in pagination
     PAGE_OFFSET_DISPLAY: 4,     //show items in left/right of active index
     HIDDEN_CLASSNAME: 'hidden',
     //input form
