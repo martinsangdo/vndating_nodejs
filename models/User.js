@@ -6,6 +6,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Constant = require('../common/constant.js');
+const crypto = require('crypto')
+const {v1: uuidv1} = require('uuid')
 
 //define format of Collection
 var UserSchema = new Schema({
@@ -44,8 +46,63 @@ var UserSchema = new Schema({
     //own fields
     is_active    :   {type: Number, default: 1},
     note    :   {type: String},
-    created_time    :   {type: Number}
+    created_time: { type: Number },
+    Salt: String,
+    Email: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: true,
+    },
+    HashPassword: {
+        type: String,
+        required: true,
+    },
+    ResetPasswordToken: {
+        type: String,
+    },
 }, { collection: 'user' });
+
+
+
+//virtual field
+UserSchema.virtual('Password')
+.set(function(Password){
+    this._password = Password
+    this.Salt = uuidv1()
+    this.HashPassword = this.encryptPassword(Password)
+})
+.get(() => {
+    return this._password
+})
+
+UserSchema.methods = {
+    authenticate: function(plainText){
+        return this.encryptPassword(plainText) === this.HashPassword
+    },
+    encryptPassword: function(Password){
+        if(!Password) return ''
+        try{
+            return crypto.createHmac('sha1', this.Salt)
+                        .update(Password)
+                        .digest('hex')
+        }
+        catch(err){
+            return '';
+        }
+    },
+    comparePassword: function(Password) {
+        if(!Password) return ''
+        try{
+            return crypto.createHmac('sha1', this.Salt)
+                        .update(Password)
+                        .digest('hex') === this.HashPassword
+        }
+        catch(err){
+            return '';
+        }
+    }
+}
 
 //the schema is useless so far
 //we need to create a model using it
@@ -148,6 +205,5 @@ User.prototype.create = function(data, resp_func){
         }
     });
 };
-
 
 module.exports = User;

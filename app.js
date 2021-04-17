@@ -19,6 +19,7 @@ var test = require('./routes/test');
 var user = require('./routes/user');
 var web_parser = require('./routes/web_parser');
 var payment = require('./routes/payment');
+require("dotenv").config();
 
 var app = express();
 var server = require('http').Server(app);
