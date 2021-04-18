@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken"); //for genreate token
 const expressJwt = require("express-jwt"); //for authorize token
 const { sendEmailForgotPassword } = require("../helpers/emailHelper");
 const _ = require("lodash");
+const Constant = require("../common/constant");
 
 exports.signup = (req, res) => {
   const { Name, Email, Password } = req.body;
@@ -20,26 +21,22 @@ exports.signup = (req, res) => {
       }
       doc.salt = undefined;
       doc.hashPassword = undefined;
-      return res.rest.success(doc);
+      return res.rest.success({
+        data: doc,
+      });
     });
   });
 };
 
 exports.login = (req, res) => {
-  const { email, password } = req.body;
-  User.findOne({ email }, (err, doc) => {
+  const { Email, Password } = req.body;
+  User.findOne({ Email }, (err, doc) => {
     if (err || !doc) {
-      return res.json({
-        status: 0,
-        data: "User not found",
-      });
+      return res.rest.success("User not found");
     }
     //check password match
-    if (!doc.authenticate(password)) {
-      return res.json({
-        status: 0,
-        data: "Email and password is invalid",
-      });
+    if (!doc.authenticate(Password)) {
+      return res.rest.success("Email and password is invalid");
     }
 
     //generate a signed token
@@ -47,19 +44,16 @@ exports.login = (req, res) => {
     //persist the token as 't' in cookie with expiry date
     res.cookie("t", token, { expire: new Date() + 9999 });
 
-    const { _id, name, email, role } = doc;
-    res.json({
-      status: 1,
-      data: { _id, name, email, role, token },
+    const { _id, Name, Email } = doc;
+    return res.rest.success({
+      data: { _id, Name, Email, token },
     });
   });
 };
 
-exports.signout = (req, res) => {
+exports.logout = (req, res) => {
   res.clearCookie("t");
-  res.json({
-    status: 1,
-  });
+  return res.rest.success();
 };
 
 // exports.requireLogin = expressJwt({

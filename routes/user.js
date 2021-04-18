@@ -6,8 +6,8 @@ var User = require("../models/User.js");
 
 const {
   signup,
-  signin,
-  signout,
+  login,
+  logout,
   forgotPassword,
   resetPassword,
 } = require("../controllers/auth");
@@ -144,7 +144,10 @@ router.get("/random_user_by_gender", function (req, res, next) {
  * signup
  */
 router.post("/signup", signup);
+router.post("/login", login);
+router.post("/logout", logout);
 
+//functions
 function get_related_users(params, callback) {
   var user = new User();
   user.search_by_condition(

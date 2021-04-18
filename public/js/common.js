@@ -34,7 +34,7 @@ Common.prototype.ajaxPost = function(uri, params, callback, callback_err){
         dataType: 'json',	//jsonp causes error in IE
         success: function (msg) {
             if (callback !== undefined){
-                callback(msg.data);
+                callback(msg);
             }
         },
         error: function (errormessage) {
@@ -253,3 +253,56 @@ Common.prototype.convert_degree = function(code){
 Common.prototype.compose_profile_link = function(id,name) {
     return '/user/profile/' + id+'/'+name;
 };
+//get formData
+Common.prototype.getFormData = function (form){
+    var unindexedArray = form.serializeArray();
+    var indexedArray = {};
+
+    $.map(unindexedArray, function(n, i){
+        indexedArray[n['name']] = n['value'];
+    });
+
+    return indexedArray;
+}
+
+//authenticate
+Common.prototype.authenticate = (data, next) => {
+    if(typeof window !== 'undefined'){
+        localStorage.setItem('user', JSON.stringify(data))
+        next()
+    }
+}
+
+//check authenticate
+Common.prototype.isAuth = () => {
+    if(typeof window === 'undefined'){
+        return false
+    }
+    return localStorage.getItem('user') 
+    ? JSON.parse(localStorage.getItem('user')) 
+    : false
+}
+
+//logout
+Common.prototype.doLogout = () => {
+    if(typeof window !== 'undefined'){
+        localStorage.removeItem('user')
+        common.ajaxPost(API_URI.DO_LOGOUT)
+        common.redirect('/')
+    }
+}
+
+//common functions
+$(function () {
+    var userMenu = $('#user-menu');
+    var html = ''
+    const user = common.isAuth()
+    if (user) {
+        html += 'Hi ' + user.Name + ', <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" onclick="common.doLogout()" href="#">đăng xuất</a>'
+    }
+    else {
+        html += '<a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/login">Đăng nhập</a> /'
+        html += '<a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/signup">Đăng ký</a>'
+    }
+    userMenu.html(html)
+})

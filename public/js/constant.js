@@ -19,8 +19,9 @@ var API_URI = {
   RANDOM_USER: "/user/random_user_by_gender",
   FRONT_LOGIN: "/publicapi/front_login", //prevent access before publishing
   SAME_RELATED_PROFILE: "/user/same_related_profile",
-  POST_SIGNUP: "/user/signup",
-  POST_LOGIN: "/user/login",
+  DO_SIGNUP: "/user/signup",
+  DO_LOGIN: "/user/login",
+  DO_LOGOUT: '/user/logout'
 };
 
 var CONST = {
