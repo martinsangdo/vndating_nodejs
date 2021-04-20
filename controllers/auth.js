@@ -21,8 +21,15 @@ exports.signup = (req, res) => {
       }
       doc.salt = undefined;
       doc.hashPassword = undefined;
+
+      //generate a signed token
+      const token = jwt.sign({ _id: doc._id }, process.env.JWT_SECRET);
+      //persist the token as 't' in cookie with expiry date
+      res.cookie("t", token, { expire: new Date() + 9999 });
+
+      const { _id, Name, Email } = doc;
       return res.rest.success({
-        data: doc,
+        data: { _id, Name, Email, token },
       });
     });
   });
@@ -68,48 +75,31 @@ exports.isAuth = (req, res, next) => {
   console.log("req.user._id == req.auth._id", req.user._id == req.auth._id);
   console.log("isAuth", isAuth);
   if (!isAuth) {
-    return res.json({
-      status: 0,
-      data: "Unauthorize",
-    });
-  }
-  next();
-};
-
-exports.isAdmin = (req, res, next) => {
-  if (req.user.role === 0) {
-    return res.json({
-      status: 0,
-      data: "Admin resources - Access denied",
-    });
+    return res.rest.success("Unauthorize")
   }
   next();
 };
 
 exports.forgotPassword = (req, res) => {
-  const { email } = req.body;
-  User.findOne({ email }, async (err, doc) => {
+  const { Email } = req.body;
+  User.findOne({ Email }, async (err, doc) => {
     if (err || !doc) {
-      return res.json({
-        status: 0,
-        data: "Email not found",
-      });
+      return res.rest.success("Email not found")
     }
     const token = jwt.sign({ _id: doc._id }, process.env.JWT_RESET_PASSWORD, {
       expiresIn: "10m",
     });
     doc.updateOne({ resetPasswordToken: token }, (err, docUpdated) => {
       if (err) {
-        return res.json({
-          status: 0,
-          data: err.message || err.msg,
-        });
+        return res.rest.success(err.message || err.msg)
       }
     });
 
     //send email activation
-    const resEmail = await sendEmailForgotPassword({ token, email });
-    res.json(resEmail);
+    const resEmail = await sendEmailForgotPassword({ token, Email });
+    return res.rest.success({
+      data: resEmail
+    });
   });
 };
 
@@ -123,18 +113,12 @@ exports.resetPassword = (req, res) => {
       function (err, decoded) {
         if (err) {
           console.log("resetPassword", err);
-          return res.json({
-            status: 0,
-            data: "resetPassword err",
-          });
+          return res.rest.success("resetPassword err")
         }
 
         User.findOne({ resetPasswordToken }, (err, user) => {
           if (err || !user) {
-            return res.json({
-              status: 0,
-              data: err.message || err.msg,
-            });
+            return res.rest.success(err.message || err.msg)
           }
 
           const updateData = {
@@ -145,16 +129,12 @@ exports.resetPassword = (req, res) => {
           user = _.extend(user, updateData);
           user.save((err, docSaved) => {
             if (err) {
-              return res.json({
-                status: 0,
-                data: err.message || err.msg,
-              });
+              return res.rest.success(err.message || err.msg)
             }
 
             docSaved.salt = undefined;
             docSaved.hashPassword = undefined;
-            res.json({
-              status: 1,
+            return res.rest.success({
               data: docSaved,
             });
           });

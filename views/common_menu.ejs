@@ -12,12 +12,12 @@
                 <!-- End Logo -->
 
                 <!-- End Subscribe Form -->
-                <div class="float-right" id="user-menu">
+                <div class="float-right" id="unauth-menu">
                     <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/login">Đăng nhập</a> /
                     <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/signup">Đăng ký</a>
                 </div>
                 <!-- Account -->
-                <div class="col-md-3 hidden">
+                <div class="float-right col-md-3" id="auth-menu">
                     <a id="account-dropdown-invoker" class="media align-items-center float-right g-text-underline--none--hover" href="#!"
                        aria-controls="account-dropdown"
                        aria-haspopup="true"
@@ -34,13 +34,13 @@
                         </div>
                     </a>
 
-                    <ul id="account-dropdown" class="list-unstyled text-right g-width-160 g-brd-around g-brd-secondary-light-v2 g-bg-white rounded g-pos-abs g-right-0 g-py-5 g-mt-57"
+                    <ul id="account-dropdown" class="list-unstyled text-right g-width-160 g-brd-around g-brd-secondary-light-v2 g-bg-white rounded g-pos-abs g-right-0 g-py-5 g-mt-25"
                         aria-labelledby="account-dropdown-invoker">
                         <li>
-                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">My Account</a>
+                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">Thông tin cá nhân</a>
                         </li>
                         <li>
-                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">Signout</a>
+                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" onclick="common.doLogout()" href="#!">Đăng xuất</a>
                         </li>
                     </ul>
                 </div>

@@ -298,11 +298,12 @@ $(function () {
     var html = ''
     const user = common.isAuth()
     if (user) {
-        html += 'Hi ' + user.Name + ', <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" onclick="common.doLogout()" href="#">đăng xuất</a>'
+        $('#auth-menu').removeClass('hidden');
+        $('#unauth-menu').addClass('hidden');
     }
     else {
-        html += '<a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/login">Đăng nhập</a> /'
-        html += '<a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/signup">Đăng ký</a>'
+        $('#auth-menu').addClass('hidden');
+        $('#unauth-menu').removeClass('hidden');
     }
     userMenu.html(html)
 })

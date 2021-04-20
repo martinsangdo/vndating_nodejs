@@ -5,6 +5,8 @@
 //========== CLASS
 function Signup() {}
 
+var isSubmitting = false;
+
 //post signup data
 Signup.prototype.doSignup = function () {
   //check captcha
@@ -38,15 +40,22 @@ Signup.prototype.doSignup = function () {
   params.rePassword = undefined;
   params.Name = FirstName + " " + LastName;
   params.Email = Email.toLowerCase();
+
+  if (isSubmitting) {
+    return;
+  }
+  isSubmitting = true;
+
   common.ajaxPost(API_URI.DO_SIGNUP, params, function (resp) {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       toastr.success("Đăng ký thành công!");
-      setTimeout(() => {
+      common.authenticate(resp.data, () => {
         common.redirect("/");
-      }, 1000);
+      })
     } else {
       toastr.error(resp.message);
     }
+    isSubmitting = false
   });
 };
 

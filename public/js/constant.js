@@ -21,7 +21,9 @@ var API_URI = {
   SAME_RELATED_PROFILE: "/user/same_related_profile",
   DO_SIGNUP: "/user/signup",
   DO_LOGIN: "/user/login",
-  DO_LOGOUT: '/user/logout'
+  DO_LOGOUT: '/user/logout',
+  DO_FORGOT_PASSWORD: '/user/forgot_password',
+  DO_RESET_PASSWORD: '/user/reset_password',
 };
 
 var CONST = {

@@ -146,6 +146,8 @@ router.get("/random_user_by_gender", function (req, res, next) {
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
+router.post("/forgot_password", forgotPassword);
+router.post("/reset_password", resetPassword);
 
 //functions
 function get_related_users(params, callback) {
