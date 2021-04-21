@@ -107,10 +107,24 @@ router.get("/get_homepage_list", function (req, res, next) {
   }
   page_index = page_index - 1; //query from 0
 
+  var MariedStatus = req.query["MariedStatus"];
+  var Objective = req.query["Objective"];
+  var Province = req.query["Province"];
+  const conditions ={ is_active: { $ne: 0 } }
+  if (MariedStatus) {
+    conditions.MariedStatus = parseInt(MariedStatus);
+  }
+  if (Objective) {
+    conditions.Objective = parseInt(Objective);
+  }
+  if (Province) {
+    conditions.Province = parseInt(Province);
+  }
+
   var user = new User();
-  user.countDocuments({ is_active: { $ne: 0 } }, function (resp_total) {
+  user.countDocuments(conditions, function (resp_total) {
     user.search_by_condition(
-      { is_active: { $ne: 0 } },
+      conditions,
       {
         limit: Constant.DEFAULT_PAGE_LENGTH,
         skip: page_index * Constant.DEFAULT_PAGE_LENGTH,
@@ -128,12 +142,26 @@ router.get("/get_homepage_list", function (req, res, next) {
 router.get("/random_user_by_gender", function (req, res, next) {
   //todo check auth
   var gender_code = parseInt(req.query["code"]);
+  var MariedStatus = req.query["MariedStatus"];
+  var Objective = req.query["Objective"];
+  var Province = req.query["Province"];
   if (isNaN(gender_code) || gender_code < 0 || gender_code > 3) {
     gender_code = 1; //default
   }
+  const conditions = { is_active: { $ne: 0 }, Sex: gender_code };
+  if (MariedStatus) {
+    conditions.MariedStatus = parseInt(MariedStatus);
+  }
+  if (Objective) {
+    conditions.Objective = parseInt(Objective);
+  }
+  if (Province) {
+    conditions.Province = parseInt(Province);
+  }
+
   var user = new User();
   user.search_by_condition(
-    { is_active: { $ne: 0 }, Sex: gender_code },
+    conditions,
     { limit: 20, skip: Math.round(Math.random() * 800) },
     "Picture LookingFor Name MariedStatus Objective",
     { updated_time: -1 },

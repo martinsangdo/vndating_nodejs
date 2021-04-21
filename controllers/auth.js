@@ -4,7 +4,8 @@ const jwt = require("jsonwebtoken"); //for genreate token
 const expressJwt = require("express-jwt"); //for authorize token
 const { sendEmailForgotPassword } = require("../helpers/emailHelper");
 const _ = require("lodash");
-const Constant = require("../common/constant");
+const Common = require("../common/common");
+const common = new Common()
 
 exports.signup = (req, res) => {
   const { Name, Email, Password } = req.body;
@@ -14,7 +15,8 @@ exports.signup = (req, res) => {
       return res.rest.success("Email is taken");
     }
 
-    const user = new User({ Name, Email, Password });
+    const created_time = common.get_created_time()
+    const user = new User({ Name, Email, Password, created_time });
     user.save((err, doc) => {
       if (err) {
         return res.rest.success(errorHandler(err));
@@ -37,9 +39,9 @@ exports.signup = (req, res) => {
 
 exports.login = (req, res) => {
   const { Email, Password } = req.body;
-  User.findOne({ Email }, (err, doc) => {
+  User.findOne({ Email, is_active: { $ne: 0 } }, (err, doc) => {
     if (err || !doc) {
-      return res.rest.success("User not found");
+      return res.rest.success("User not found or inactive");
     }
     //check password match
     if (!doc.authenticate(Password)) {
