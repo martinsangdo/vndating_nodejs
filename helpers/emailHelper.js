@@ -17,13 +17,13 @@ const nodemailer = require("nodemailer");
 // });
 
 var transporter = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    host: "smtp.gmail.com",
+    port: 465,
     logger: true,
     debug: true,
     auth: {
-      user: "c011d052f6ce58",
-      pass: "51b563b416c2dd"
+      user: "mernshop3393@gmail.com",
+      pass: "mernshop@123"
     }
   });
 
@@ -37,9 +37,9 @@ exports.sendEmailForgotPassword = (params) => {
             subject: 'Password reset link',
             html: `
                 <p>Please click this button to reset your password</p>
-                <a href="${process.env.CLIENT_URL}/auth/reset_password/${token}">Reset password</a>
+                <a href="${process.env.CLIENT_URL}/user/reset_password/${token}">Reset password</a>
                 <p>Or copy the following link to reset your password</p>
-                <p>${process.env.CLIENT_URL}/auth/reset_password/${token}</p>
+                <p>${process.env.CLIENT_URL}/user/reset_password/${token}</p>
                 <hr/>
                 <p>This email may contain sensitive information</p>
                 <p>${process.env.CLIENT_URL}</p>

@@ -21,6 +21,10 @@ router.get("/signup", function (req, res, next) {
 router.get("/forgot_password", function (req, res, next) {
   res.render("forgot_password");
 });
+router.get("/reset_password/:token", function (req, res, next) {
+  res.locals.token = req.params.token;
+  res.render("reset_password");
+});
 //profile of 1 public user
 router.get("/profile/:user_id/:name", function (req, res, next) {
   var user_id = req.params.user_id;

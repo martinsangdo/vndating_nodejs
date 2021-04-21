@@ -89,7 +89,7 @@ exports.forgotPassword = (req, res) => {
     const token = jwt.sign({ _id: doc._id }, process.env.JWT_RESET_PASSWORD, {
       expiresIn: "10m",
     });
-    doc.updateOne({ resetPasswordToken: token }, (err, docUpdated) => {
+    doc.updateOne({ ResetPasswordToken: token }, (err, docUpdated) => {
       if (err) {
         return res.rest.success(err.message || err.msg)
       }
@@ -104,26 +104,26 @@ exports.forgotPassword = (req, res) => {
 };
 
 exports.resetPassword = (req, res) => {
-  const { resetPasswordToken, newPassword } = req.body;
+  const { ResetPasswordToken, Password: newPassword } = req.body;
 
-  if (resetPasswordToken) {
+  if (ResetPasswordToken) {
     jwt.verify(
-      resetPasswordToken,
+      ResetPasswordToken,
       process.env.JWT_RESET_PASSWORD,
       function (err, decoded) {
         if (err) {
           console.log("resetPassword", err);
-          return res.rest.success("resetPassword err")
+          return res.rest.success("Token expired. Please try again")
         }
 
-        User.findOne({ resetPasswordToken }, (err, user) => {
+        User.findOne({ ResetPasswordToken }, (err, user) => {
           if (err || !user) {
             return res.rest.success(err.message || err.msg)
           }
 
           const updateData = {
-            password: newPassword,
-            resetPasswordToken: "",
+            Password: newPassword,
+            ResetPasswordToken: "",
           };
 
           user = _.extend(user, updateData);
@@ -132,8 +132,8 @@ exports.resetPassword = (req, res) => {
               return res.rest.success(err.message || err.msg)
             }
 
-            docSaved.salt = undefined;
-            docSaved.hashPassword = undefined;
+            docSaved.Salt = undefined;
+            docSaved.HashPassword = undefined;
             return res.rest.success({
               data: docSaved,
             });
