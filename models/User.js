@@ -61,6 +61,7 @@ var UserSchema = new Schema({
     ResetPasswordToken: {
         type: String,
     },
+    SubscribeTimeLive : {type: Number, default: 0},
 }, { collection: 'user' });
 
 

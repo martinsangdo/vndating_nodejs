@@ -62,6 +62,30 @@ Common.prototype.ajaxRawGet = function(url, callback, callback_err){
         }
     });
 };
+//ajaxPost with jwt
+Common.prototype.ajaxPostWithJwt = function(uri, params, token, callback, callback_err){
+    uri = encodeURI(SERVER_URI + uri);
+
+    $.ajax({
+        url: uri,//url is a link request
+        type: 'POST',
+        data: params, //data send to server
+        dataType: 'json',	//jsonp causes error in IE
+        beforeSend: function (request) {
+            request.setRequestHeader("Authorization", `Bearer ${token}`)
+        },
+        success: function (msg) {
+            if (callback !== undefined){
+                callback(msg);
+            }
+        },
+        error: function (errormessage) {
+            if (callback_err !== undefined) {
+                callback_err(errormessage.responseText);
+            }
+        }
+    });
+};
 //
 Common.prototype.redirect = function(url){
     window.location.href = url;

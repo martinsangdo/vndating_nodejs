@@ -65,17 +65,13 @@ exports.logout = (req, res) => {
   return res.rest.success();
 };
 
-// exports.requireLogin = expressJwt({
-//   secret: process.env.JWT_SECRET,
-//   userProperty: "auth",
-// });
+exports.requireLogin = expressJwt({
+  secret: process.env.JWT_SECRET,
+  userProperty: "auth",
+});
 
 exports.isAuth = (req, res, next) => {
   const isAuth = req.user && req.auth && req.user._id == req.auth._id;
-  console.log("req.user", req.user._id);
-  console.log("req.auth", req.auth._id);
-  console.log("req.user._id == req.auth._id", req.user._id == req.auth._id);
-  console.log("isAuth", isAuth);
   if (!isAuth) {
     return res.rest.success("Unauthorize")
   }
@@ -144,4 +140,80 @@ exports.resetPassword = (req, res) => {
       }
     );
   }
+};
+
+exports.userById = (req, res, next, id) => {
+  User.findById(id).exec((err, doc) => {
+    if (err || !doc) {
+      return res.json({
+        status: 0,
+        data: "User not found",
+      });
+    }
+    req.user = doc;
+    next();
+  });
+};
+
+exports.read = (req, res) => {
+  const user = req.user;
+  user.avatar = undefined;
+  res.json({
+    status: 1,
+    data: user,
+  });
+};
+
+exports.changePassword = (req, res) => {
+  const params = req.body;
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $set: params },
+    { new: true },
+    (err, doc) => {
+      if (err) {
+        return res.json({
+          status: 0,
+          data: errorHandler(err),
+        });
+      }
+
+      //update password
+      if (params.currentPassword && params.newPassword) {
+        //check current password
+        const isMatched = doc.comparePassword(params.currentPassword);
+        if (!isMatched) {
+          return res.json({
+            status: 0,
+            data: "Current password is invalid",
+          });
+        }
+
+        doc.password = params.newPassword;
+        doc.save((err, docSave) => {
+          if (err) {
+            return res.json({
+              status: 0,
+              data: errorHandler(err),
+            });
+          }
+          docSave.salt = undefined;
+          docSave.hashPassword = undefined;
+          docSave.avatar = undefined;
+          res.json({
+            status: 1,
+            data: docSave,
+          });
+        });
+      } else {
+        doc.salt = undefined;
+        doc.hashPassword = undefined;
+        doc.avatar = undefined;
+        res.json({
+          status: 1,
+          data: doc,
+        });
+      }
+    }
+  );
 };

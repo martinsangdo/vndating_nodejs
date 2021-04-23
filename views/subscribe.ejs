@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Title -->
+    <title>Subscribe</title>
+    <%- include common_header.ejs %>
+    <script src="/js/subscribe.js"></script>
+    <script>
+      $(window).on("load", function () {
+        if(!common.isAuth()){
+          common.redirect('/user/login')
+        }
+        var mcardVendors = MCARD_VENDORS;
+        var vendorData = Object.keys(mcardVendors).map(
+          (index) => `<option value="${index}">${mcardVendors[index]}</option>`
+        );
+        $("#mcard-vendor").html(vendorData);
+
+        var packageData = MCARD_PACKAGES.map(
+          (item, index) =>
+            `<option value="${item.id}">${item.label}</option>`
+        );
+        $("#mcard-package").html(packageData);
+      });
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <!-- Header -->
+      <%- include common_menu.ejs %>
+      <!-- End Header -->
+
+      <!-- Subscribe -->
+      <section class="container g-py-100">
+        <div class="row justify-content-center">
+          <div class="col-sm-10 col-md-9 col-lg-6">
+            <div
+              class="g-brd-around g-brd-gray-light-v4 rounded g-py-40 g-px-30"
+            >
+              <header class="text-center mb-4">
+                <h2 class="h2 g-color-black g-font-weight-600">Subscribe</h2>
+              </header>
+
+              <!-- Form -->
+              <form id="form-subscribe" class="g-py-15">
+                <div class="mb-4">
+                  <label
+                    class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                    >Dịch vụ *</label
+                  >
+                  <select
+                    class="form-control rounded-0"
+                    id="mcard-vendor"
+                    name="MCardVendor"
+                  ></select>
+                </div>
+
+                <div class="mb-4">
+                  <label
+                    class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                    >Mệnh giá *</label
+                  >
+                  <select
+                    class="form-control rounded-0"
+                    id="mcard-package"
+                    name="MCardPackage"
+                  ></select>
+                </div>
+
+                <div class="mb-4">
+                  <label
+                    class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                    >Mã thẻ cào *</label
+                  >
+                  <input
+                    class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
+                    name="MCardCode"
+                    type="text"
+                    placeholder="ABCDEF"
+                  />
+                </div>
+
+                <div class="row justify-content-between mb-5">
+                  <div class="col-12 align-self-center text-center">
+                    <button
+                      onclick="subscribe.doCreateSubscribe()"
+                      class="btn btn-md u-btn-primary rounded g-py-13 g-px-25"
+                      type="button"
+                    >
+                      Lưu
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <!-- End Form -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Login -->
+
+      <!-- Copyright Footer -->
+      <%- include common_footer.ejs %>
+    </main>
+  </body>
+</html>

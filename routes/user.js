@@ -10,7 +10,9 @@ const {
   logout,
   forgotPassword,
   resetPassword,
-} = require("../controllers/auth");
+  requireLogin,
+  isAuth,
+} = require("../controllers/user");
 
 router.get("/login", function (req, res, next) {
   res.render("login");
@@ -110,7 +112,7 @@ router.get("/get_homepage_list", function (req, res, next) {
   var MariedStatus = req.query["MariedStatus"];
   var Objective = req.query["Objective"];
   var Province = req.query["Province"];
-  const conditions ={ is_active: { $ne: 0 } }
+  const conditions = { is_active: { $ne: 0 } };
   if (MariedStatus) {
     conditions.MariedStatus = parseInt(MariedStatus);
   }
@@ -173,7 +175,6 @@ router.get("/random_user_by_gender", function (req, res, next) {
 
 /**
  * author: Viet Ngo
- * signup
  */
 router.post("/signup", signup);
 router.post("/login", login);

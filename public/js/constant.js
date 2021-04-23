@@ -21,9 +21,10 @@ var API_URI = {
   SAME_RELATED_PROFILE: "/user/same_related_profile",
   DO_SIGNUP: "/user/signup",
   DO_LOGIN: "/user/login",
-  DO_LOGOUT: '/user/logout',
-  DO_FORGOT_PASSWORD: '/user/forgot_password',
-  DO_RESET_PASSWORD: '/user/reset_password',
+  DO_LOGOUT: "/user/logout",
+  DO_FORGOT_PASSWORD: "/user/forgot_password",
+  DO_RESET_PASSWORD: "/user/reset_password",
+  DO_CREATE_SUBSCRIBE: "/subscribe/create",
 };
 
 var CONST = {
@@ -50,3 +51,43 @@ var RESP_MESS = {
   PAYMENT_NOT_EMPTY: "PAYMENT_NOT_EMPTY",
   USER_IS_NOT_EXISTED: "USER_IS_NOT_EXISTED",
 };
+
+var MCARD_VENDORS = {
+  GTEL: "Gtel",
+  MOBIFONE: "Mobifone",
+  VIETNAMOBILE: "Vietnamobile",
+  VIETTEL: "Viettel",
+  VINAPHONE: "Vinaphone",
+};
+var MCARD_PACKAGES = [
+  {
+    id: 1,
+    value: 20000, //vnd
+    label: "20k",
+    duration: 10, //day
+  },
+  {
+    id: 2,
+    value: 50000,
+    label: "50k",
+    duration: 30,
+  },
+  {
+    id: 3,
+    value: 100000,
+    label: "100k",
+    duration: 60,
+  },
+  {
+    id: 4,
+    value: 200000,
+    label: "200k",
+    duration: 180,
+  },
+  {
+    id: 3,
+    value: 500000,
+    label: "500k",
+    duration: 730,
+  },
+];
