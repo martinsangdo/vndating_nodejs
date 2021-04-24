@@ -20,11 +20,13 @@ Subscribe.prototype.doCreateSubscribe = function () {
   //   return false;
   // }
 
-  const findMCardPackage = MCARD_PACKAGES.find(item => item.id == MCardPackage)
-  params.MCardAmount = findMCardPackage.value
-  params.MCardDuration = findMCardPackage.duration
-  const user = common.isAuth()
-  const url = API_URI.DO_CREATE_SUBSCRIBE + '/' + user._id
+  const findMCardPackage = MCARD_PACKAGES.find(
+    (item) => item.id == MCardPackage
+  );
+  params.MCardAmount = findMCardPackage.value;
+  params.MCardDuration = findMCardPackage.duration;
+  const user = common.isAuth();
+  const url = API_URI.DO_CREATE_SUBSCRIBE + "/" + user._id;
   common.ajaxPostWithJwt(url, params, user.token, function (resp) {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       toastr.success("Lưu thành công!");
@@ -35,6 +37,19 @@ Subscribe.prototype.doCreateSubscribe = function () {
       toastr.error(resp.message);
     }
   });
+};
+
+Subscribe.prototype.init = () => {
+  var mcardVendors = MCARD_VENDORS;
+  var vendorData = Object.keys(mcardVendors).map(
+    (index) => `<option value="${index}">${mcardVendors[index]}</option>`
+  );
+  $("#mcard-vendor").html(vendorData);
+
+  var packageData = MCARD_PACKAGES.map(
+    (item, index) => `<option value="${item.id}">${item.label}</option>`
+  );
+  $("#mcard-package").html(packageData);
 };
 
 //==========

@@ -25,7 +25,9 @@ var API_URI = {
   DO_FORGOT_PASSWORD: "/user/forgot_password",
   DO_RESET_PASSWORD: "/user/reset_password",
   DO_CREATE_SUBSCRIBE: "/subscribe/create",
-  DO_GET_PROFILE_DATA: '/user/profile_data'
+  DO_GET_PROFILE_DATA: "/user/profile_data",
+  DO_CHANGE_PASSWORD: "/user/change_password",
+  DO_GET_ME: "/user/me",
 };
 
 var CONST = {

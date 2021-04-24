@@ -15,6 +15,9 @@ const {
   userByIdWithProfile,
   profileById,
   profile,
+  read,
+  changePassword,
+  userById,
 } = require("../controllers/user");
 
 router.get("/login", function (req, res, next) {
@@ -164,15 +167,27 @@ router.get("/random_user_by_gender", function (req, res, next) {
 /**
  * author: Viet Ngo
  */
+//logined profile
+router.get("/me", (req, res) => {
+  res.render("me");
+});
+
+router.get("/change_password", (req, res) => {
+  res.render("change_password");
+});
+
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
 router.post("/forgot_password", forgotPassword);
 router.post("/reset_password", resetPassword);
-router.get("/profile_data/:profileId/:userId", profile);
+router.get("/profile_data/:profileId/:userByIdWithProfile", profile);
+router.post("/me/:userId", requireLogin, isAuth, read);
+router.post("/change_password/:userId", requireLogin, isAuth, changePassword);
 
 router.param("profileId", profileById);
-router.param("userId", userByIdWithProfile);
+router.param("userByIdWithProfile", userByIdWithProfile);
+router.param("userId", userById);
 
 //functions
 function get_related_users(params, callback) {

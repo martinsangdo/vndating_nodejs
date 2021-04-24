@@ -221,43 +221,24 @@ exports.read = (req, res) => {
 
 exports.changePassword = (req, res) => {
   const params = req.body;
-  User.findOneAndUpdate(
-    { _id: req.user._id },
-    { $set: params },
-    { new: true },
-    (err, doc) => {
-      if (err) {
-        return res.rest.success(errorHandler(err));
-      }
+  const { Password, NewPassword } = params;
+  const user = req.user;
 
-      //update password
-      if (params.currentPassword && params.newPassword) {
-        //check current password
-        const isMatched = doc.comparePassword(params.currentPassword);
-        if (!isMatched) {
-          return res.rest.success("Current password is invalid");
-        }
+  //check current password
+  const isMatched = user.comparePassword(Password);
+  if (!isMatched) {
+    return res.rest.success("Current password is invalid");
+  }
 
-        doc.password = params.newPassword;
-        doc.save((err, docSave) => {
-          if (err) {
-            return res.rest.success(errorHandler(err));
-          }
-          docSave.salt = undefined;
-          docSave.hashPassword = undefined;
-          docSave.avatar = undefined;
-          return res.rest.success({
-            data: docSave,
-          });
-        });
-      } else {
-        doc.salt = undefined;
-        doc.hashPassword = undefined;
-        doc.avatar = undefined;
-        return res.rest.success({
-          data: doc,
-        });
-      }
+  user.Password = NewPassword;
+  user.save((err, docSave) => {
+    if (err) {
+      return res.rest.success(errorHandler(err));
     }
-  );
+    docSave.Salt = undefined;
+    docSave.HashPassword = undefined;
+    return res.rest.success({
+      data: docSave,
+    });
+  });
 };

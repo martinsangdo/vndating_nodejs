@@ -34,7 +34,7 @@ ForgotPassword.prototype.doForgotPassword = function () {
       toastr.success(
         "Một email đã được gửi. Vui lòng làm theo hướng dẫn để đặt lại mật khẩu của bạn."
       );
-      $("#form-forgot-password")[0].reset();
+      form[0].reset();
     } else {
       toastr.error(resp.message);
     }

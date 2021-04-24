@@ -10,17 +10,7 @@
         if(!common.isAuth()){
           common.redirect('/user/login')
         }
-        var mcardVendors = MCARD_VENDORS;
-        var vendorData = Object.keys(mcardVendors).map(
-          (index) => `<option value="${index}">${mcardVendors[index]}</option>`
-        );
-        $("#mcard-vendor").html(vendorData);
-
-        var packageData = MCARD_PACKAGES.map(
-          (item, index) =>
-            `<option value="${item.id}">${item.label}</option>`
-        );
-        $("#mcard-package").html(packageData);
+        subscribe.init()
       });
     </script>
   </head>

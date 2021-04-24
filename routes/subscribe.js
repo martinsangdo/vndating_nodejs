@@ -10,6 +10,10 @@ router.get("", (req, res) => {
   res.render("subscribe");
 });
 
+router.get("/history", (req, res) => {
+  res.render("subscribe_history");
+});
+
 router.post("/create/:userId", requireLogin, isAuth, create);
 
 router.param("userId", userById);
