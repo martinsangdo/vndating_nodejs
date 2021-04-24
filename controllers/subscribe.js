@@ -6,29 +6,38 @@ exports.create = (req, res) => {
   const params = req.body;
   const user = req.user;
   params.User = user;
-  const subscribe = new Subscribe(params);
-  subscribe.save((err, doc) => {
-    if (err) {
-      return res.rest.success(errorHandler(err));
+  //check email
+  Subscribe.findOne({ MCardCode: params.MCardCode }).exec(async (err, doc) => {
+    if (doc) {
+      return res.rest.success("Code is taken");
     }
+    const subscribe = new Subscribe(params);
+    subscribe.save((err, doc) => {
+      if (err) {
+        return res.rest.success(errorHandler(err));
+      }
 
-    //update user SubscribeTimeLive
+      //update user SubscribeTimeLive
       var currentDate = new Date();
       //extend by Duration
-      currentDate.setDate(currentDate.getDate() + parseInt(params.MCardDuration));
-      const currentSubscribeTimeLive = user.SubscribeTimeLive || 0
+      currentDate.setDate(
+        currentDate.getDate() + parseInt(params.MCardDuration)
+      );
+      const currentSubscribeTimeLive = user.SubscribeTimeLive || 0;
       //currentDate.getTime() is millisecond
-      const newSubscribeTimeLive = currentSubscribeTimeLive + (currentDate.getTime() / 1000);
-      user.SubscribeTimeLive = newSubscribeTimeLive
-    user.save((err, docSave) => {
-      if (err) {
-        return res.json({
-          status: 0,
-          data: errorHandler(err),
+      const newSubscribeTimeLive =
+        currentSubscribeTimeLive + currentDate.getTime() / 1000;
+      user.SubscribeTimeLive = newSubscribeTimeLive;
+      user.save((err, docSave) => {
+        if (err) {
+          return res.json({
+            status: 0,
+            data: errorHandler(err),
+          });
+        }
+        return res.rest.success({
+          data: { ...doc, newSubscribeTimeLive },
         });
-      }
-      return res.rest.success({
-        data: { ...doc, newSubscribeTimeLive },
       });
     });
   });

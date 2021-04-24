@@ -12,6 +12,9 @@ const {
   resetPassword,
   requireLogin,
   isAuth,
+  userByIdWithProfile,
+  profileById,
+  profile,
 } = require("../controllers/user");
 
 router.get("/login", function (req, res, next) {
@@ -33,23 +36,8 @@ router.get("/profile/:user_id/:name", function (req, res, next) {
   var user = new User();
   user.findOne(
     { _id: user_id, is_active: { $ne: 0 } },
-    "MariedStatus Objective Height Email Province Picture Degree LookingFor Profile Name Age Weight Sex",
+    "MariedStatus Objective Height Province Picture Degree LookingFor Profile Name Age Weight Sex",
     function (resp_detail) {
-      //todo: hide email if not paid
-      if (resp_detail.data != null && resp_detail.data["Email"] != null) {
-        var fullmail = resp_detail.data["Email"];
-        var newmail = "";
-        for (var i = 0; i < fullmail.length - 6; i++) {
-          if (i % 2 == 0) {
-            newmail += "*";
-          } else {
-            newmail += fullmail.substr(i, 1);
-          }
-        }
-        resp_detail.data["Email"] =
-          newmail + fullmail.substr(fullmail.length - 6);
-      }
-      //replace special char http://localhost:3001/user/profile/5f65a34deb5bea0a257004c5
       res.render("profile", { data: resp_detail.data });
     }
   );
@@ -181,6 +169,10 @@ router.post("/login", login);
 router.post("/logout", logout);
 router.post("/forgot_password", forgotPassword);
 router.post("/reset_password", resetPassword);
+router.get("/profile_data/:profileId/:userId", profile);
+
+router.param("profileId", profileById);
+router.param("userId", userByIdWithProfile);
 
 //functions
 function get_related_users(params, callback) {

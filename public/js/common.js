@@ -62,7 +62,28 @@ Common.prototype.ajaxRawGet = function(url, callback, callback_err){
         }
     });
 };
-//ajaxPost with jwt
+//get data from URL with JWT
+Common.prototype.ajaxRawGetWithJwt = function(url, token, callback, callback_err){
+    $.ajax({
+        url: url,//url is a link request
+        type: 'GET',
+        dataType: 'json',	//jsonp causes error in IE
+        beforeSend: function (request) {
+            request.setRequestHeader("Authorization", `Bearer ${token}`)
+        },
+        success: function (msg) {
+            if (callback !== undefined){
+                callback(msg);
+            }
+        },
+        error: function (errormessage) {
+            if (callback_err !== undefined) {
+                callback_err(errormessage.responseText);
+            }
+        }
+    });
+};
+//ajaxPost with JWT
 Common.prototype.ajaxPostWithJwt = function(uri, params, token, callback, callback_err){
     uri = encodeURI(SERVER_URI + uri);
 
