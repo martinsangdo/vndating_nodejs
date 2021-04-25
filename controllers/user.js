@@ -5,18 +5,27 @@ const expressJwt = require("express-jwt"); //for authorize token
 const { sendEmailForgotPassword } = require("../helpers/emailHelper");
 const _ = require("lodash");
 const Common = require("../common/common");
+const { param } = require("../routes/user");
 const common = new Common();
 
 exports.signup = (req, res) => {
-  const { Name, Email, Password } = req.body;
+  const { LastName, FirstName, Email, Password } = req.body;
   //check email
   User.findOne({ Email }).exec(async (err, doc) => {
     if (doc) {
       return res.rest.success("Email is taken");
     }
 
+    const Name = LastName + " " + FirstName;
     const created_time = common.get_created_time();
-    const user = new User({ Name, Email, Password, created_time });
+    const user = new User({
+      LastName,
+      FirstName,
+      Name,
+      Email,
+      Password,
+      created_time,
+    });
     user.save((err, doc) => {
       if (err) {
         return res.rest.success(errorHandler(err));
@@ -213,7 +222,8 @@ exports.profile = (req, res) => {
 
 exports.read = (req, res) => {
   const user = req.user;
-  user.avatar = undefined;
+  user.Salt = undefined;
+  user.HashPassword = undefined;
   return res.rest.success({
     data: user,
   });
@@ -239,6 +249,23 @@ exports.changePassword = (req, res) => {
     docSave.HashPassword = undefined;
     return res.rest.success({
       data: docSave,
+    });
+  });
+};
+
+exports.update = (req, res) => {
+  let params = req.body;
+  params.Name = params.LastName + " " + params.FirstName;
+  let user = req.user;
+  user = _.extend(user, params);
+  user.save((err, doc) => {
+    if (err) {
+      return res.rest.success(errorHandler(err));
+    }
+    doc.Salt = undefined;
+    doc.HashPassword = undefined;
+    return res.rest.success({
+      data: doc,
     });
   });
 };

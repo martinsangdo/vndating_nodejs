@@ -38,7 +38,6 @@ Signup.prototype.doSignup = function () {
   }
 
   params.RePassword = undefined;
-  params.Name = FirstName + " " + LastName;
   params.Email = Email.toLowerCase();
 
   if (isSubmitting) {

@@ -28,6 +28,7 @@ var API_URI = {
   DO_GET_PROFILE_DATA: "/user/profile_data",
   DO_CHANGE_PASSWORD: "/user/change_password",
   DO_GET_ME: "/user/me",
+  DO_UPDATE_ME: "/user/me",
 };
 
 var CONST = {
