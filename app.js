@@ -83,6 +83,7 @@ app.use('/', routes);
 app.use('/test', test);
 app.use('/user', user);
 app.use('/subscribe', require('./routes/subscribe'))
+app.use('/search', require('./routes/search'))
 
 app.use('/web_parser', web_parser);
 app.use('/payment', payment);

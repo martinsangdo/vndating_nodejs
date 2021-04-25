@@ -391,6 +391,18 @@ Common.prototype.doLogout = () => {
   }
 };
 
+//submit form search
+Common.prototype.handleClickSearch = () => {
+  const formSearch = $("#form-search");
+  let params = common.getFormData(formSearch);
+  const { AgeTo, AgeFrom } = params;
+  if (parseInt(AgeFrom) > parseInt(AgeTo)) {
+    toastr.error("Tuổi đến phải lớn hơn tuổi từ!");
+    return false;
+  }
+  formSearch.submit();
+};
+
 //common functions
 $(function () {
   var userMenu = $("#user-menu");
@@ -404,4 +416,46 @@ $(function () {
     $("#unauth-menu").removeClass("hidden");
   }
   userMenu.html(html);
+
+  //#form-search
+  const formSearch = $("#form-search");
+  const genders = common.convert_gender(null, true);
+  formSearch
+    .find("select[name=Sex]")
+    .append(
+      Object.keys(genders).map(
+        (item) => `<option value="${item}">${genders[item]}</option>`
+      )
+    );
+  const mariedStatuses = common.convert_married_status(null, true);
+  formSearch
+    .find("select[name=MariedStatus]")
+    .append(
+      Object.keys(mariedStatuses).map(
+        (item) => `<option value="${item}">${mariedStatuses[item]}</option>`
+      )
+    );
+  const objectives = common.convert_objective(null, true);
+  formSearch
+    .find("select[name=Objective]")
+    .append(
+      Object.keys(objectives).map(
+        (item) => `<option value="${item}">${objectives[item]}</option>`
+      )
+    );
+  const provinces = common.convert_province(null, true);
+  formSearch
+    .find("select[name=Province]")
+    .append(
+      Object.keys(provinces).map(
+        (item) => `<option value="${item}">${provinces[item]}</option>`
+      )
+    );
+
+  let ageData = "";
+  for (i = 10; i <= 100; i++) {
+    ageData += `<option value="${i}">${i}</option>`;
+  }
+  formSearch.find("select[name=AgeFrom]").append(ageData);
+  formSearch.find("select[name=AgeTo]").append(ageData);
 });

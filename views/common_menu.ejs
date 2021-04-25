@@ -220,7 +220,13 @@
   <h4 class="g-mb-20">Tìm kiếm nâng cao</h4>
 
   <!-- Form -->
-  <form id="form-search" class="g-py-15" style="width: 560px; max-width: 100%">
+  <form
+    method="GET"
+    action="/search"
+    id="form-search"
+    class="g-py-15"
+    style="width: 560px; max-width: 100%"
+  >
     <div class="form-group row g-mb-25">
       <label for="example-text-input" class="col-3 col-form-label"
         >Giới tính</label
@@ -256,7 +262,7 @@
         >Quốc gia</label
       >
       <div class="col-9">
-        <select class="form-control rounded-0" name="Objective">
+        <select class="form-control rounded-0" name="Country">
           <option value="">Vietnam</option>
         </select>
       </div>
@@ -291,7 +297,14 @@
     <div class="row justify-content-between">
       <div class="col-12 align-self-center text-center">
         <button
-          onclick="common.doSearch()"
+          class="btn btn-md u-btn-warning rounded g-py-13 g-px-25 mr-2"
+          type="reset"
+        >
+          Reset
+        </button>
+
+        <button
+          onclick="common.handleClickSearch()"
           class="btn btn-md u-btn-primary rounded g-py-13 g-px-25"
           type="button"
         >

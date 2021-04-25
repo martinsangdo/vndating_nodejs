@@ -101,9 +101,12 @@ router.get("/get_homepage_list", function (req, res, next) {
   }
   page_index = page_index - 1; //query from 0
 
+  var Sex = req.query["Sex"];
   var MariedStatus = req.query["MariedStatus"];
   var Objective = req.query["Objective"];
   var Province = req.query["Province"];
+  var AgeFrom = req.query["AgeFrom"];
+  var AgeTo = req.query["AgeTo"];
   const conditions = { is_active: { $ne: 0 } };
   if (MariedStatus) {
     conditions.MariedStatus = parseInt(MariedStatus);
@@ -114,6 +117,17 @@ router.get("/get_homepage_list", function (req, res, next) {
   if (Province) {
     conditions.Province = parseInt(Province);
   }
+  if (Sex) {
+    conditions.Sex = parseInt(Sex);
+  }
+  if (AgeFrom || AgeTo) {
+    conditions.Age = {
+      $gte: parseInt(AgeFrom || 0),
+      $lte: parseInt(AgeTo || 100),
+    };
+  }
+
+  console.log('conditions', conditions)
 
   var user = new User();
   user.countDocuments(conditions, function (resp_total) {
