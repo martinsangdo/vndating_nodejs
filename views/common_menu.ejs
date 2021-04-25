@@ -1,136 +1,305 @@
 <header id="js-header" class="u-header u-header--static u-shadow-v19">
-    <!-- Top Bar -->
-    <div class="u-header__section g-brd-bottom g-brd-gray-light-v4">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Logo -->
-                <div class="col-md-9 g-hidden-md-down">
-                    <a href="/" class="navbar-brand hidden">
-                        <img src="/img/logo.png" alt="Logo" class="g-width-100"/>
-                    </a>
-                </div>
-                <!-- End Logo -->
-
-                <!-- End Subscribe Form -->
-                <div class="float-right" id="unauth-menu">
-                    <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/login">Đăng nhập</a> /
-                    <a class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer" href="/user/signup">Đăng ký</a>
-                </div>
-                <!-- Account -->
-                <div class="float-right col-md-3" id="auth-menu">
-                    <a id="account-dropdown-invoker" class="media align-items-center float-right g-text-underline--none--hover" href="#!"
-                       aria-controls="account-dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false"
-                       data-dropdown-event="hover"
-                       data-dropdown-target="#account-dropdown"
-                       data-dropdown-type="css-animation"
-                       data-dropdown-duration="300"
-                       data-dropdown-hide-on-scroll="false"
-                       data-dropdown-animation-in="fadeIn"
-                       data-dropdown-animation-out="fadeOut">
-                        <div class="media-body">
-                            <span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13">Tài khoản</span>
-                        </div>
-                    </a>
-
-                    <ul id="account-dropdown" class="list-unstyled text-right g-width-160 g-brd-around g-brd-secondary-light-v2 g-bg-white rounded g-pos-abs g-right-0 g-py-5 g-mt-25"
-                        aria-labelledby="account-dropdown-invoker">
-                        <li>
-                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="/user/me">Thông tin cá nhân</a>
-                        </li>
-                        <li>
-                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="/user/change_password">Đổi mật khẩu</a>
-                        </li>
-                        <li>
-                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="/subscribe/history">Lịch sử nạp thẻ</a>
-                        </li>
-                        <li>
-                            <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" onclick="common.doLogout()" href="#!">Đăng xuất</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- End Account -->
-            </div>
+  <!-- Top Bar -->
+  <div class="u-header__section g-brd-bottom g-brd-gray-light-v4">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Logo -->
+        <div class="col-md-9 g-hidden-md-down">
+          <a href="/" class="navbar-brand hidden">
+            <img src="/img/logo.png" alt="Logo" class="g-width-100" />
+          </a>
         </div>
-    </div>
-    <!-- End Top Bar -->
+        <!-- End Logo -->
 
-    <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
-        <nav class="js-mega-menu navbar navbar-expand-lg g-px-0">
-            <div class="container g-px-15">
-                <!-- Logo -->
-                <a class="navbar-brand g-hidden-lg-up" href="bm-classic-home-page-1.html">
-                    <img src="/img/logo.png" alt="Logo">
-                </a>
-                <!-- End Logo -->
-
-                <!-- Responsive Toggle Button -->
-                <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 ml-auto" type="button"
-                        aria-label="Toggle navigation"
-                        aria-expanded="false"
-                        aria-controls="navBar"
-                        data-toggle="collapse"
-                        data-target="#navBar">
-                <span class="hamburger hamburger--slider g-pa-0">
-                  <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                  </span>
-                </span>
-                </button>
-                <!-- End Responsive Toggle Button -->
-
-                <!-- Navigation -->
-                <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar">
-                    <ul class="navbar-nav g-font-weight-600">
-                        <!-- Home - Submenu -->
-                        <li class="nav-item g-mr-10--lg g-mr-20--xl">
-                            <a id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="/">
-                                Trang chủ
-                            </a>
-                        </li>
-                        <!-- End Home - Submenu -->
-                        <li class="nav-item g-mr-10--lg g-mr-20--xl">
-                            <a id="nav-link--home" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!">
-                                Tìm kiếm
-                            </a>
-                        </li>
-                        <!-- Pages - Submenu -->
-                        <li class="hidden nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
-                            <a id="nav-link--pages" class="nav-link text-uppercase g-color-primary--hover g-px-0" href="#!"
-                               aria-haspopup="true"
-                               aria-expanded="false"
-                               aria-controls="nav-submenu--pages">
-                                Tìm nhóm
-                            </a>
-
-                            <!-- Submenu -->
-                            <ul id="nav-submenu--pages" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-brd-top g-brd-primary g-brd-top-2 g-mt-17"
-                                aria-labelledby="nav-link--pages">
-                                <li class="dropdown-item g-bg-secondary--hover">
-                                    <a class="nav-link g-color-secondary-dark-v1" href="#!">Bạn nữ Độc thân</a>
-                                </li>
-                                <li class="dropdown-item g-bg-secondary--hover">
-                                    <a class="nav-link g-color-secondary-dark-v1" href="#!">Bạn nam Độc thân</a>
-                                </li>
-                                <li class="dropdown-item g-bg-secondary--hover">
-                                    <a class="nav-link g-color-secondary-dark-v1" href="#!">Người yêu lâu dài</a>
-                                </li>
-                                <li class="dropdown-item g-bg-secondary--hover">
-                                    <a class="nav-link g-color-secondary-dark-v1" href="#!">Người yêu ngắn hạn</a>
-                                </li>
-                                <li class="dropdown-item g-bg-secondary--hover">
-                                    <a class="nav-link g-color-secondary-dark-v1" href="#!">Tìm bạn tâm sự</a>
-                                </li>
-                            </ul>
-                            <!-- End Submenu -->
-                        </li>
-                        <!-- End Pages - Submenu -->
-
-                    </ul>
-                </div>
-                <!-- End Navigation -->
+        <!-- End Subscribe Form -->
+        <div class="float-right" id="unauth-menu">
+          <a
+            class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer"
+            href="/user/login"
+            >Đăng nhập</a
+          >
+          /
+          <a
+            class="g-font-weight-600 g-font-size-13 u-link-v5 g-color-primary--hover pointer"
+            href="/user/signup"
+            >Đăng ký</a
+          >
+        </div>
+        <!-- Account -->
+        <div class="float-right col-md-3" id="auth-menu">
+          <a
+            id="account-dropdown-invoker"
+            class="media align-items-center float-right g-text-underline--none--hover"
+            href="#!"
+            aria-controls="account-dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-dropdown-event="hover"
+            data-dropdown-target="#account-dropdown"
+            data-dropdown-type="css-animation"
+            data-dropdown-duration="300"
+            data-dropdown-hide-on-scroll="false"
+            data-dropdown-animation-in="fadeIn"
+            data-dropdown-animation-out="fadeOut"
+          >
+            <div class="media-body">
+              <span
+                class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13"
+                >Tài khoản</span
+              >
             </div>
-        </nav>
+          </a>
+
+          <ul
+            id="account-dropdown"
+            class="list-unstyled text-right g-width-160 g-brd-around g-brd-secondary-light-v2 g-bg-white rounded g-pos-abs g-right-0 g-py-5 g-mt-25"
+            aria-labelledby="account-dropdown-invoker"
+          >
+            <li>
+              <a
+                class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20"
+                href="/user/me"
+                >Thông tin cá nhân</a
+              >
+            </li>
+            <li>
+              <a
+                class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20"
+                href="/user/change_password"
+                >Đổi mật khẩu</a
+              >
+            </li>
+            <li>
+              <a
+                class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20"
+                href="/subscribe/history"
+                >Lịch sử nạp thẻ</a
+              >
+            </li>
+            <li>
+              <a
+                class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20"
+                onclick="common.doLogout()"
+                href="#!"
+                >Đăng xuất</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- End Account -->
+      </div>
     </div>
+  </div>
+  <!-- End Top Bar -->
+
+  <div
+    class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10"
+  >
+    <nav class="js-mega-menu navbar navbar-expand-lg g-px-0">
+      <div class="container g-px-15">
+        <!-- Logo -->
+        <a
+          class="navbar-brand g-hidden-lg-up"
+          href="bm-classic-home-page-1.html"
+        >
+          <img src="/img/logo.png" alt="Logo" />
+        </a>
+        <!-- End Logo -->
+
+        <!-- Responsive Toggle Button -->
+        <button
+          class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 ml-auto"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="navBar"
+          data-toggle="collapse"
+          data-target="#navBar"
+        >
+          <span class="hamburger hamburger--slider g-pa-0">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </span>
+        </button>
+        <!-- End Responsive Toggle Button -->
+
+        <!-- Navigation -->
+        <div
+          class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg"
+          id="navBar"
+        >
+          <ul class="navbar-nav g-font-weight-600">
+            <!-- Home - Submenu -->
+            <li class="nav-item g-mr-10--lg g-mr-20--xl">
+              <a
+                id="nav-link--home"
+                class="nav-link text-uppercase g-color-primary--hover g-px-0"
+                href="/"
+              >
+                Trang chủ
+              </a>
+            </li>
+            <!-- End Home - Submenu -->
+            <li class="nav-item g-mr-10--lg g-mr-20--xl">
+              <a
+                id="nav-link--home"
+                class="nav-link text-uppercase g-color-primary--hover g-px-0"
+                href="#search-modal"
+                data-modal-target="#search-modal"
+                data-modal-effect="fadein"
+              >
+                Tìm kiếm
+              </a>
+            </li>
+            <!-- Pages - Submenu -->
+            <li class="hidden nav-item hs-has-sub-menu g-mx-10--lg g-mx-20--xl">
+              <a
+                id="nav-link--pages"
+                class="nav-link text-uppercase g-color-primary--hover g-px-0"
+                href="#!"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="nav-submenu--pages"
+              >
+                Tìm nhóm
+              </a>
+
+              <!-- Submenu -->
+              <ul
+                id="nav-submenu--pages"
+                class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-brd-top g-brd-primary g-brd-top-2 g-mt-17"
+                aria-labelledby="nav-link--pages"
+              >
+                <li class="dropdown-item g-bg-secondary--hover">
+                  <a class="nav-link g-color-secondary-dark-v1" href="#!"
+                    >Bạn nữ Độc thân</a
+                  >
+                </li>
+                <li class="dropdown-item g-bg-secondary--hover">
+                  <a class="nav-link g-color-secondary-dark-v1" href="#!"
+                    >Bạn nam Độc thân</a
+                  >
+                </li>
+                <li class="dropdown-item g-bg-secondary--hover">
+                  <a class="nav-link g-color-secondary-dark-v1" href="#!"
+                    >Người yêu lâu dài</a
+                  >
+                </li>
+                <li class="dropdown-item g-bg-secondary--hover">
+                  <a class="nav-link g-color-secondary-dark-v1" href="#!"
+                    >Người yêu ngắn hạn</a
+                  >
+                </li>
+                <li class="dropdown-item g-bg-secondary--hover">
+                  <a class="nav-link g-color-secondary-dark-v1" href="#!"
+                    >Tìm bạn tâm sự</a
+                  >
+                </li>
+              </ul>
+              <!-- End Submenu -->
+            </li>
+            <!-- End Pages - Submenu -->
+          </ul>
+        </div>
+        <!-- End Navigation -->
+      </div>
+    </nav>
+  </div>
 </header>
+
+<!-- Demo modal window -->
+<div
+  id="search-modal"
+  class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20"
+  style="display: none"
+>
+  <button type="button" class="close" onclick="Custombox.modal.close();">
+    <i class="hs-icon hs-icon-close"></i>
+  </button>
+  <h4 class="g-mb-20">Tìm kiếm nâng cao</h4>
+
+  <!-- Form -->
+  <form id="form-search" class="g-py-15" style="width: 560px; max-width: 100%">
+    <div class="form-group row g-mb-25">
+      <label for="example-text-input" class="col-3 col-form-label"
+        >Giới tính</label
+      >
+      <div class="col-9">
+        <select class="form-control rounded-0" name="Sex">
+          <option value="">--Chọn Giới tính--</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row g-mb-25">
+      <label for="example-text-input" class="col-3 col-form-label"
+        >Tình trạng hôn nhân</label
+      >
+      <div class="col-9">
+        <select class="form-control rounded-0" name="MariedStatus">
+          <option value="">--Chọn Tình trạng hôn nhân--</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row g-mb-25">
+      <label for="example-text-input" class="col-3 col-form-label"
+        >Mục tiêu</label
+      >
+      <div class="col-9">
+        <select class="form-control rounded-0" name="Objective">
+          <option value="">--Chọn Mục tiêu--</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row g-mb-25">
+      <label for="example-text-input" class="col-3 col-form-label"
+        >Quốc gia</label
+      >
+      <div class="col-9">
+        <select class="form-control rounded-0" name="Objective">
+          <option value="">Vietnam</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row g-mb-25">
+      <label for="example-text-input" class="col-3 col-form-label"
+        >Đến từ</label
+      >
+      <div class="col-9">
+        <select class="form-control rounded-0" name="Province">
+          <option value="">--Chọn Đến từ--</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row g-mb-25">
+      <label for="example-text-input" class="col-3 col-form-label">Tuổi</label>
+      <div class="col-9">
+        <select class="form-control rounded-0" name="AgeFrom">
+          <option value="">--Từ--</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row g-mb-25">
+      <label for="example-text-input" class="col-3 col-form-label"></label>
+      <div class="col-9">
+        <select class="form-control rounded-0" name="AgeTo">
+          <option value="">--Đến--</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row justify-content-between">
+      <div class="col-12 align-self-center text-center">
+        <button
+          onclick="common.doSearch()"
+          class="btn btn-md u-btn-primary rounded g-py-13 g-px-25"
+          type="button"
+        >
+          Kết quả
+        </button>
+      </div>
+    </div>
+  </form>
+  <!-- End Form -->
+</div>
+<!-- End Demo modal window -->
