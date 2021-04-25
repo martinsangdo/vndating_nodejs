@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Title -->
+    <title>Subscribe History</title>
+    <%- include common_header.ejs %>
+    <link rel="stylesheet" href="/css/subscribe_history.css" />
+    <script src="/js/subscribe_history.js"></script>
+    <script>
+      $(window).on("load", function () {
+        if (!common.isAuth()) {
+          common.redirect("/user/login");
+        }
+        subscribeHistory.init();
+        subscribeHistory.doGetMe();
+      });
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <!-- Header -->
+      <%- include common_menu.ejs %>
+      <!-- End Header -->
+
+      <!-- News Content -->
+      <section class="g-pb-50 g-pt-50">
+        <div class="container">
+          <div class="row">
+            <div class="g-pr-10">
+              <strong
+                class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10"
+                >Ngày hết hạn
+                <span
+                  id="SubscribeTimeLive"
+                  class="align-top text-danger g-ml-20"
+                ></span
+              ></strong>
+            </div>
+          </div>
+          <!-- News Section 1 -->
+          <div class="row g-mb-60">
+            <!-- Articles Content -->
+            <div class="col-lg-12 g-mb-50 g-mb-0--lg">
+              <!-- Home list -->
+              <ul class="g-mb-60 timeline" id="home_list">
+                <!-- data fetched here -->
+              </ul>
+              <!-- 1 template -->
+              <li class="hidden" id="item_tmpl">
+                <span class="text-info MCardCode">ABXC1231</span>
+                <span class="float-right text-info CreatedTime"
+                  >1 April, 2014</span
+                >
+                <p class="card-data">Loại thẻ VIETTEL mệnh giá 20,000</p>
+              </li>
+              <!-- END 1 template -->
+              <!-- End Home list -->
+
+              <div id="stickyblock-end"></div>
+            </div>
+            <!-- End Articles Content -->
+          </div>
+          <!-- News Section 1 -->
+
+          <!-- News Section 3 -->
+          <div class="row" id="dynamic_pagination">
+            <!-- Articles Content -->
+            <div class="col-lg-9 g-mb-50 g-mb-0--lg">
+              <!-- Pagination -->
+              <nav id="stickyblock-end-1" aria-label="Page Navigation">
+                <ul
+                  class="list-inline text-center mb-0 hidden"
+                  id="paging_list"
+                >
+                  <!-- data fetched here -->
+                </ul>
+                <ul class="hidden" id="paging_tmpl">
+                  <li class="list-inline-item li_active">
+                    <a
+                      class="active u-pagination-v1__item g-width-40 g-height-30 g-brd-secondary-light-v2 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded g-pa-5"
+                      href="#!"
+                    ></a>
+                  </li>
+                  <li class="list-inline-item li_normal">
+                    <a
+                      class="u-pagination-v1__item g-width-40 g-height-30 g-brd-transparent g-brd-primary--hover g-brd-primary--active g-color-secondary-dark-v1 g-bg-primary--active g-font-size-12 rounded g-pa-5"
+                      href="#!"
+                    ></a>
+                  </li>
+                </ul>
+              </nav>
+              <!-- End Pagination -->
+            </div>
+            <!-- End Articles -->
+          </div>
+          <!-- News Section 3 -->
+        </div>
+      </section>
+      <!-- End News Content -->
+
+      <!-- Footer -->
+      <%- include common_footer.ejs %>
+      <!-- End Footer -->
+
+      <!-- Go To -->
+      <a
+        class="js-go-to u-go-to-v2"
+        href="#!"
+        data-type="fixed"
+        data-position='{
+           "bottom": 15,
+           "right": 15
+         }'
+        data-offset-top="400"
+        data-compensation="#js-header"
+        data-show-effect="zoomIn"
+      >
+        <i class="hs-icon hs-icon-arrow-top"></i>
+      </a>
+      <!-- End Go To -->
+    </main>
+
+    <div class="u-outer-spaces-helper"></div>
+  </body>
+</html>

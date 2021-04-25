@@ -5,7 +5,6 @@ const expressJwt = require("express-jwt"); //for authorize token
 const { sendEmailForgotPassword } = require("../helpers/emailHelper");
 const _ = require("lodash");
 const Common = require("../common/common");
-const { param } = require("../routes/user");
 const common = new Common();
 
 exports.signup = (req, res) => {

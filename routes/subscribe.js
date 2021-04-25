@@ -4,7 +4,7 @@
 var express = require("express");
 var router = express.Router();
 const { requireLogin, isAuth, userById } = require("../controllers/user");
-const { create } = require("../controllers/subscribe");
+const { create, list } = require("../controllers/subscribe");
 
 router.get("", (req, res) => {
   res.render("subscribe");
@@ -15,6 +15,7 @@ router.get("/history", (req, res) => {
 });
 
 router.post("/create/:userId", requireLogin, isAuth, create);
+router.get("/list/:userId", requireLogin, isAuth, list);
 
 router.param("userId", userById);
 

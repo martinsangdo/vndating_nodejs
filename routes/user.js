@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var common = require("../common/common.js");
 var Constant = require("../common/constant.js");
 var User = require("../models/User.js");
 
@@ -126,8 +125,6 @@ router.get("/get_homepage_list", function (req, res, next) {
       $lte: parseInt(AgeTo || 100),
     };
   }
-
-  console.log('conditions', conditions)
 
   var user = new User();
   user.countDocuments(conditions, function (resp_total) {

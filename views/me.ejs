@@ -7,8 +7,8 @@
     <script src="/js/me.js"></script>
     <script>
       $(window).on("load", function () {
-        if(!common.isAuth()){
-          common.redirect('/user/login')
+        if (!common.isAuth()) {
+          common.redirect("/user/login");
         }
         me.init();
         me.doGetMe();
@@ -33,7 +33,7 @@
                   <img
                     class="img-fluid w-100 u-block-hover__main--zoom-v1"
                     id="Picture"
-                    src="https://lh3.googleusercontent.com/proxy/RVcZX0KL0XezlwoBp3W2wYNTSPXxuC7EV30yEyxzHMvefnBQyQaWoHqj59kAmIeC6tvLkEwLEUsfTpN6qQzx-Xck0-r4G0QBrJVb4sEN8j44K9yTcVYoc8TSZJq7aB31ORPNwBCC "
+                    src="https://www.centraltrials.com/wp-content/uploads/2016/11/User-Default-300x300.jpg"
                   />
                 </figure>
               </div>
@@ -61,7 +61,7 @@
                           >Email *</label
                         >
                         <input
-                          class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
+                        class="form-control rounded g-py-10 g-px-15"
                           id="Email"
                           name="Email"
                           type="email"
@@ -76,7 +76,7 @@
                           >Họ *</label
                         >
                         <input
-                          class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
+                        class="form-control rounded g-py-10 g-px-15"
                           id="LastName"
                           name="LastName"
                           type="text"
@@ -90,7 +90,7 @@
                           >Tên *</label
                         >
                         <input
-                          class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
+                          class="form-control rounded g-py-10 g-px-15"
                           id="FirstName"
                           name="FirstName"
                           type="text"

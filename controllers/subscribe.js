@@ -1,6 +1,9 @@
 const Subscribe = require("../models/Subscribe");
 const User = require("../models/User");
 const { errorHandler } = require("../helpers/dbErrorHandler");
+const Common = require("../common/common");
+const common = new Common();
+var Constant = require("../common/constant.js");
 
 exports.create = (req, res) => {
   const params = req.body;
@@ -11,6 +14,7 @@ exports.create = (req, res) => {
     if (doc) {
       return res.rest.success("Code is taken");
     }
+    params.CreatedTime = common.get_created_time();
     const subscribe = new Subscribe(params);
     subscribe.save((err, doc) => {
       if (err) {
@@ -18,8 +22,8 @@ exports.create = (req, res) => {
       }
 
       //update user SubscribeTimeLive
-      var currentDate = new Date();
       //extend by Duration
+      var currentDate = new Date();
       currentDate.setDate(
         currentDate.getDate() + parseInt(params.MCardDuration)
       );
@@ -58,5 +62,34 @@ exports.read = (req, res) => {
 
   return res.rest.success({
     data: subscribe,
+  });
+};
+
+exports.list = (req, res) => {
+  var pageIndex = parseInt(req.query["page"]);
+  if (isNaN(pageIndex) || pageIndex <= 0) {
+    pageIndex = 1;
+  }
+  pageIndex = pageIndex - 1; //query from 0
+
+  var subscribe = new Subscribe();
+  var conditions = {
+    IsActive: { $ne: 0 },
+    User: req.user,
+  };
+  subscribe.countDocuments(conditions, function (resp_total) {
+    subscribe.search_by_condition(
+      conditions,
+      {
+        limit: Constant.DEFAULT_PAGE_LENGTH,
+        skip: pageIndex * Constant.DEFAULT_PAGE_LENGTH,
+      },
+      "",
+      { _id: -1 },
+      function (resp) {
+        resp["total"] = resp_total.data;
+        res.rest.success(resp); //success
+      }
+    );
   });
 };
