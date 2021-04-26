@@ -53,7 +53,7 @@ Subscribe.prototype.init = () => {
   $("#mcard-package").html(packageData);
 
   //mask to verify card code
-  $("#MCardCode").mask("9999-9999-9999");
+  $("#MCardCode").mask("9999-99999-9999");
 };
 
 //==========
