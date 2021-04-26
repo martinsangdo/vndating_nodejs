@@ -25,7 +25,7 @@ Subscribe.prototype.doCreateSubscribe = function () {
   );
   params.MCardAmount = findMCardPackage.value;
   params.MCardDuration = findMCardPackage.duration;
-  params.MCardCode =  $.trim(MCardCode.toUpperCase());
+  params.MCardCode = $.trim(MCardCode.toUpperCase());
   const user = common.isAuth();
   const url = API_URI.DO_CREATE_SUBSCRIBE + "/" + user._id;
   common.ajaxPostWithJwt(url, params, user.token, function (resp) {
@@ -51,6 +51,9 @@ Subscribe.prototype.init = () => {
     (item, index) => `<option value="${item.id}">${item.label}</option>`
   );
   $("#mcard-package").html(packageData);
+
+  //mask to verify card code
+  $("#MCardCode").mask("9999-9999-9999");
 };
 
 //==========
