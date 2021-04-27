@@ -17,7 +17,7 @@
     "dotenv": "^8.2.0",
     "ejs": "~2.3.4",
     "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
+    "express-jwt": "^5.3.3",
     "express-rest-response": "^1.2.0",
     "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
