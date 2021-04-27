@@ -27,6 +27,8 @@ ChangePassword.prototype.doChangePassword = function () {
   }
 
   params.NewRePassword = undefined;
+  params.Password =  $.sha256(params.Password);
+  params.NewPassword =  $.sha256(params.NewPassword);
 
   if (isSubmitting) {
     return;

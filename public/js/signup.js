@@ -38,6 +38,7 @@ Signup.prototype.doSignup = function () {
   }
 
   params.RePassword = undefined;
+  params.Password = $.sha256(params.Password)
   params.Email = Email.toLowerCase();
 
   if (isSubmitting) {

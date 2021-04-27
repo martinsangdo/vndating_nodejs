@@ -21,6 +21,7 @@ Login.prototype.doLogin= function () {
   }
 
   params.Email = Email.toLowerCase();
+  params.Password = $.sha256(params.Password)
   common.ajaxPost(API_URI.DO_LOGIN, params, function (resp) {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       toastr.success("Đăng nhập thành công!");

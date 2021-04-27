@@ -27,6 +27,7 @@ ResetPassword.prototype.doResetPassword = function () {
   }
 
   params.RePassword = undefined;
+  params.Password = $.sha256(params.Password)
 
   if (isSubmitting) {
     return;
