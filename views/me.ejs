@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Title -->
+    <title>My Profile</title>
+    <%- include common_header.ejs %>
+    <script src="/js/me.js"></script>
+    <script>
+      $(window).on("load", function () {
+        if (!common.isAuth()) {
+          common.redirect("/user/login");
+        }
+        me.init();
+        me.doGetMe();
+      });
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <!-- Header -->
+      <%- include common_menu.ejs %>
+      <!-- End Header -->
+
+      <section class="g-mb-20 g-mt-50">
+        <div class="container">
+          <div class="row">
+            <!-- Profile Sidebar -->
+            <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+              <!-- User Image -->
+              <div class="u-block-hover g-pos-rel">
+                <figure>
+                  <img
+                    class="img-fluid w-100 u-block-hover__main--zoom-v1"
+                    id="Picture"
+                    src="https://www.centraltrials.com/wp-content/uploads/2016/11/User-Default-300x300.jpg"
+                  />
+                </figure>
+              </div>
+              <!-- User Image -->
+            </div>
+            <!-- End Profile Sidebar -->
+
+            <!-- Profle Content -->
+            <div class="col-lg-9">
+              <!-- Tab panes -->
+              <div id="nav-1-1-default-hor-left-underline" class="tab-content">
+                <!-- Edit Profile -->
+                <div
+                  class="tab-pane fade show active"
+                  id="nav-1-1-default-hor-left-underline--1"
+                  role="tabpanel"
+                  data-parent="#nav-1-1-default-hor-left-underline"
+                >
+                  <!-- Form -->
+                  <form id="form-me" class="g-py-15">
+                    <div class="row">
+                      <div class="col-12 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Email *</label
+                        >
+                        <input
+                        class="form-control rounded g-py-10 g-px-15"
+                          id="Email"
+                          name="Email"
+                          type="email"
+                          placeholder="joindoe@gmail.com"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Họ *</label
+                        >
+                        <input
+                        class="form-control rounded g-py-10 g-px-15"
+                          id="LastName"
+                          name="LastName"
+                          type="text"
+                          placeholder="John"
+                        />
+                      </div>
+
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Tên *</label
+                        >
+                        <input
+                          class="form-control rounded g-py-10 g-px-15"
+                          id="FirstName"
+                          name="FirstName"
+                          type="text"
+                          placeholder="Doe"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Giới tính
+                        </label>
+                        <select
+                          class="form-control rounded-0"
+                          id="Sex"
+                          name="Sex"
+                        >
+                          <option value="">--Chọn Giới tính--</option>
+                        </select>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Tình trạng hôn nhân
+                        </label>
+                        <select
+                          class="form-control rounded-0"
+                          id="MariedStatus"
+                          name="MariedStatus"
+                        >
+                          <option value="">--Chọn Tình trạng hôn nhân--</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Mục tiêu
+                        </label>
+                        <select
+                          class="form-control rounded-0"
+                          id="Objective"
+                          name="Objective"
+                        >
+                          <option value="">--Chọn Mục tiêu--</option>
+                        </select>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Tuổi
+                        </label>
+                        <select
+                          class="form-control rounded-0"
+                          id="Age"
+                          name="Age"
+                        >
+                          <option value="">--Chọn Tuổi--</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Bản thân
+                        </label>
+                        <textarea
+                          class="form-control"
+                          id="Profile"
+                          name="Profile"
+                          rows="4"
+                          style="resize: none"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Tìm người
+                        </label>
+                        <textarea
+                          class="form-control"
+                          id="LookingFor"
+                          name="LookingFor"
+                          rows="4"
+                          style="resize: none"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Chiều cao</label
+                        >
+                        <div class="input-group g-mb-25">
+                          <input
+                            type="text"
+                            class="form-control form-control-md"
+                            aria-describedby="basic-addon2"
+                            id="Height"
+                            name="Height"
+                            type="number"
+                            placeholder="160"
+                          />
+                          <div
+                            class="input-group-append"
+                            style="
+                              border: 1px solid #cccccc;
+                              border-left: 0;
+                              line-height: 34px;
+                              padding-left: 15px;
+                            "
+                          >
+                            <label
+                              class="input-group-text g-bg-white"
+                              for="basic-addon2"
+                              >cm</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Cân nặng</label
+                        >
+                        <div class="input-group g-mb-25">
+                          <input
+                            type="text"
+                            class="form-control form-control-md"
+                            aria-describedby="basic-addon2"
+                            id="Weight"
+                            name="Weight"
+                            type="number"
+                            placeholder="60"
+                          />
+                          <div
+                            class="input-group-append"
+                            style="
+                              border: 1px solid #cccccc;
+                              border-left: 0;
+                              line-height: 34px;
+                              padding-left: 15px;
+                            "
+                          >
+                            <label
+                              class="input-group-text g-bg-white"
+                              for="basic-addon2"
+                              >kg</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Nơi ở
+                        </label>
+                        <select
+                          class="form-control rounded-0"
+                          id="Province"
+                          name="Province"
+                        >
+                          <option value="">--Chọn Nơi ở--</option>
+                        </select>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 mb-4">
+                        <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                          >Bằng cấp
+                        </label>
+                        <select
+                          class="form-control rounded-0"
+                          id="Degree"
+                          name="Degree"
+                        >
+                          <option value="">--Chọn Bằng cấp--</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row justify-content-between mb-5">
+                      <div class="col-12 align-self-center text-center">
+                        <button
+                          onclick="me.doUpdateMe()"
+                          class="btn btn-md u-btn-primary rounded g-py-13 g-px-25"
+                          type="button"
+                        >
+                          Lưu
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- End Edit Profile -->
+              </div>
+              <!-- End Tab panes -->
+            </div>
+            <!-- End Profle Content -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <%- include common_footer.ejs %>
+      <!-- End Footer -->
+    </main>
+  </body>
+</html>

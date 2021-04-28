@@ -7,22 +7,30 @@ function HomeClass() { }
 
 //get data home page, called when load page
 HomeClass.prototype.get_homepage_list = function() {
-    var page_index = common.get_url_param('page');      //start from 1
-    common.ajaxRawGet(API_URI.HOME_LIST+'?page='+page_index, function(resp){
+	var pageIndex = common.get_url_param('page') || 1;      //start from 1
+	var MariedStatus = common.get_url_param('MariedStatus') || ''
+	var Objective = common.get_url_param('Objective') || ''
+	var Province = common.get_url_param('Province') || ''
+	var params = `?page=${pageIndex}&MariedStatus=${MariedStatus}&Objective=${Objective}&Province=${Province}`
+    common.ajaxRawGet(API_URI.HOME_LIST + params, function(resp){
         if (resp.message == CONST.OK_CODE && resp.data != null){
             //cache the data of 500 users??? dont need, usually they always looking for new person
-            render_home_list(resp.data);
-            render_paging(page_index, resp.total, window.location.origin+'?');
+			render_home_list(resp.data);
+            render_paging(pageIndex, resp.total, window.location.origin+'?');
         } else {
 
         }
     });
 };
 //get random users
-HomeClass.prototype.random_user_by_gender = function(gender_code) {
-    common.ajaxRawGet(API_URI.RANDOM_USER+'?code='+gender_code, function(resp){
+HomeClass.prototype.random_user_by_gender = function(genderCode) {
+	var MariedStatus = common.get_url_param('MariedStatus') || ''
+	var Objective = common.get_url_param('Objective') || ''
+	var Province = common.get_url_param('Province') || ''
+	var params = `?code=${genderCode}&MariedStatus=${MariedStatus}&Objective=${Objective}&Province=${Province}`
+    common.ajaxRawGet(API_URI.RANDOM_USER + params, function(resp){
         if (resp.message == CONST.OK_CODE && resp.data != null){
-            render_random_user(gender_code, resp.data);
+            render_random_user(genderCode, resp.data);
         } else {
             //nothing shown
         }
@@ -32,7 +40,8 @@ HomeClass.prototype.random_user_by_gender = function(gender_code) {
 function render_home_list(list){
     if (list.length == 0){
         return;
-    }
+	}
+    var pageIndex = 1;      //start from 1
     var $tmpl;
     var $container = $('#home_list');
     var len = list.length;
@@ -45,10 +54,10 @@ function render_home_list(list){
         $('.data-looking-for', $tmpl).text(list[i]['LookingFor']);
         $('.data-name', $tmpl).text(list[i]['Name']);
         $('.data-name', $tmpl).attr('href', common.compose_profile_link(list[i]['_id'], list[i]['Name']));
-        $('.data-province', $tmpl).text(common.convert_province(list[i]['Province']));
+        $('.data-province', $tmpl).text(common.convert_province(list[i]['Province'])).attr('href', `?page=${pageIndex}&Province=${list[i]['Province']}`);
         $('.data-age', $tmpl).text(list[i]['Age']);
-        $('.data-married-status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));
-        $('.data-objective', $tmpl).text(common.convert_objective(list[i]['Objective']));
+        $('.data-married-status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus'])).attr('href', `?page=${pageIndex}&MariedStatus=${list[i]['MariedStatus']}`);
+        $('.data-objective', $tmpl).text(common.convert_objective(list[i]['Objective'])).attr('href', `?page=${pageIndex}&Objective=${list[i]['Objective']}`);
         $('.data-date', $tmpl).text(common.convert_unix_to_date(list[i]['updated_time']));
 
         $container.append($tmpl.removeAttr('id').removeClass('hidden'));
@@ -97,14 +106,18 @@ function render_paging(page_index, total, base_url){
 }
 //
 function append_paging_index(min, max, total_page, $paging_tmpl, $paging_list, item_class, base_url){
-    var $item_tmpl;
+	var $item_tmpl;
+	var MariedStatus = common.get_url_param('MariedStatus') || ''
+	var Objective = common.get_url_param('Objective') || ''
+	var Province = common.get_url_param('Province') || ''
+	var params = `&MariedStatus=${MariedStatus}&Objective=${Objective}&Province=${Province}`
     for (var i=min; i<=max; i++){
         if (i<1 || i>total_page){
             continue;
         }
         $item_tmpl = $(item_class, $paging_tmpl).clone(false);
         $('a', $item_tmpl).text(i);
-        $('a', $item_tmpl).attr('href', base_url+'page='+i);
+        $('a', $item_tmpl).attr('href', base_url +'page='+ i + params);
         $paging_list.append($item_tmpl);
     }
 }
@@ -118,7 +131,8 @@ function append_paging_dot($paging_tmpl, $paging_list, item_class, base_url){
 function render_random_user(gender_code, list){
     if (list.length == 0){
         return;
-    }
+	}
+	var pageIndex = 1;      //start from 1
     var $sitebar_items_tmpl = $('#sitebar_items_tmpl').clone(false);
     $('.gender', $sitebar_items_tmpl).text(common.convert_gender(gender_code));
     var len = list.length;
@@ -129,8 +143,8 @@ function render_random_user(gender_code, list){
         $('.avatar_link', $tmpl).attr('href', common.compose_profile_link(list[i]['_id'], list[i]['Name']));
         $('.description', $tmpl).text(list[i]['LookingFor']);
         $('.description', $tmpl).attr('href', common.compose_profile_link(list[i]['_id'], list[i]['Name']));
-        $('.status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus']));
-        $('.objective', $tmpl).text(common.convert_objective(list[i]['Objective']));
+        $('.status', $tmpl).text(common.convert_married_status(list[i]['MariedStatus'])).attr('href', `?page=${pageIndex}&MariedStatus=${list[i]['MariedStatus']}`);
+        $('.objective', $tmpl).text(common.convert_objective(list[i]['Objective'])).attr('href', `?page=${pageIndex}&Objective=${list[i]['Objective']}`);
         $sitebar_items_tmpl.append($tmpl.removeAttr('id').removeClass('hidden'));
     }
     $('#sidebar_container').append($sitebar_items_tmpl.removeAttr('id').removeClass('hidden'));

@@ -13,6 +13,8 @@ var config = require('./config/setting')();
 var winston = require('winston');			//keep track Exception of nodejs server, if any
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
+require("dotenv").config();
+
 //Define routes
 var routes = require('./routes/index');
 var test = require('./routes/test');
@@ -80,6 +82,8 @@ app.use(restResponse(rest_resp_options));
 app.use('/', routes);
 app.use('/test', test);
 app.use('/user', user);
+app.use('/subscribe', require('./routes/subscribe'))
+app.use('/search', require('./routes/search'))
 
 app.use('/web_parser', web_parser);
 app.use('/payment', payment);

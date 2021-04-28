@@ -1,32 +1,57 @@
 <!-- Required Meta Tags Always Come First -->
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-<meta http-equiv="x-ua-compatible" content="ie=edge"/>
-<meta name="author" content="Martin SangDo"/>
-<meta name="keywords" content="hẹn hò, tìm bạn, bốn phương, tìm bạn gái, tìm bạn trai, tìm bạn gay, kết bạn, tâm sự, tìm bạn online, kết bạn online, hẹn hò online"/>
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="author" content="Martin SangDo" />
+<meta
+  name="keywords"
+  content="hẹn hò, tìm bạn, bốn phương, tìm bạn gái, tìm bạn trai, tìm bạn gay, kết bạn, tâm sự, tìm bạn online, kết bạn online, hẹn hò online"
+/>
 <!-- Favicon -->
-<link rel="shortcut icon" href="../../../favicon.ico"/>
+<link rel="shortcut icon" href="../../../favicon.ico" />
 
 <!-- Google Fonts -->
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab:300,400,700%7COpen+Sans:400,600,700"/>
+<link
+  rel="stylesheet"
+  href="//fonts.googleapis.com/css?family=Roboto+Slab:300,400,700%7COpen+Sans:400,600,700"
+/>
 
 <!-- CSS Global Compulsory -->
-<link rel="stylesheet" href="/unify_assets/vendor/bootstrap/bootstrap.min.css"/>
+<link
+  rel="stylesheet"
+  href="/unify_assets/vendor/bootstrap/bootstrap.min.css"
+/>
 
 <!-- CSS Implementing Plugins -->
-<link rel="stylesheet" href="/unify_assets/vendor/icon-awesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="/unify_assets/vendor/icon-line/css/simple-line-icons.css"/>
-<link rel="stylesheet" href="/unify_assets/vendor/icon-line-pro/style.css"/>
-<link rel="stylesheet" href="/unify_assets/vendor/icon-hs/style.css"/>
-<link rel="stylesheet" href="/unify_assets/vendor/animate.css"/>
-<link rel="stylesheet" href="/unify_assets/vendor/hs-megamenu/src/hs.megamenu.css"/>
-<link rel="stylesheet" href="/unify_assets/vendor/hamburgers/hamburgers.min.css"/>
+<link
+  rel="stylesheet"
+  href="/unify_assets/vendor/icon-awesome/css/font-awesome.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="/unify_assets/vendor/icon-line/css/simple-line-icons.css"
+/>
+<link rel="stylesheet" href="/unify_assets/vendor/icon-line-pro/style.css" />
+<link rel="stylesheet" href="/unify_assets/vendor/icon-hs/style.css" />
+<link rel="stylesheet" href="/unify_assets/vendor/animate.css" />
+<link rel="stylesheet" href="/unify_assets/vendor/custombox/custombox.min.css" />
+<link
+  rel="stylesheet"
+  href="/unify_assets/vendor/hs-megamenu/src/hs.megamenu.css"
+/>
+<link
+  rel="stylesheet"
+  href="/unify_assets/vendor/hamburgers/hamburgers.min.css"
+/>
 
 <!-- CSS Unify Theme -->
-<link rel="stylesheet" href="/unify_assets/css/styles.bm-classic.css"/>
+<link rel="stylesheet" href="/unify_assets/css/styles.bm-classic.css" />
 
 <!-- CSS Customization -->
-<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/style.css" />
 
 <script src="/unify_assets/vendor/jquery/jquery.min.js"></script>
 <script src="/unify_assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
@@ -36,6 +61,7 @@
 <!-- JS Implementing Plugins -->
 <script src="/unify_assets/vendor/appear.js"></script>
 <script src="/unify_assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+<script src="/unify_assets/vendor/custombox/custombox.min.js"></script>
 
 <!-- JS Unify -->
 <script src="/unify_assets/js/hs.core.js"></script>
@@ -46,6 +72,12 @@
 <script src="/unify_assets/js/components/hs.sticky-block.js"></script>
 <script src="/unify_assets/js/components/hs.popup.js"></script>
 <script src="/unify_assets/js/components/hs.go-to.js"></script>
+<script src="/unify_assets/js/components/hs.modal-window.js"></script>
+<script src="/unify_assets/js/components/hs.modal-window.js"></script>
+
+<!-- TOASTR -->
+<link href="/plugin/toastr/toastr.min.css" rel="stylesheet" />
+<script src="/plugin/toastr/toastr.min.js"></script>
 
 <!-- JS Customization -->
 <script src="/unify_assets/js/custom.js"></script>
@@ -53,32 +85,35 @@
 <script src="/js/constant.js"></script>
 <!-- JS Plugins Init. -->
 <script>
-    $(document).on('ready', function () {
-        // initialization of header
-        $.HSCore.components.HSHeader.init($('#js-header'));
-        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+  $(document).on("ready", function () {
+    // initialization of header
+    $.HSCore.components.HSHeader.init($("#js-header"));
+    $.HSCore.helpers.HSHamburgers.init(".hamburger");
 
-        // initialization of HSDropdown component
-        $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
-            afterOpen: function () {
-                $(this).find('input[type="search"]').focus();
-            }
-        });
-
-        $('.js-mega-menu').HSMegaMenu();
-
-        // initialization of scroll animation
-        $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
-
-        // initialization of go to
-        $.HSCore.components.HSGoTo.init('.js-go-to');
-
+    // initialization of HSDropdown component
+    $.HSCore.components.HSDropdown.init($("[data-dropdown-target]"), {
+      afterOpen: function () {
+        $(this).find('input[type="search"]').focus();
+      },
     });
 
-    $(window).on('load', function () {
-        // initialization of sticky blocks
-        setTimeout(function() { // important in this case
-            $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
-        }, 1);
-    });
+    $(".js-mega-menu").HSMegaMenu();
+
+    // initialization of scroll animation
+    $.HSCore.components.HSOnScrollAnimation.init("[data-animation]");
+
+    // initialization of go to
+    $.HSCore.components.HSGoTo.init(".js-go-to");
+  });
+
+  $(window).on("load", function () {
+    // initialization of sticky blocks
+    setTimeout(function () {
+      // important in this case
+      $.HSCore.components.HSStickyBlock.init(".js-sticky-block");
+    }, 1);
+
+    // initialization of popups
+    $.HSCore.components.HSModalWindow.init("[data-modal-target]");
+  });
 </script>
