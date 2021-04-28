@@ -23,21 +23,16 @@ exports.create = (req, res) => {
 
       //update user SubscribeTimeLive
       //extend by Duration
-      var currentDate = new Date();
-      currentDate.setDate(
-        currentDate.getDate() + parseInt(params.MCardDuration)
+      var date = user.SubscribeTimeLive ? new Date(user.SubscribeTimeLive * 1000) : new Date();
+      date.setDate(
+        date.getDate() + parseInt(params.MCardDuration)
       );
-      const currentSubscribeTimeLive = user.SubscribeTimeLive || 0;
       //currentDate.getTime() is millisecond
-      const newSubscribeTimeLive =
-        currentSubscribeTimeLive + currentDate.getTime() / 1000;
+      const newSubscribeTimeLive = date.getTime() / 1000;
       user.SubscribeTimeLive = newSubscribeTimeLive;
       user.save((err, docSave) => {
         if (err) {
-          return res.json({
-            status: 0,
-            data: errorHandler(err),
-          });
+          return res.rest.success(errorHandler(err));
         }
         return res.rest.success({
           data: { ...doc, newSubscribeTimeLive },
