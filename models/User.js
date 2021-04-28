@@ -21,7 +21,6 @@ var UserSchema = new Schema(
     Objective: { type: Number },
     IsSound: { type: Boolean },
     Height: { type: Number },
-    Email: { type: String },
     Province: { type: Number },
     Picture: { type: String },
     YahooNick: { type: String },
