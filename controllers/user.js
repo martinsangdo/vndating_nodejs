@@ -49,7 +49,9 @@ exports.login = (req, res) => {
   const { Email, Password } = req.body;
   User.findOne({ Email, is_active: { $ne: 0 } }, (err, doc) => {
     if (err || !doc) {
-      return res.rest.success("Tài khoản này không tồn tại hoặc chưa kích hoạt!");
+      return res.rest.success(
+        "Tài khoản này không tồn tại hoặc chưa kích hoạt!"
+      );
     }
     //check password match
     if (!doc.authenticate(Password)) {
@@ -163,9 +165,10 @@ exports.userById = (req, res, next, id) => {
 exports.userByIdWithProfile = (req, res, next, id) => {
   User.findById(id).exec((err, doc) => {
     if (err || !doc) {
-      next();
+      req.user = null;
+    } else {
+      req.user = doc;
     }
-    req.user = doc;
     next();
   });
 };
