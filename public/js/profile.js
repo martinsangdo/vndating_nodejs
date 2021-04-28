@@ -17,8 +17,9 @@ ProfileClass.prototype.doGetProfile = function () {
       isHashEmail = resp.data.isHashEmail;
       $("#profile-email").text(resp.data.Email);
       if (isHashEmail) {
-        const href = user ? "/subscribe" : "/user/login";
-        $("#btn-contact").removeClass("hidden").find('a').attr("href", href);
+        let href = user ? "/subscribe" : "/user/login";
+        href += "?backURL=" + window.location.href;
+        $("#btn-contact").removeClass("hidden").find("a").attr("href", href);
       } else {
         $("#btn-contact").addClass("hidden");
       }
@@ -30,15 +31,18 @@ ProfileClass.prototype.doGetProfile = function () {
 
 //show info of user
 ProfileClass.prototype.show_info = function () {
-  $("#MariedStatus").text(
-    common.convert_married_status($("#MariedStatus").attr("data-value"))
-  );
-  $("#Objective").text(
-    common.convert_objective($("#Objective").attr("data-value"))
-  );
-  $("#Province").text(
-    common.convert_province($("#Province").attr("data-value"))
-  );
+  const MariedStatus = $("#MariedStatus").attr("data-value");
+  $("#MariedStatus")
+    .text(common.convert_married_status(MariedStatus))
+    .attr("href", `/?page=1&MariedStatus=${MariedStatus}`);
+  const Objective = $("#MariedStatus").attr("data-value");
+  $("#Objective")
+    .text(common.convert_objective(Objective))
+    .attr("href", `/?page=1&Objective=${Objective}`);
+  const Province = $("#Province").attr("data-value");
+  $("#Province")
+    .text(common.convert_province(Province))
+    .attr("href", `/?page=1&Province=${Province}`);
   $("#Degree").text(common.convert_degree($("#Degree").attr("data-value")));
   $("#Sex").text(common.convert_gender($("#Sex").attr("data-value")));
 };

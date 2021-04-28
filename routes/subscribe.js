@@ -7,7 +7,8 @@ const { requireLogin, isAuth, userById } = require("../controllers/user");
 const { create, list } = require("../controllers/subscribe");
 
 router.get("", (req, res) => {
-  res.render("subscribe");
+  const backURL = req.query['backURL'];
+  res.render("subscribe", { backURL });
 });
 
 router.get("/history", (req, res) => {

@@ -32,7 +32,7 @@ Subscribe.prototype.doCreateSubscribe = function () {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       toastr.success("Lưu thành công!");
       setTimeout(() => {
-        location.reload();
+        common.redirect($("#backURL").val() || "/");
       }, 1000);
     } else {
       toastr.error(resp.message);
@@ -51,9 +51,24 @@ Subscribe.prototype.init = () => {
     (item, index) => `<option value="${item.id}">${item.label}</option>`
   );
   $("#mcard-package").html(packageData);
+};
 
-  //mask to verify card code
-  $("#MCardCode").mask("9999-99999-9999");
+Subscribe.prototype.validateCardCode = (evt) => {
+  var theEvent = evt || window.event;
+
+  // Handle paste
+  if (theEvent.type === "paste") {
+    key = event.clipboardData.getData("text/plain");
+  } else {
+    // Handle key press
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+  }
+  var regex = /[0-9]|\./;
+  if (!regex.test(key) && key !== '-') {
+    theEvent.returnValue = false;
+    if (theEvent.preventDefault) theEvent.preventDefault();
+  }
 };
 
 //==========

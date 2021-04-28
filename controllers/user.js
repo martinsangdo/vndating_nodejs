@@ -12,7 +12,7 @@ exports.signup = (req, res) => {
   //check email
   User.findOne({ Email }).exec(async (err, doc) => {
     if (doc) {
-      return res.rest.success("Email is taken");
+      return res.rest.success("Email đã được sử dụng!");
     }
 
     const Name = LastName + " " + FirstName;
@@ -49,11 +49,11 @@ exports.login = (req, res) => {
   const { Email, Password } = req.body;
   User.findOne({ Email, is_active: { $ne: 0 } }, (err, doc) => {
     if (err || !doc) {
-      return res.rest.success("User not found or inactive");
+      return res.rest.success("Tài khoản này không tồn tại hoặc chưa kích hoạt!");
     }
     //check password match
     if (!doc.authenticate(Password)) {
-      return res.rest.success("Email and password is invalid");
+      return res.rest.success("Email hoặc mật khẩu không đúng!");
     }
 
     //generate a signed token
@@ -81,7 +81,7 @@ exports.requireLogin = expressJwt({
 exports.isAuth = (req, res, next) => {
   const isAuth = req.user && req.auth && req.user._id == req.auth._id;
   if (!isAuth) {
-    return res.rest.success("Unauthorize");
+    return res.rest.success("Chưa đăng nhập!");
   }
   next();
 };
@@ -90,7 +90,7 @@ exports.forgotPassword = (req, res) => {
   const { Email } = req.body;
   User.findOne({ Email }, async (err, doc) => {
     if (err || !doc) {
-      return res.rest.success("Email not found");
+      return res.rest.success("Email không tồn tại");
     }
     const token = jwt.sign({ _id: doc._id }, process.env.JWT_RESET_PASSWORD, {
       expiresIn: "10m",
@@ -119,7 +119,7 @@ exports.resetPassword = (req, res) => {
       function (err, decoded) {
         if (err) {
           console.log("resetPassword", err);
-          return res.rest.success("Token expired. Please try again");
+          return res.rest.success("Mã xác thực đã hết hạn!");
         }
 
         User.findOne({ ResetPasswordToken }, (err, user) => {
@@ -153,7 +153,7 @@ exports.resetPassword = (req, res) => {
 exports.userById = (req, res, next, id) => {
   User.findById(id).exec((err, doc) => {
     if (err || !doc) {
-      return res.rest.success("User not found");
+      return res.rest.success("userId không tồn tại!");
     }
     req.user = doc;
     next();
@@ -173,7 +173,7 @@ exports.userByIdWithProfile = (req, res, next, id) => {
 exports.profileById = (req, res, next, id) => {
   User.findById(id).exec((err, doc) => {
     if (err || !doc) {
-      return res.rest.success("User not found");
+      return res.rest.success("profileId không tồn tại!");
     }
     req.profile = doc;
     next();
@@ -236,7 +236,7 @@ exports.changePassword = (req, res) => {
   //check current password
   const isMatched = user.comparePassword(Password);
   if (!isMatched) {
-    return res.rest.success("Current password is invalid");
+    return res.rest.success("Mật khẩu hiện tại không đúng!");
   }
 
   user.Password = NewPassword;

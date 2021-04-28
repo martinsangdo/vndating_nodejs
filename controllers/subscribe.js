@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   //check email
   Subscribe.findOne({ MCardCode: params.MCardCode }).exec(async (err, doc) => {
     if (doc) {
-      return res.rest.success("Code is taken");
+      return res.rest.success("Mã thẻ đã được sử dụng!");
     }
     params.CreatedTime = common.get_created_time();
     const subscribe = new Subscribe(params);
@@ -50,7 +50,7 @@ exports.create = (req, res) => {
 exports.subscribeById = (req, res, next, id) => {
   Subscribe.findById(id).exec((err, doc) => {
     if (err || !doc) {
-      return res.rest.success("Subscribe not found");
+      return res.rest.success("SubscribeId không tìm thấy!");
     }
     req.subscribe = doc;
     next();

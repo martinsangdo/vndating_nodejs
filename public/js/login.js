@@ -26,7 +26,7 @@ Login.prototype.doLogin= function () {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       toastr.success("Đăng nhập thành công!");
       common.authenticate(resp.data, () => {
-        common.redirect("/");
+        common.redirect($("#backURL").val() || "/");
       })
     } else {
       toastr.error(resp.message);

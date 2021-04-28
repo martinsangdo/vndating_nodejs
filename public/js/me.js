@@ -133,7 +133,7 @@ Me.prototype.init = () => {
   );
 
   let ageData = "";
-  for (i = 10; i <= 100; i++) {
+  for (i = 18; i <= 75; i++) {
     ageData += `<option value="${i}">${i}</option>`;
   }
   $("#Age").append(ageData);

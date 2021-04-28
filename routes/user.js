@@ -21,7 +21,8 @@ const {
 } = require("../controllers/user");
 
 router.get("/login", function (req, res, next) {
-  res.render("login");
+  const backURL = req.query['backURL'];
+  res.render("login", { backURL });
 });
 router.get("/signup", function (req, res, next) {
   res.render("signup");
