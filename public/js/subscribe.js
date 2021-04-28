@@ -25,7 +25,7 @@ Subscribe.prototype.doCreateSubscribe = function () {
   );
   params.MCardAmount = findMCardPackage.value;
   params.MCardDuration = findMCardPackage.duration;
-  params.MCardCode = $.trim(MCardCode.toUpperCase());
+  params.MCardCode = MCardCode.split('-').join("");
   const user = common.isAuth();
   const url = API_URI.DO_CREATE_SUBSCRIBE + "/" + user._id;
   common.ajaxPostWithJwt(url, params, user.token, function (resp) {
