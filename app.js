@@ -52,7 +52,7 @@ var connect = function () {
       keepAlive: true,
       useUnifiedTopology: true,	//able to retry connection
       useNewUrlParser: true,
-	  dbName: 'vndating'};
+	  dbName: 'vndating_aws'};
   mongoose.connect(DB_URL, options);
 };
 connect();
