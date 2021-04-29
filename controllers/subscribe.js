@@ -29,7 +29,7 @@ exports.create = (req, res) => {
       );
       //currentDate.getTime() is millisecond
       const newSubscribeTimeLive = date.getTime() / 1000;
-      user.SubscribeTimeLive = newSubscribeTimeLive;
+      user.SubscribeTimeLive = Math.round(newSubscribeTimeLive);
       user.save((err, docSave) => {
         if (err) {
           return res.rest.success(errorHandler(err));
