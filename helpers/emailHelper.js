@@ -28,17 +28,17 @@ const transporter = nodemailer.createTransport({
 //   });
 
 exports.sendEmailForgotPassword = (params) => {
-    const {email, token} = params
+    const {token, Email} = params;
     return new Promise(resovle => {
         // send mail with defined transport object
         transporter.sendMail({
             from: process.env.FROM_EMAIL, // sender address
-            to: [email, process.env.TO_EMAIL], // list of receivers
+            to: [Email], // list of receivers
             subject: 'Email thay đổi mật khẩu',
             html: `
-                <p>Please click this button to reset your password</p>
-                <a href="${process.env.CLIENT_URL}/user/reset_password/${token}">Reset password</a>
-                <p>Or copy the following link to reset your password</p>
+                <p>Click vào link bên dưới để đặt lại mật khẩu:</p>
+                <a href="${process.env.CLIENT_URL}/user/reset_password/${token}">Đổi mật khẩu tại đây</a>
+                <p>Hoặc copy đường link bên dưới và paste vào trình duyệt web:</p>
                 <p>${process.env.CLIENT_URL}/user/reset_password/${token}</p>
                 <hr/>
                 <p>This email may contain sensitive information</p>
