@@ -15,8 +15,10 @@ ProfileClass.prototype.doGetProfile = function () {
   common.ajaxRawGetWithJwt(url, user.token, function (resp) {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       isHashEmail = resp.data.isHashEmail;
-      $("#profile-email").text(resp.data.Email);
-      $('#img_profile').attr('src', API_URI.HENHO_DOMAIN + resp.data['Picture']);
+      $("#profile-email").val(resp.data.Email);
+      if (common.isset(resp.data['Picture'])){
+          $('#img_profile').attr('src', API_URI.HENHO_DOMAIN + resp.data['Picture']);
+      }
       if (isHashEmail) {
         let href = user ? "/subscribe" : "/user/login";
         href += "?backURL=" + window.location.href;

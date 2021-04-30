@@ -47,7 +47,9 @@ function render_home_list(list){
     var len = list.length;
     for (var i=0; i<len; i++){
         $tmpl = $('#person_tmpl').clone(false);
-        $('.home_img_thumb', $tmpl).attr('src', API_URI.HENHO_DOMAIN + list[i]['Picture']);
+        if (common.isset(list[i]['Picture'])){
+            $('.home_img_thumb', $tmpl).attr('src', API_URI.HENHO_DOMAIN + list[i]['Picture']);
+        }
         $('.home_img_thumb', $tmpl).attr('onclick', 'window.location.href="'+common.compose_profile_link(list[i]['_id'], list[i]['Name'])+'"');
         $('.data-gender', $tmpl).text(common.convert_gender(list[i]['Sex']));
         $('.data-gender', $tmpl).addClass(common.convert_gender_color(list[i]['Sex']));
