@@ -39,7 +39,7 @@
                     <!-- User Image -->
                     <div class="u-block-hover g-pos-rel">
                         <figure>
-                            <img id="img_profile" class="img-fluid w-100 u-block-hover__main--zoom-v1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/480px-User-avatar.svg.png" />
+                            <img id="img_profile" class="img-fluid w-100 u-block-hover__main--zoom-v1" src="<%= data==null||data['Picture']==null?'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/480px-User-avatar.svg.png':'https://henho.top'+data['Picture']%>" />
                         </figure>
                     </div>
                     <!-- User Image -->
