@@ -50,7 +50,7 @@ function renderList(list) {
     $tmpl = $("#item_tmpl").clone(false);
     $(".MCardCode", $tmpl).text(list[i]["MCardCode"]);
     $(".CreatedTime", $tmpl).text(
-      common.convert_unix_to_date(list[i]["CreatedTime"])
+      common.convert_unix_to_datetime(list[i]["CreatedTime"])
     );
     const mCardVendors = MCARD_VENDORS;
     const findMCardVendor = Object.keys(mCardVendors).find(
