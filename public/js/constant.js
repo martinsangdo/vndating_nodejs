@@ -58,41 +58,41 @@ var RESP_MESS = {
 };
 
 var MCARD_VENDORS = {
-  GTEL: "Gtel",
+  // GTEL: "Gtel",
   MOBIFONE: "Mobifone",
-  VIETNAMOBILE: "Vietnamobile",
-  VIETTEL: "Viettel",
-  VINAPHONE: "Vinaphone",
+    VIETTEL: "Viettel",
+    VINAPHONE: "Vinaphone",
+    VIETNAMOBILE: "Vietnamobile"
 };
 var MCARD_PACKAGES = [
   {
     id: 1,
     value: 20000, //vnd
-    label: "20k",
+    label: "20k (10 ngày xem thông tin)",
     duration: 10, //day
   },
   {
     id: 2,
     value: 50000,
-    label: "50k",
+    label: "50k (30 ngày xem thông tin)",
     duration: 30,
   },
   {
     id: 3,
     value: 100000,
-    label: "100k",
+    label: "100k (60 ngày xem thông tin)",
     duration: 60,
   },
   {
     id: 4,
     value: 200000,
-    label: "200k",
+    label: "200k (6 tháng xem thông tin)",
     duration: 180,
   },
-  {
-    id: 3,
-    value: 500000,
-    label: "500k",
-    duration: 730,
-  },
+  // {
+  //   id: 3,
+  //   value: 500000,
+  //   label: "500k",
+  //   duration: 730,
+  // },
 ];
