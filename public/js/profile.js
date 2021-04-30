@@ -20,18 +20,29 @@ ProfileClass.prototype.doGetProfile = function () {
           $('#img_profile').attr('src', API_URI.HENHO_DOMAIN + resp.data['Picture']);
       }
       if (isHashEmail) {
+        //encrypted
         let href = user ? "/subscribe" : "/user/login";
         href += "?backURL=" + window.location.href;
         $("#btn-contact").removeClass("hidden").find("a").attr("href", href);
         $("#btn-copy-email").addClass("hidden");
       } else {
+        //unblocked
         $("#btn-contact").addClass("hidden");
         $("#btn-copy-email").removeClass("hidden");
+          $("#email_warning").removeClass("hidden");
       }
     } else {
       toastr.error(resp.message);
     }
   });
+};
+//
+ProfileClass.prototype.copy_email = function () {
+    $('#profile-email').removeAttr('disabled');
+    $('#profile-email').select();
+    document.execCommand("copy");
+    $('#profile-email').attr('disabled', true);
+    $('#copy_status').removeClass('hidden');
 };
 
 //show info of user

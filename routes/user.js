@@ -67,19 +67,19 @@ router.get("/same_related_profile", function (req, res, next) {
   }
   var final_response = {};
   get_related_users(
-    { is_active: { $ne: 0 }, MariedStatus: marital_code, LookingFor: {$ne:null} },
+    { is_active: { $ne: 0 }, MariedStatus: marital_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
     function (resp_marital) {
       final_response["marital"] = resp_marital;
       get_related_users(
-        { is_active: { $ne: 0 }, Objective: objective_code, LookingFor: {$ne:null} },
+        { is_active: { $ne: 0 }, Objective: objective_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
         function (resp_objective) {
           final_response["objective"] = resp_objective;
           get_related_users(
-            { is_active: { $ne: 0 }, Province: province_code, LookingFor: {$ne:null} },
+            { is_active: { $ne: 0 }, Province: province_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
             function (resp_province) {
               final_response["province"] = resp_province;
               get_related_users(
-                { is_active: { $ne: 0 }, Sex: sex_code, LookingFor: {$ne:null} },
+                { is_active: { $ne: 0 }, Sex: sex_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
                 function (resp_sex) {
                   final_response["sex"] = resp_sex;
                   res.rest.success(final_response);
@@ -107,7 +107,7 @@ router.get("/get_homepage_list", function (req, res, next) {
   var Province = req.query["Province"];
   var AgeFrom = req.query["AgeFrom"];
   var AgeTo = req.query["AgeTo"];
-  const conditions = { is_active: { $ne: 0 }, LookingFor: {$ne:null} };
+  const conditions = { is_active: { $ne: 0 }, LookingFor: {$ne:null}, LookingFor:  {$ne:''}};
   if (MariedStatus) {
     conditions.MariedStatus = parseInt(MariedStatus);
   }
@@ -154,7 +154,7 @@ router.get("/random_user_by_gender", function (req, res, next) {
   if (isNaN(gender_code) || gender_code < 0 || gender_code > 3) {
     gender_code = 1; //default
   }
-  const conditions = { is_active: { $ne: 0 }, Sex: gender_code, LookingFor: {$ne:null} };
+  const conditions = { is_active: { $ne: 0 }, Sex: gender_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} };
   if (MariedStatus) {
     conditions.MariedStatus = parseInt(MariedStatus);
   }

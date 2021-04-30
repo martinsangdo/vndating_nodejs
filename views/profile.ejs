@@ -132,8 +132,12 @@
                                     <div class="g-pr-10">
                                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Email</strong>
                                         <input id="profile-email" class="align-top" value="Đang giải mã ..." disabled/>
-                                        <input id="btn-copy-email" class="hidden pointer" type="button" value="Copy" onclick=""/>
+                                        <input id="btn-copy-email" class="hidden pointer" type="button" value="Copy" onclick="profileClass.copy_email();"/>
+                                        <i id="copy_status" class="hidden">Đã copy địa chỉ email vào clipboard</i>
                                     </div>
+                                </li>
+                                <li>
+                                    <strong id="email_warning" class="hidden">Trang web không chịu trách nhiệm những gì các bạn trao đổi với nhau, nhưng có quyền xoá tài khoản của bạn nếu chúng tôi phát hiện có dấu hiệu vi phạm pháp luật. Tiền của bạn sẽ không được hoàn trả lại.</strong>
                                 </li>
                             </ul>
 
