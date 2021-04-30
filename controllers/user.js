@@ -17,13 +17,14 @@ exports.signup = (req, res) => {
 
     const Name = LastName + " " + FirstName;
     const created_time = common.get_created_time();
+    const updated_time = common.get_created_time();
     const user = new User({
       LastName,
       FirstName,
       Name,
       Email,
       Password,
-      created_time,
+      created_time, updated_time
     });
     user.save((err, doc) => {
       if (err) {
@@ -258,6 +259,7 @@ exports.changePassword = (req, res) => {
 exports.update = (req, res) => {
   let params = req.body;
   params.Name = params.LastName + " " + params.FirstName;
+  params.updated_time = common.get_created_time();
   let user = req.user;
   user = _.extend(user, params);
   user.save((err, doc) => {

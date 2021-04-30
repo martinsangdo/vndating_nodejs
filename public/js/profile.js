@@ -16,12 +16,15 @@ ProfileClass.prototype.doGetProfile = function () {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       isHashEmail = resp.data.isHashEmail;
       $("#profile-email").text(resp.data.Email);
+      $('#img_profile').attr('src', API_URI.HENHO_DOMAIN + resp.data['Picture']);
       if (isHashEmail) {
         let href = user ? "/subscribe" : "/user/login";
         href += "?backURL=" + window.location.href;
         $("#btn-contact").removeClass("hidden").find("a").attr("href", href);
+        $("#btn-copy-email").addClass("hidden");
       } else {
         $("#btn-contact").addClass("hidden");
+        $("#btn-copy-email").removeClass("hidden");
       }
     } else {
       toastr.error(resp.message);

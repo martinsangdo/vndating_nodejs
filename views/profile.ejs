@@ -32,7 +32,7 @@
                     <!-- User Image -->
                     <div class="u-block-hover g-pos-rel">
                         <figure>
-                            <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src=<%=data==null?'':data['Picture']%> />
+                            <img id="img_profile" class="img-fluid w-100 u-block-hover__main--zoom-v1" src="" />
                         </figure>
                     </div>
                     <!-- User Image -->
@@ -131,7 +131,8 @@
                                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                                     <div class="g-pr-10">
                                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Email</strong>
-                                        <span id="profile-email" class="align-top"></span>
+                                        <span id="profile-email" class="align-top">Đang giải mã ... </span>
+                                        <input id="btn-copy-email" class="hidden pointer" type="button" value="Copy" onclick=""/>
                                     </div>
                                 </li>
                             </ul>
