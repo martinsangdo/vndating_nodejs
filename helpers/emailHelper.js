@@ -22,10 +22,24 @@ const transporter = nodemailer.createTransport({
 //     logger: true,
 //     debug: true,
 //     auth: {
-//       user: "mernshop3393@gmail.com",
-//       pass: "mernshop@123"
+//         user: process.env.MAIL_USERNAME, // generated ethereal user
+//         pass: process.env.MAIL_PASSWORD, // generated ethereal password
+//     },
+//     tls: {
+//         rejectUnauthorized: false, //force send with unauthorized
 //     }
-//   });
+// });
+
+var transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    logger: true,
+    debug: true,
+    auth: {
+      user: "mernshop3393@gmail.com",
+      pass: "mernshop@123"
+    }
+  });
 
 exports.sendEmailForgotPassword = (params) => {
     const {token, Email} = params;

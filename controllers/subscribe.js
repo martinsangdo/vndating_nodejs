@@ -1,5 +1,4 @@
 const Subscribe = require("../models/Subscribe");
-const User = require("../models/User");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 const Common = require("../common/common");
 const common = new Common();
