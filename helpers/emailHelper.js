@@ -30,16 +30,16 @@ const transporter = nodemailer.createTransport({
 //     }
 // });
 
-var transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    logger: true,
-    debug: true,
-    auth: {
-      user: "mernshop3393@gmail.com",
-      pass: "mernshop@123"
-    }
-  });
+// var transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com",
+//     port: 465,
+//     logger: true,
+//     debug: true,
+//     auth: {
+//       user: "mernshop3393@gmail.com",
+//       pass: "mernshop@123"
+//     }
+//   });
 
 exports.sendEmailForgotPassword = (params) => {
     const {token, Email} = params;
