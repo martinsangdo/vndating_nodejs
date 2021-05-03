@@ -228,7 +228,19 @@ Common.prototype.convert_unix_to_date = function (unixTimestamp) {
 //convert unix timestamp to datetime string
 Common.prototype.convert_unix_to_datetime = function (unixTimestamp) {
   var d = new Date(unixTimestamp * 1000);
-  return d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+  return (
+    d.getDate() +
+    "/" +
+    (d.getMonth() + 1) +
+    "/" +
+    d.getFullYear() +
+    " " +
+    d.getHours() +
+    ":" +
+    d.getMinutes() +
+    ":" +
+    d.getSeconds()
+  );
 };
 //
 Common.prototype.convert_province = function (code, isGetAll = false) {
@@ -410,6 +422,11 @@ Common.prototype.handleClickSearch = () => {
 
 //common functions
 $(function () {
+  //toggle button menu
+  $("#btn-toggle-nav").click(function () {
+    $("#navBar").toggleClass("show");
+  });
+
   var userMenu = $("#user-menu");
   var html = "";
   const user = common.isAuth();
