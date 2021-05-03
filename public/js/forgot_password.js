@@ -23,11 +23,12 @@ ForgotPassword.prototype.doForgotPassword = function () {
   }
 
   params.Email = Email.toLowerCase();
-  
+
   if (isSubmitting) {
     return;
   }
   isSubmitting = true;
+  $("#btn-submit").attr("disabled", true);
 
   common.ajaxPost(API_URI.DO_FORGOT_PASSWORD, params, function (resp) {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
@@ -38,7 +39,8 @@ ForgotPassword.prototype.doForgotPassword = function () {
     } else {
       toastr.error(resp.message);
     }
-    isSubmitting = false
+    isSubmitting = false;
+    $("#btn-submit").attr("disabled", false);
   });
 };
 

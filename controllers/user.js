@@ -262,7 +262,8 @@ exports.update = (req, res) => {
   user = _.extend(user, params);
   user.save((err, doc) => {
     if (err) {
-      return res.rest.success(errorHandler(err));
+      console.log('update err', errorHandler(err));
+      return res.rest.success("Email đã tồn tại!");
     }
     doc.Salt = undefined;
     doc.HashPassword = undefined;
