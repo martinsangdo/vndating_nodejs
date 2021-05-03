@@ -29,9 +29,19 @@ SubscribeHistory.prototype.doGetMe = function () {
     if (resp.message == CONST.OK_CODE && resp.data != null) {
       const { SubscribeTimeLive } = resp.data;
       const SubscribeTimeLiveText = SubscribeTimeLive
-        ? common.convert_unix_to_date(SubscribeTimeLive)
+        ? common.convert_unix_to_datetime(SubscribeTimeLive)
         : "";
       $("#SubscribeTimeLive").text(SubscribeTimeLiveText);
+      if (common.isset(SubscribeTimeLive) && SubscribeTimeLive <= common.get_timestamp_sec()){
+        //expired
+        $('#SubscribeTimeLive').addClass('text-danger');
+        $('#SubscribeTimeLive').removeClass('text-success');
+
+      } else {
+        //till in subscription duration
+          $('#SubscribeTimeLive').removeClass('text-danger');
+          $('#SubscribeTimeLive').addClass('text-success');
+      }
     } else {
       toastr.error(resp.message);
     }
@@ -49,6 +59,10 @@ function renderList(list) {
   for (var i = 0; i < len; i++) {
     $tmpl = $("#item_tmpl").clone(false);
     $(".MCardCode", $tmpl).text(list[i]["MCardCode"]);
+    //hide serial number
+      var serial = list[i]["MCardSerial"];
+      serial = '***' + serial.substr(4);
+      $(".MCardSerial", $tmpl).text('(Serial: '+serial+')');
     $(".CreatedTime", $tmpl).text(
       common.convert_unix_to_datetime(list[i]["CreatedTime"])
     );

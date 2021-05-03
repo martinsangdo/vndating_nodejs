@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Title -->
-    <title>Subscribe</title>
+    <title>Nạp thẻ cào</title>
     <%- include common_header.ejs %>
     <script src="/js/subscribe.js"></script>
     <script>
@@ -35,7 +35,7 @@
               class="g-brd-around g-brd-gray-light-v4 rounded g-py-40 g-px-30"
             >
               <header class="text-center mb-4">
-                <h2 class="h2 g-color-black g-font-weight-600">Nạp thẻ</h2>
+                <h2 class="h2 g-color-black g-font-weight-600">Nạp thẻ cào</h2>
               </header>
 
               <!-- Form -->
@@ -62,6 +62,7 @@
                     id="mcard-package"
                     name="MCardPackage"
                   ></select>
+                  <div>Trong thời hạn đã chọn, bạn có thể xem thông tin liên lạc của tất cả mọi người.</div>
                 </div>
 
                 <div class="mb-4">
@@ -75,10 +76,27 @@
                     name="MCardCode"
                     type="text"
                     onkeypress="subscribe.validateCardCode()"
-                    placeholder="1111-22222-3333"
+                    placeholder=""
                   />
                 </div>
 
+                <div class="mb-4">
+                  <label
+                          class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
+                  >Số seri *</label
+                  >
+                  <input
+                          class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
+                          id="MCardSerial"
+                          name="MCardSerial"
+                          type="text"
+                          onkeypress="subscribe.validateCardCode()"
+                          placeholder=""
+                  />
+
+                </div>
+                <div>Vui lòng nhập đúng tất cả thông tin thẻ cào trước khi bấm Lưu </div><br/>
+                <div>Bạn có thể nạp thẻ nhiều lần, số ngày sẽ được cộng dồn tương ứng. </div><br/>
                 <div class="row justify-content-between mb-5">
                   <div class="col-12 align-self-center text-center">
                     <button

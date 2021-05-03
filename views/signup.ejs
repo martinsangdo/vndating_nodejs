@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Title -->
-    <title>Signup</title>
+    <title>Đăng ký tài khoản</title>
     <%- include common_header.ejs %>
     <script src="https://www.google.com/recaptcha/api.js?hl=vi" async defer></script>
     <script src="/js/jquery.sha256.min.js"></script>
@@ -45,7 +45,7 @@
                       class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
                       name="LastName"
                       type="text"
-                      placeholder="John"
+                      placeholder=""
                     />
                   </div>
 
@@ -58,7 +58,7 @@
                       class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
                       name="FirstName"
                       type="text"
-                      placeholder="Doe"
+                      placeholder=""
                     />
                   </div>
                 </div>
@@ -72,7 +72,7 @@
                     class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
                     name="Email"
                     type="email"
-                    placeholder="johndoe@gmail.com"
+                    placeholder=""
                   />
                 </div>
 
@@ -80,7 +80,7 @@
                   <div class="col-xs-12 col-sm-6 mb-4">
                     <label
                       class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13"
-                      >Mật khẩu *</label
+                      >Mật khẩu * (ít nhất 8 ký tự)</label
                     >
                     <input
                       class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15"
@@ -106,7 +106,7 @@
 
                 <div class="row justify-content-between mb-5">
                   <div class="col-12 align-self-center text-center">
-                    <div class="g-recaptcha" data-sitekey="6LcSla4aAAAAADoCeoiF5PETdKT0pCtnSlZfp8Vm"></div>
+                    <div class="g-recaptcha" data-sitekey="6LdSx70aAAAAAEszP7pyH4XjlQr9YGr3bHow6fey"></div>
                     <br />
                     <button
                       onclick="signup.doSignup()"

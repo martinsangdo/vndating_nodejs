@@ -27,6 +27,10 @@ Common.prototype.isEmpty = function (a_var) {
   return a_var === undefined || a_var == null || $.trim(a_var) == "";
 };
 //
+Common.prototype.get_timestamp_sec = function () {
+    return Math.round(Date.now() / 1000);
+};
+//
 Common.prototype.isset = function (a_var) {
   return !this.isEmpty(a_var);
 };

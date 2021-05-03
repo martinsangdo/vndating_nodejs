@@ -23,6 +23,10 @@ var SubscribeSchema = new Schema(
       type: String,
       required: true,
     },
+      MCardSerial: {
+          type: String,
+          required: true,
+      },
     MCardDuration: {
       type: Number,
       required: true,

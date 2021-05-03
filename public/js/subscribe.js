@@ -9,10 +9,10 @@ function Subscribe() {}
 Subscribe.prototype.doCreateSubscribe = function () {
   const form = $("#form-subscribe");
   let params = common.getFormData(form);
-  const { MCardVendor, MCardPackage, MCardCode } = params;
+  const { MCardVendor, MCardPackage, MCardCode, MCardSerial } = params;
   //validate params
-  if (!MCardVendor || !MCardPackage || !MCardCode) {
-    toastr.error("Vui lòng nhập các trường có *!");
+  if (!MCardVendor || !MCardPackage || !MCardCode || !MCardSerial) {
+    toastr.error("Vui lòng nhập các ô có *");
     return false;
   }
   // if (!common.isValidCardCode(MCardCode)) {
@@ -26,6 +26,7 @@ Subscribe.prototype.doCreateSubscribe = function () {
   params.MCardAmount = findMCardPackage.value;
   params.MCardDuration = findMCardPackage.duration;
   params.MCardCode = MCardCode.split('-').join("");
+  params.MCardSerial = MCardSerial.split('-').join("");
   const user = common.isAuth();
   const url = API_URI.DO_CREATE_SUBSCRIBE + "/" + user._id;
   common.ajaxPostWithJwt(url, params, user.token, function (resp) {

@@ -14,7 +14,7 @@ var STR_MESS_FRONT = {
 };
 //link of APIs
 var API_URI = {
-  HENHO_DOMAIN: "",
+  HENHO_DOMAIN: "https://henho.top",
   HOME_LIST: "/user/get_homepage_list",
   RANDOM_USER: "/user/random_user_by_gender",
   FRONT_LOGIN: "/publicapi/front_login", //prevent access before publishing
@@ -34,7 +34,7 @@ var API_URI = {
 
 var CONST = {
   OK_CODE: "OK",
-  DEFAULT_PAGE_LEN: 10, //no. of items in pagination
+  DEFAULT_PAGE_LEN: 50, //no. of items in pagination
   PAGE_OFFSET_DISPLAY: 4, //show items in left/right of active index
   HIDDEN_CLASSNAME: "hidden",
   //input form
@@ -58,41 +58,41 @@ var RESP_MESS = {
 };
 
 var MCARD_VENDORS = {
-  GTEL: "Gtel",
+  // GTEL: "Gtel",
   MOBIFONE: "Mobifone",
-  VIETNAMOBILE: "Vietnamobile",
-  VIETTEL: "Viettel",
-  VINAPHONE: "Vinaphone",
+    VIETTEL: "Viettel",
+    VINAPHONE: "Vinaphone",
+    VIETNAMOBILE: "Vietnamobile"
 };
 var MCARD_PACKAGES = [
   {
     id: 1,
     value: 20000, //vnd
-    label: "20k",
+    label: "20k (10 ngày xem thông tin)",
     duration: 10, //day
   },
   {
     id: 2,
     value: 50000,
-    label: "50k",
+    label: "50k (30 ngày xem thông tin)",
     duration: 30,
   },
   {
     id: 3,
     value: 100000,
-    label: "100k",
+    label: "100k (60 ngày xem thông tin)",
     duration: 60,
   },
   {
     id: 4,
     value: 200000,
-    label: "200k",
+    label: "200k (6 tháng xem thông tin)",
     duration: 180,
   },
-  {
-    id: 3,
-    value: 500000,
-    label: "500k",
-    duration: 730,
-  },
+  // {
+  //   id: 3,
+  //   value: 500000,
+  //   label: "500k",
+  //   duration: 730,
+  // },
 ];

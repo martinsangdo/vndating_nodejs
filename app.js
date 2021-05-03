@@ -43,9 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/data', express.static('app_data'));		//folder contains resources: images/videos. MUST same as upload_storage_path in seting.js for uploading function
 app.set('trust proxy', 1); // trust first proxy
 //
-// var DB_URL = process.env.MLAB_MONGODB_OTC_URI;	//production
-// var DB_URL = 'mongodb+srv://swipexdev2:fiptncjVopaaqAtU@cluster0.fwovj.mongodb.net/swipexdevdb?authSource=admin&replicaSet=atlas-hjcdri-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true';
-var DB_URL = 'mongodb://localhost:27017/vndating';
+var DB_URL = process.env.MLAB_MONGODB_OTC_URI;	//production
+// var DB_URL = 'mongodb://localhost:27017/vndating';
 //Connect to mongodb
 var connect = function () {
   var options = {
@@ -53,7 +52,7 @@ var connect = function () {
       keepAlive: true,
       useUnifiedTopology: true,	//able to retry connection
       useNewUrlParser: true,
-	  dbName: 'vndating'};
+	  dbName: 'vndating_aws'};
   mongoose.connect(DB_URL, options);
 };
 connect();
