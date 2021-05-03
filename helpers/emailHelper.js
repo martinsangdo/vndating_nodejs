@@ -50,14 +50,11 @@ exports.sendEmailForgotPassword = (params) => {
             to: [Email], // list of receivers
             subject: 'Email thay đổi mật khẩu',
             html: `
-                <p>Click vào link bên dưới để đặt lại mật khẩu:</p>
+                <p>Vui lòng click vào link bên dưới để đặt lại mật khẩu:</p>
                 <a href="${process.env.CLIENT_URL}/user/reset_password/${token}">Đổi mật khẩu tại đây</a>
                 <p>Hoặc copy đường link bên dưới và paste vào trình duyệt web:</p>
                 <p>${process.env.CLIENT_URL}/user/reset_password/${token}</p>
-                <hr/>
-                <p>This email may contain sensitive information</p>
-                <p>${process.env.CLIENT_URL}</p>
-            `,
+            `
         }).then(resEmail => {
             console.log("Message sent: %s", resEmail.messageId);
             resovle({
