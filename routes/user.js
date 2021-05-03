@@ -67,19 +67,19 @@ router.get("/same_related_profile", function (req, res, next) {
   }
   var final_response = {};
   get_related_users(
-    { is_active: { $ne: 0 }, MariedStatus: marital_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
+    { is_active: { $ne: 0 }, MariedStatus: marital_code, LookingFor: {$ne:null} },
     function (resp_marital) {
       final_response["marital"] = resp_marital;
       get_related_users(
-        { is_active: { $ne: 0 }, Objective: objective_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
+        { is_active: { $ne: 0 }, Objective: objective_code, LookingFor: {$ne:null} },
         function (resp_objective) {
           final_response["objective"] = resp_objective;
           get_related_users(
-            { is_active: { $ne: 0 }, Province: province_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
+            { is_active: { $ne: 0 }, Province: province_code, LookingFor: {$ne:null} },
             function (resp_province) {
               final_response["province"] = resp_province;
               get_related_users(
-                { is_active: { $ne: 0 }, Sex: sex_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} },
+                { is_active: { $ne: 0 }, Sex: sex_code, LookingFor: {$ne:null} },
                 function (resp_sex) {
                   final_response["sex"] = resp_sex;
                   res.rest.success(final_response);
@@ -154,7 +154,7 @@ router.get("/random_user_by_gender", function (req, res, next) {
   if (isNaN(gender_code) || gender_code < 0 || gender_code > 3) {
     gender_code = 1; //default
   }
-  const conditions = { is_active: { $ne: 0 }, Sex: gender_code, LookingFor: {$ne:null}, LookingFor:  {$ne:''} };
+  const conditions = { is_active: { $ne: 0 }, Sex: gender_code, LookingFor: {$ne:null} };
   if (MariedStatus) {
     conditions.MariedStatus = parseInt(MariedStatus);
   }
