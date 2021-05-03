@@ -107,7 +107,7 @@ router.get("/get_homepage_list", function (req, res, next) {
   var Province = req.query["Province"];
   var AgeFrom = req.query["AgeFrom"];
   var AgeTo = req.query["AgeTo"];
-  const conditions = { is_active: { $ne: 0 }, LookingFor: {$ne:null}, LookingFor:  {$ne:''}};
+  const conditions = { is_active: { $ne: 0 }, LookingFor: {$ne:null}};
   if (MariedStatus) {
     conditions.MariedStatus = parseInt(MariedStatus);
   }
