@@ -21,6 +21,7 @@ var test = require('./routes/test');
 var user = require('./routes/user');
 var web_parser = require('./routes/web_parser');
 var payment = require('./routes/payment');
+var adminUser = require('./routes/admin/user');
 
 var app = express();
 var server = require('http').Server(app);
@@ -86,6 +87,7 @@ app.use('/search', require('./routes/search'))
 
 app.use('/web_parser', web_parser);
 app.use('/payment', payment);
+app.use('/admin-user', adminUser);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
