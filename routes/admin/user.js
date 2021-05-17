@@ -12,7 +12,7 @@ router.get('/new-user-list-query', function(req, res) {
     var user = new User();
     user.search_by_condition({IsDirty: null, IsVip: null},  //scrape documents
         {limit:50, skip:0},
-        'Name Email created_time',
+        'Name SubscribeTimeLive created_time',
         {created_time:-1}, function(resp){
             res.rest.success(resp.data);
         });
