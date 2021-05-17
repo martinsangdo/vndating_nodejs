@@ -231,7 +231,7 @@ Common.prototype.convert_unix_to_date = function (unixTimestamp) {
 };
 //convert unix timestamp to datetime string
 Common.prototype.convert_unix_to_datetime = function (unixTimestamp) {
-  if (unixTimestamp == null || unixTimestamp == ''){
+  if (unixTimestamp == null || unixTimestamp == '' || unixTimestamp === undefined){
     return '';
   }
   var d = new Date(unixTimestamp * 1000);
