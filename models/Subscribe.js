@@ -35,6 +35,7 @@ var SubscribeSchema = new Schema(
     IsActive: { type: Number, default: 1 },
     CreatedTime: { type: Number },
     User: { type: ObjectId, ref: "User" },
+      IsPaid: {type:Number, default: 0} //this card is used by owner or not
   },
   { collection: "subscribes" }
 );
