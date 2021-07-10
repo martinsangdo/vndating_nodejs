@@ -13,32 +13,32 @@ const { v1: uuidv1 } = require("uuid");
 var UserSchema = new Schema(
   {
     Id: { type: Number },
-    IsBan: { type: Boolean },
-    IsBadEmail: { type: Boolean },
+    // IsBan: { type: Boolean },
+    // IsBadEmail: { type: Boolean },
     MariedStatus: { type: Number },
-    IsConfirm: { type: Boolean },
-    UpdatedDate: { type: String },
+    // IsConfirm: { type: Boolean },
+    // UpdatedDate: { type: String },
     Objective: { type: Number },
-    IsSound: { type: Boolean },
+    // IsSound: { type: Boolean },
     Height: { type: Number },
     Province: { type: Number },
     Picture: { type: String },
-    YahooNick: { type: String },
+    // YahooNick: { type: String },
     Degree: { type: Number },
     Phone: { type: String },
-    Active: { type: Boolean },
-    ShortDescription: { type: String },
+    // Active: { type: Boolean },
+    // ShortDescription: { type: String },
     LookingFor: { type: String },
     Profile: { type: String },
     EncryptedPassword: { type: String },
     updated_time: { type: Number },
     CountryId: { type: Number },
     Name: { type: String },
-    Click: { type: Number },
+    // Click: { type: Number },
     DeleteReason: { type: String },
     Age: { type: Number },
-    IsDirty: { type: Boolean },
-    IsVip: { type: Boolean },
+    // IsDirty: { type: Boolean },
+    // IsVip: { type: Boolean },
     Weight: { type: Number },
     Sex: { type: Number },
     LastLoginDate: { type: String },
@@ -47,19 +47,19 @@ var UserSchema = new Schema(
     is_active: { type: Number, default: 1 },
     note: { type: String },
     created_time: { type: Number },
-    Salt: String,
+    Salt: String,   //registration via web
     Email: {
       type: String,
       trim: true,
       required: true,
-      unique: true,
+      unique: true
     },
     HashPassword: {
       type: String,
-      required: true,
+      required: false
     },
     ResetPasswordToken: {
-      type: String,
+      type: String
     },
     SubscribeTimeLive: { type: Number, default: 0 },
     LastName: { type: String },
@@ -220,6 +220,26 @@ User.prototype.create = function (data, resp_func) {
       resp_func(resp);
     }
   });
+};
+//
+User.prototype.update = function(existed_condition, update_data, resp_func){
+    var options = { upsert: false };
+    User.updateMany(existed_condition, update_data, options, function(err, numAffected){
+        // numAffected is the number of updated documents
+        if(err) {
+            var resp = {
+                result : Constant.FAILED_CODE,
+                message: Constant.SERVER_ERR,
+                err: err
+            };
+            resp_func(resp);
+        }else{
+            var resp = {
+                result : Constant.OK_CODE
+            };
+            resp_func(resp);
+        }
+    });
 };
 
 module.exports = User;
