@@ -17,7 +17,10 @@ router.get('/new-user-list-query', function(req, res) {
         {limit:50, skip:0},
         'Name SubscribeTimeLive created_time',
         {created_time:-1}, function(resp){
-            res.rest.success(resp.data);
+            //get total
+            user.countDocuments({Salt: {$ne:null}}, function (resp_total) {
+                res.rest.success({list:resp.data, total: resp_total.data});
+            });
         });
 });
 

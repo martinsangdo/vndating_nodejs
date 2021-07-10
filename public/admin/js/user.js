@@ -16,6 +16,8 @@ AdminUser.prototype.fetch_user_list = function(user_list) {
 $(document).ready(function(){
     common.ajaxRawGet(ADMIN_API_URI.NEW_USER_LIST, function(resp_detail){
         var adminUser = new AdminUser();
-        adminUser.fetch_user_list(resp_detail);
+        adminUser.fetch_user_list(resp_detail['list']);
+        //
+        $('#total').text(resp_detail['total']);
     });
 });
