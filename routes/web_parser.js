@@ -7,8 +7,10 @@ var User = require("../models/User.js");
 
 //scraping data
 router.get('/scraping_henho', function(req, res) {
+    var category = req.query["category"];
+    var gender = req.query["gender"];
     var options = {
-        uri: 'https://henho.top/Home/TopViews?gender=0',
+        uri: 'https://henho.top/Home/'+category+'?gender='+gender,
         method: 'GET',
         json:true
     };
