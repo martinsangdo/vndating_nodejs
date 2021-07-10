@@ -7,7 +7,7 @@ AdminUser.prototype.fetch_user_list = function(user_list) {
     var $tr;
     for (var i=0; i<user_list.length; i++){
         $tr = $('<tr></tr>');
-        $tr.append('<td>'+user_list[i]['Name']+'</td><td>'+
+        $tr.append('<td>'+(i+1)+'</td><td>'+user_list[i]['Name']+'</td><td>'+
             common.convert_unix_to_datetime(user_list[i]['SubscribeTimeLive'])+'</td><td>'+common.convert_unix_to_datetime(user_list[i]['created_time'])+'</td>')
         $container.append($tr);
     }

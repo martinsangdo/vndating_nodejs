@@ -10,7 +10,10 @@ router.get('/new-user-list', function(req, res) {
 //called by javascript
 router.get('/new-user-list-query', function(req, res) {
     var user = new User();
-    user.search_by_condition({IsDirty: null, IsVip: null},  //scrape documents
+    // var common = new Common();
+    // var currentTime = common.get_created_time();
+    var condition = {Salt: {$ne:null}, SubscribeTimeLive:{$gt:0}};  //in 1 month
+    user.search_by_condition(condition,  //scrape documents
         {limit:50, skip:0},
         'Name SubscribeTimeLive created_time',
         {created_time:-1}, function(resp){
