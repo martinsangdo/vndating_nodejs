@@ -176,7 +176,9 @@ router.get("/random_user_by_gender", function (req, res, next) {
     }
   );
 });
-
+router.get("/fb_login", function (req, res, next) {
+    res.render("fb_login");
+});
 /**
  * author: Viet Ngo
  */
