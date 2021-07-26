@@ -29,7 +29,9 @@ var API_URI = {
   DO_CHANGE_PASSWORD: "/user/change_password",
   DO_GET_ME: "/user/me",
   DO_UPDATE_ME: "/user/me",
-  GET_SUBSCRIBE_LIST: '/subscribe/list'
+  GET_SUBSCRIBE_LIST: '/subscribe/list',
+    GET_FB_GROUPS: '/user/fb_groups?access_token=',
+    GET_FB_GROUP_FEEDS: '/user/fb_feeds?access_token=',
 };
 
 var CONST = {

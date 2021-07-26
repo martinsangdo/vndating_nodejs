@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Constant = require("../common/constant.js");
 var User = require("../models/User.js");
+const request = require('request');
 
 const {
   signup,
@@ -176,9 +177,6 @@ router.get("/random_user_by_gender", function (req, res, next) {
     }
   );
 });
-router.get("/fb_login", function (req, res, next) {
-    res.render("fb_login");
-});
 /**
  * author: Viet Ngo
  */
@@ -213,5 +211,32 @@ function get_related_users(params, callback) {
     }
   );
 }
+//
+router.get("/fb_posts", function (req, res, next) {
+    res.render("fb_posts");
+});
+//get fb groups of user
+router.get("/fb_groups", function (req, res, next) {
+    var options = {
+        uri: 'https://graph.facebook.com/v10.0/me/groups?limit=50&access_token='+req.param('access_token'),
+        method: 'GET',
+        json:true
+    };
+    request(options, function(error, response, body){
+        res.rest.success(body);
+    });
+});
+//get fb feed of group
+router.get("/fb_feeds", function (req, res, next) {
+    var group_id = req.param('group_id');
+    var options = {
+        uri: 'https://graph.facebook.com/v10.0/'+group_id+'/feed?fields=updated_time,name,message,picture&limit=50&access_token='+req.param('access_token'),
+        method: 'GET',
+        json:true
+    };
+    request(options, function(error, response, body){
+        res.rest.success(body);
+    });
+});
 //======
 module.exports = router;

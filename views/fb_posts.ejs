@@ -3,16 +3,10 @@
 
 <head>
     <!-- Title -->
-    <title>FB_login</title>
+    <title>FB posts</title>
     <%- include common_header.ejs %>
     <script>
-        $(window).on('load', function () {
-
-        });
-
-    </script>
-
-    <script>
+        /*
         window.fbAsyncInit = function() {
             FB.init({
                 appId      : '341329214300712',
@@ -43,8 +37,10 @@
                 console.log('after login', response);
             });
         }
+        */
     </script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="/js/fb_posts.js"></script>
 
 </head>
 
@@ -52,7 +48,7 @@
 <main>
 
     <!-- Login -->
-    <section class="container g-py-100">
+    <section class="container g-py-100 hidden">
         <div class="row justify-content-center">
             <div class="col-sm-8 col-lg-5">
                 <div class="g-brd-around g-brd-gray-light-v4 rounded g-py-40 g-px-30">
@@ -66,6 +62,31 @@
         </div>
     </section>
     <!-- End Login -->
+    <section>
+        <textarea id="txt_token" cols="100" rows="3">EAAAAZAw4FxQIBAFjdC2wmFg3KZCJ0pqrFhaFFKzdMIoS7NhJZCzuu3zp4VyyULRHsjKQZCvLDx0sS9mJELjtnouRJVQtlgA7lT56xCNr1diV75CDZCj05uwG00EVkBmTIIxT8c7z9FfhoCVSxurG9qoh5FfdszQMZAlrfjeJC2lOoce8fbYOXiZCNuOKcG99bAZD</textarea>
+        <textarea id="txt_general_comment" cols="100" rows="3">Tìm bạn hẹn hò ở trang web này nha: https://ketbanvietnam.com mọi người ơi, mọi giới tính, vùng miền, tâm sự thầm kín có, kết hôn có.</textarea>
+
+        <input type="button" value="Apply" onclick="get_fb_groups();"/>
+        <div>
+            Group list
+            <select id="sel_groups" onchange="get_fb_group_feeds();">
+
+            </select>
+        </div>
+        <div>
+            Feed list
+            <table id="tbl_list">
+                <thead>
+                    <td width="10%">Comments</td>
+                    <td width="10%">Pic</td>
+                    <td width="55%">Mess</td>
+                    <td>Time</td>
+                    <td></td>
+                </thead>
+            </table>
+        </div>
+    </section>
+
 </main>
 
 </body>
