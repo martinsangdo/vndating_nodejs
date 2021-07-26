@@ -32,6 +32,7 @@ var API_URI = {
   GET_SUBSCRIBE_LIST: '/subscribe/list',
     GET_FB_GROUPS: '/user/fb_groups?access_token=',
     GET_FB_GROUP_FEEDS: '/user/fb_feeds?access_token=',
+    POST_COMMENT_FB_GROUP: '/user/post_group_comment'
 };
 
 var CONST = {

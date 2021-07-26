@@ -46,7 +46,22 @@ function show_group_feeds(list){
         $tr.append('<td><img src="'+list[i]['picture']+'"/></td>');
         $tr.append('<td><a target="_blank" href="https://facebook.com/'+list[i]['id']+'">'+list[i]['message']+'</a></td>');
         $tr.append('<td>'+list[i]['updated_time']+'</td>');
-        $tr.append('<td></td>');
+        $tr.append('<td><input type="button" value="comment" onclick="comment_fb_post(this);"/></td>');
         $tbl.append($tr);
     }
+}
+//
+function comment_fb_post(btn){
+    var post_id = $(btn).closest('tr').attr('data-id');
+    common.ajaxPost(API_URI.POST_COMMENT_FB_GROUP, {
+        access_token: token,
+        post_id: post_id,
+        message: $.trim($('#txt_general_comment').val())
+    }, function(resp){
+        //clear this row
+        $(btn).closest('tr').remove();
+    }, function(err){
+        //show alert
+        console.log('something wrong post_id:' + post_id, err);
+    });
 }

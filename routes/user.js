@@ -249,5 +249,31 @@ router.get("/fb_feeds", function (req, res, next) {
 
     });
 });
+//post comment to group feed
+router.post("/post_group_comment", function (req, res, next) {
+    /*
+    var payload = {
+        message: req.body['message'],
+        access_token: req.body['access_token']
+    };
+    console.log(payload);
+    console.log(req.body['post_id'])
+    request.post('https://graph.facebook.com/v10.0/'+req.body['post_id']+'/comments', payload, function(error, response, body){
+        res.rest.success(body);
+    });
+    */
+    var uri = 'https://graph.facebook.com/v10.0/'+req.body['post_id']+'/comments?access_token='+req.param('access_token')+'&message='+encodeURI(req.body['message']);
+    // console.log(uri);
+    var options = {
+        uri: uri,
+        method: 'POST',
+        json:true
+    };
+    request(options, function(error, response, body){
+        // console.log('error', error);
+        // console.log('body', body);
+        res.rest.success(body);
+    });
+});
 //======
 module.exports = router;
