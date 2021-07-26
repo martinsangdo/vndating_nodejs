@@ -53,13 +53,22 @@ function show_group_feeds(list){
 //
 function comment_fb_post(btn){
     var post_id = $(btn).closest('tr').attr('data-id');
+    var message = $.trim($('#txt_general_comment').val());
+    if (message == '' || token == ''){
+        return;
+    }
     common.ajaxPost(API_URI.POST_COMMENT_FB_GROUP, {
         access_token: token,
         post_id: post_id,
-        message: $.trim($('#txt_general_comment').val())
+        message: message
     }, function(resp){
         //clear this row
-        $(btn).closest('tr').remove();
+        if (resp.id != null){
+            //post successefully
+            $(btn).closest('tr').remove();
+        } else {
+            $(btn).attr('value', 'Error');
+        }
     }, function(err){
         //show alert
         console.log('something wrong post_id:' + post_id, err);

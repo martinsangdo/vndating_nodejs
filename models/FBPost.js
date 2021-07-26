@@ -10,7 +10,7 @@ var Constant = require('../common/constant.js');
 //define format of Collection
 var FBPostSchema = new Schema({
     fb_post_id           :   {type: String, trim: true},
-    create_time     :   {type: Date}
+    created_time     :   {type: Number}
 }, { collection: 'FBPost' });
 
 //the schema is useless so far

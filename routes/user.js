@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router();
 var Constant = require("../common/constant.js");
 var User = require("../models/User.js");
+var FBPost = require("../models/FBPost.js");
+
 const request = require('request');
 
 const {
@@ -236,7 +238,13 @@ router.get("/fb_feeds", function (req, res, next) {
     };
     request(options, function(error, response, body){
         var results = [];
+        // var fbPost = new FBPost();
         for (var i=0; i<body.data.length; i++){
+            //search to exclude posts which we posted
+            // fbPost.findOne({fb_post_id: body.data[i]['id']}, function(resp_detail){
+            //
+            // });
+            //
             results.push({
                 id: body.data[i]['id'],
                 message: body.data[i]['message'],
@@ -251,18 +259,12 @@ router.get("/fb_feeds", function (req, res, next) {
 });
 //post comment to group feed
 router.post("/post_group_comment", function (req, res, next) {
-    /*
-    var payload = {
-        message: req.body['message'],
-        access_token: req.body['access_token']
-    };
-    console.log(payload);
-    console.log(req.body['post_id'])
-    request.post('https://graph.facebook.com/v10.0/'+req.body['post_id']+'/comments', payload, function(error, response, body){
-        res.rest.success(body);
-    });
-    */
-    var uri = 'https://graph.facebook.com/v10.0/'+req.body['post_id']+'/comments?access_token='+req.param('access_token')+'&message='+encodeURI(req.body['message']);
+    var post_id = req.body['post_id'];
+    var access_token = req.body['access_token'];
+    if (post_id == null || post_id == ''){
+        res.rest.success();
+    }
+    var uri = 'https://graph.facebook.com/v10.0/'+post_id+'/comments?access_token='+access_token+'&message='+encodeURI(req.body['message']);
     // console.log(uri);
     var options = {
         uri: uri,
