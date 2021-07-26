@@ -230,12 +230,23 @@ router.get("/fb_groups", function (req, res, next) {
 router.get("/fb_feeds", function (req, res, next) {
     var group_id = req.param('group_id');
     var options = {
-        uri: 'https://graph.facebook.com/v10.0/'+group_id+'/feed?fields=updated_time,name,message,picture&limit=50&access_token='+req.param('access_token'),
+        uri: 'https://graph.facebook.com/v10.0/'+group_id+'/feed?fields=updated_time,name,message,picture,comments.summary(total_count)&limit=50&access_token='+req.param('access_token'),
         method: 'GET',
         json:true
     };
     request(options, function(error, response, body){
-        res.rest.success(body);
+        var results = [];
+        for (var i=0; i<body.data.length; i++){
+            results.push({
+                id: body.data[i]['id'],
+                message: body.data[i]['message'],
+                picture: body.data[i]['picture'],
+                comment_count: body.data[i]['comments']['summary']['total_count'],
+                updated_time: body.data[i]['updated_time'].substr(0,10),
+            });
+        }
+        res.rest.success(results);
+
     });
 });
 //======
