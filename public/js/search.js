@@ -16,7 +16,7 @@ Search.prototype.getSearchResult = function () {
   var AgeTo = common.get_url_param("AgeTo") || "";
   var params = `?page=${pageIndex}&MariedStatus=${MariedStatus}&Objective=${Objective}&Province=${Province}&Sex=${Sex}&AgeFrom=${AgeFrom}&AgeTo=${AgeTo}`;
   common.ajaxRawGet(API_URI.HOME_LIST + params, function (resp) {
-    if (resp.message == CONST.OK_CODE && resp.data != null) {
+    if (resp.result == CONST.OK_CODE && resp.data != null) {
       //cache the data of 500 users??? dont need, usually they always looking for new person
       renderHomeList(resp.data);
       renderPaging(pageIndex, resp.total, window.location.origin + "/search?");

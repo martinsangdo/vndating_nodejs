@@ -13,7 +13,7 @@ HomeClass.prototype.get_homepage_list = function() {
 	var Province = common.get_url_param('Province') || ''
 	var params = `?page=${pageIndex}&MariedStatus=${MariedStatus}&Objective=${Objective}&Province=${Province}`
     common.ajaxRawGet(API_URI.HOME_LIST + params, function(resp){
-        if (resp.message == CONST.OK_CODE && resp.data != null){
+        if (resp.result == CONST.OK_CODE && resp.data != null){
             //cache the data of 500 users??? dont need, usually they always looking for new person
 			render_home_list(resp.data);
             render_paging(pageIndex, resp.total, window.location.origin+'?');
@@ -29,7 +29,7 @@ HomeClass.prototype.random_user_by_gender = function(genderCode) {
 	var Province = common.get_url_param('Province') || ''
 	var params = `?code=${genderCode}&MariedStatus=${MariedStatus}&Objective=${Objective}&Province=${Province}`
     common.ajaxRawGet(API_URI.RANDOM_USER + params, function(resp){
-        if (resp.message == CONST.OK_CODE && resp.data != null){
+        if (resp.result == CONST.OK_CODE && resp.data != null){
             render_random_user(genderCode, resp.data);
         } else {
             //nothing shown

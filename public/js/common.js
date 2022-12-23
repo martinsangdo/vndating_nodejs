@@ -62,8 +62,10 @@ Common.prototype.ajaxRawGet = function (url, callback, callback_err) {
     type: "GET",
     dataType: "json", //jsonp causes error in IE
     success: function (msg) {
-      if (callback !== undefined) {
-        callback(msg);
+      // console.log(url)
+      // console.log(msg['result'])
+      if (callback !== undefined && msg['result'] != null) {
+        callback(msg['result']);
       }
     },
     error: function (errormessage) {

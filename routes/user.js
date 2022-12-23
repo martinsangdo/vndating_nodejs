@@ -142,7 +142,7 @@ router.get("/get_homepage_list", function (req, res, next) {
       { updated_time: -1 },
       function (resp) {
         resp["total"] = resp_total.data;
-        res.rest.success(resp); //success
+        res.respondSuccess(message = "Result", result = resp);
       }
     );
   });
@@ -175,7 +175,7 @@ router.get("/random_user_by_gender", function (req, res, next) {
     "Picture LookingFor Name MariedStatus Objective",
     { updated_time: -1 },
     function (resp) {
-      res.rest.success(resp); //success
+      res.respondSuccess(message = "Result", result = resp);
     }
   );
 });
