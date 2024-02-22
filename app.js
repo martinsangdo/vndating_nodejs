@@ -22,6 +22,7 @@ var user = require('./routes/user');
 var web_parser = require('./routes/web_parser');
 var payment = require('./routes/payment');
 var adminUser = require('./routes/admin/user');
+var vocabulary = require('./routes/vocabulary');
 
 var app = express();
 var server = require('http').Server(app);
@@ -44,8 +45,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/data', express.static('app_data'));		//folder contains resources: images/videos. MUST same as upload_storage_path in seting.js for uploading function
 app.set('trust proxy', 1); // trust first proxy
 //
-var DB_URL = process.env.MLAB_MONGODB_OTC_URI;	//production
-// var DB_URL = 'mongodb://localhost:27017/vndating';
+// var DB_URL = process.env.MLAB_MONGODB_OTC_URI;	//production
+var DB_URL = 'mongodb://localhost:27017/vndating';
 //Connect to mongodb
 var connect = function () {
   var options = {
@@ -53,7 +54,7 @@ var connect = function () {
       keepAlive: true,
       useUnifiedTopology: true,	//able to retry connection
       useNewUrlParser: true,
-	  dbName: 'vndating_aws'};
+	  dbName: 'vndating'};	//real db: vndating_aws
   mongoose.connect(DB_URL, options);
 };
 connect();
@@ -88,6 +89,8 @@ app.use('/search', require('./routes/search'))
 app.use('/web_parser', web_parser);
 app.use('/payment', payment);
 app.use('/admin-user', adminUser);
+
+app.use('/vocabulary', vocabulary);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
