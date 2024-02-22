@@ -8,11 +8,22 @@ const request = require('request');
 
 //
 router.get("/load_next", function (req, res, next) {
-    Vocabulary.findOne({is_read: {$ne: true}}, '', (err, doc) => {
-        if (err || !doc) {
-            res.respondSuccess(message = "Failed", result = doc);
+    var vocabularyDb = new Vocabulary();
+    vocabularyDb.countDoc({is_read: {$ne: true}}, (total) => {
+        if (total > 0) {
+            var _skip = Math.floor(Math.random() * total);
+            console.log(_skip);
+
+            vocabularyDb.findIt({is_read: {$ne: true}}, '', _skip, (doc) => {
+                if (!doc) {
+                    res.respondSuccess(message = "Failed", result = doc);
+                }
+                res.respondSuccess(result = doc);
+            });
+        } else {
+            //no more doc
+            res.respondSuccess(result = total);
         }
-        res.respondSuccess(result = doc);
     });
 });
 
